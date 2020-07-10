@@ -744,8 +744,8 @@ body,button,input,select,textarea {
 .mid-col.show .article {
     background: hsla(0,0%,100%,.3)
 }
-
-.left-col {
+/*左边背景*/
+/* .left-col {
     background: #fff;
     width: 300px;
     position: fixed;
@@ -754,7 +754,21 @@ body,button,input,select,textarea {
     -ms-transition: all .3s ease-in;
     height: 100%;
     z-index: 999
+} */
+
+.left-col {
+    /* background:#fff; */
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+    url('http://bucket836.oss-cn-shenzhen.aliyuncs.com/wallpaper/381535373.jpeg') no-repeat 0% 20%/ cover;
+    width:300px;
+    position:fixed;
+    opacity:1;
+    transition:all .3s ease-in;
+    -ms-transition: all .3s ease-in;
+    height:100%;
+    z-index:999
 }
+
 
 .left-col .overlay {
     width: 100%;
@@ -768,6 +782,8 @@ body,button,input,select,textarea {
     margin: 112px auto 0
 }
 
+
+/*根据图片背景改变字体颜色*/
 .left-col #header {
     width: 100%;
     height: 300px;
