@@ -269,7 +269,7 @@ html {
 
 body {
     margin: 0;
-    background: #eaeaea
+    background: #8B4513
 }
 
 article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary {
@@ -728,10 +728,11 @@ body,button,input,select,textarea {
     margin-bottom: 80px
 }
 
+/*右边背景颜色*/
 .mid-col {
     position: absolute;
     right: 0;
-    background: #eaeaea;
+    background: #8FBC8F;
     left: 300px;
     width: auto
 }
@@ -745,8 +746,8 @@ body,button,input,select,textarea {
     background: hsla(0,0%,100%,.3)
 }
 /*左边背景*/
-/* .left-col {
-    background: #fff;
+.left-col {
+    background: #2F4F4F;
     width: 300px;
     position: fixed;
     opacity: 1;
@@ -754,20 +755,8 @@ body,button,input,select,textarea {
     -ms-transition: all .3s ease-in;
     height: 100%;
     z-index: 999
-} */
-
-.left-col {
-    /* background:#fff; */
-    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
-    url('http://bucket836.oss-cn-shenzhen.aliyuncs.com/wallpaper/381535373.jpeg') no-repeat 0% 20%/ cover;
-    width:300px;
-    position:fixed;
-    opacity:1;
-    transition:all .3s ease-in;
-    -ms-transition: all .3s ease-in;
-    height:100%;
-    z-index:999
 }
+
 
 
 .left-col .overlay {
