@@ -6,22 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://vvcao.github.io">
-  <title>linux编程动态库和静态库的制作及编译过程 | 思考。。。</title>
+  <title>Linux编程进程间通信---有名管道基础知识点 | 思考。。。</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="动态库和静态库的制作和编译">
+  <meta name="description" content="有名管道">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux编程动态库和静态库的制作及编译过程">
-<meta property="og:url" content="https://vvcao.github.io/2020/07/08/linux%E7%BC%96%E7%A8%8B%E5%8A%A8%E6%80%81%E5%BA%93%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%88%B6%E4%BD%9C%E5%8F%8A%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/index.html">
+<meta property="og:title" content="Linux编程进程间通信---有名管道基础知识点">
+<meta property="og:url" content="https://vvcao.github.io/2020/07/10/Linux%E7%BC%96%E7%A8%8B%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E6%9C%89%E5%90%8D%E7%AE%A1%E9%81%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
 <meta property="og:site_name" content="思考。。。">
-<meta property="og:description" content="动态库和静态库的制作和编译">
+<meta property="og:description" content="有名管道">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200706132444840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
-<meta property="article:published_time" content="2020-07-08T14:12:46.000Z">
-<meta property="article:modified_time" content="2020-07-08T14:14:12.974Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020071020114099.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200710204551367.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-07-10T10:06:58.000Z">
+<meta property="article:modified_time" content="2020-07-10T13:02:45.429Z">
 <meta property="article:author" content="小人物C_vv">
 <meta property="article:tag" content="linux编程">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200706132444840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020071020114099.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="思考。。。" type="application/atom+xml">
   
@@ -150,20 +151,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-linux编程动态库和静态库的制作及编译过程" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Linux编程进程间通信-有名管道基础知识点" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      linux编程动态库和静态库的制作及编译过程
+      Linux编程进程间通信---有名管道基础知识点
     </h1>
   
 
         
-        <a href="/2020/07/08/linux%E7%BC%96%E7%A8%8B%E5%8A%A8%E6%80%81%E5%BA%93%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%88%B6%E4%BD%9C%E5%8F%8A%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:12:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
+        <a href="/2020/07/10/Linux%E7%BC%96%E7%A8%8B%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E6%9C%89%E5%90%8D%E7%AE%A1%E9%81%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
+  	<time datetime="2020-07-10T10:06:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-10</time>
 </a>
         
 
@@ -178,45 +179,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="动态库和静态库的制作和编译"><a href="#动态库和静态库的制作和编译" class="headerlink" title="动态库和静态库的制作和编译"></a>动态库和静态库的制作和编译</h1><a id="more"></a>
-<h2 id="一、gcc编译流程"><a href="#一、gcc编译流程" class="headerlink" title="一、gcc编译流程"></a>一、gcc编译流程</h2><p><img src="https://img-blog.csdnimg.cn/20200706132444840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="二、静态库的制作和编译"><a href="#二、静态库的制作和编译" class="headerlink" title="二、静态库的制作和编译"></a>二、静态库的制作和编译</h2><h3 id="1-生成目标文件"><a href="#1-生成目标文件" class="headerlink" title="1.生成目标文件"></a>1.生成目标文件</h3><p>例如编写一个main.c文件和一个fun.c文件</p>
-<p>main.c：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">3</span>, b = <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = Add(a, b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"a + b = %d\n"</span>, sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>fun.c：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后执行此命令：</p>
-<pre><code>gcc -c fun.c</code></pre><p>此时会生成目标文件fun.o</p>
-<h3 id="2-静态函数库创建"><a href="#2-静态函数库创建" class="headerlink" title="2.静态函数库创建"></a>2.静态函数库创建</h3><p>执行此命令：</p>
-<pre><code>ar -cr libxxx.a fun.o</code></pre><p>此时会创建生成一个静态库，库名为libxxx.a，xxx是你自己定义的名字</p>
-<p>c：create</p>
-<p>r：replace</p>
-<h3 id="3-静态库的编译"><a href="#3-静态库的编译" class="headerlink" title="3.静态库的编译"></a>3.静态库的编译</h3><p>执行此命令：</p>
-<pre><code>gcc file.c -L ./ -l xxx</code></pre><p>-L：指定静态函数库的位置供查找，’./‘表示静态函数库在本目录下查找</p>
-<p>-l：指定静态函数库名</p>
-<p>此时会生成可执行文件a.out</p>
-<p>执行</p>
-<pre><code>./a.out</code></pre><p>即输出</p>
-<pre><code>a + b = 7</code></pre><h3 id="三、动态库的制作和编译"><a href="#三、动态库的制作和编译" class="headerlink" title="三、动态库的制作和编译"></a>三、动态库的制作和编译</h3><h3 id="1-生成目标文件-同上"><a href="#1-生成目标文件-同上" class="headerlink" title="1.生成目标文件(同上)"></a>1.生成目标文件(同上)</h3><pre><code>gcc -c fun.c</code></pre><p>此时生成目标文件fun.o</p>
-<h3 id="2-动态函数库创建"><a href="#2-动态函数库创建" class="headerlink" title="2.动态函数库创建"></a>2.动态函数库创建</h3><p>执行此命令：</p>
-<pre><code>gcc -shared -fpic fun.o -o libxxx.so</code></pre><p>-shared：生成共享库</p>
-<p>-fpic：产生位置无关代码</p>
-<p>此时会生成一个动态库，库名为libxxx.so</p>
-<h3 id="3-动态库的编译"><a href="#3-动态库的编译" class="headerlink" title="3.动态库的编译"></a>3.动态库的编译</h3><p>执行此命令：</p>
-<pre><code>gcc main.c -L ./ -l xxx</code></pre><p>此时会生成可执行文件a.out</p>
-<p>执行./a.out命令，此时发现会报错</p>
-<pre><code>No such file or directory...</code></pre><p>因为动态库在使用时，会查找/usr/lib/目录下的动态函数库，而此时我们生成的libxxx.so不在这个目录下。</p>
-<p>所以接下来第一种方法可以将这个动态库移动到这个目录下，执行命令</p>
-<pre><code>sudo mv libxxx.so /usr/lib/</code></pre><p>再次执行./a.out命令，输出a + b = 7。</p>
-<p>第二种方法可以将生成的动态库的目录添加到环境变量LD_LIBRARY_PATH中去</p>
-<p>执行此命令</p>
-<pre><code>sudo export LD_LIBRARY_PATH=/...</code></pre><p>/…表示你创建生成动态库的路径</p>
-<p>此时再次运行./a.out，输出a + b = 7。</p>
-<p>还有第三种方法是修改配置脚本，将生成的动态库的目录加到/etc/ld.so.conf中去</p>
-<p>执行此命令</p>
-<pre><code>sudo vi /etc/ld.so.conf</code></pre><p>在此文档中加入你生成动态库的目录，保存退出。</p>
-<p>然后执行以下命令</p>
-<pre><code>ldconfig /etc/ld.so.conf</code></pre><p>接着运行./a.out，输出a + b = 7。</p>
+        <h1 id="有名管道"><a href="#有名管道" class="headerlink" title="有名管道"></a><strong>有名管道</strong></h1><a id="more"></a>
+
+<h2 id="一、从无名管道到有名管道"><a href="#一、从无名管道到有名管道" class="headerlink" title="一、从无名管道到有名管道"></a>一、<strong>从无名管道到有名管道</strong></h2><p>上篇博客中写到无名管道可以使父子进程之间进行通信，但是当两个进程的关系不是父子关系时，无名管道就失去了它的作用，这时候如果想要是的两个不是父子关系的进程之间进行通信，那么就得用到有名管道了。</p>
+<h2 id="二、有名管道的概念"><a href="#二、有名管道的概念" class="headerlink" title="二、有名管道的概念"></a>二、<strong>有名管道的概念</strong></h2><p>维基百科中把有名管道称作命名管道，正如上篇博客中把无名管道称作匿名管道一样，我们都不必去在意，因为它们的字面意思都是一样的。其中维基百科中是这样定义的：</p>
+<p><strong>命名管道是计算机进程间的一种先进先出通信机制。是类Unix系统传统管道的扩展。传统管道属于匿名管道，其生存期不超过创建管道的进程的生存期。但命名管道的生存期可以与操作系统运行期一样长。</strong></p>
+<p><strong>与传统的无名的shell管道不同，命名管道利用了文件系统。使用mkfifo()或mknod()创建命名管道。两个进程可以通过管道的名字打开、读写管道。</strong></p>
+<p>通过概念，可以用一个图来表示：</p>
+<p><img src="https://img-blog.csdnimg.cn/2020071020114099.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>在图中可以观察到，用户调用mkfifo这个系统调用函数来，然后内核便在用户空间生成了一个管道文件。</p>
+<p>需要注意的是，这里的管道文件并不是指有名管道，而是一个管道类型的文件节点。</p>
+<h2 id="三、mkfifo函数原型"><a href="#三、mkfifo函数原型" class="headerlink" title="三、mkfifo函数原型"></a>三、<strong>mkfifo函数原型</strong></h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mkfifo</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> * filename, <span class="keyword">mode_t</span> mode)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>第一个参数（filename）:创建的管道文件的名字</p>
+<p>第二个参数（mode）:创建的管道文件的权限</p>
+<p>需要添加的头文件：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>用一段代码来表示：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret = mkfifo(<span class="string">"fifo"</span>, <span class="number">0777</span>);</span><br><span class="line">    <span class="keyword">if</span>(ret &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"create fifo failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"create fifo success!, ret = %d\n"</span>, ret);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出ret = 1…</p>
+<p>即创建成功返回1，创建失败返回0。</p>
+<p>在这里需要注意的是，如果你是用的虚拟机进行操作的话，在共享文件目录（也就是/mnt/hgfs/XXshare）下面运行这段程序的话，它会输出create fifo failure!，即创建管道文件失败。</p>
+<p>原因是文件系统的问题，$\color{red}{window的文件系统不支持管道文件，只要把创建的管道文件路径设为linux的本地文件夹就行了。}$</p>
+<h2 id="四、通过管道文件实现两个非父子进程之间的通信"><a href="#四、通过管道文件实现两个非父子进程之间的通信" class="headerlink" title="四、通过管道文件实现两个非父子进程之间的通信"></a>四、<strong>通过管道文件实现两个非父子进程之间的通信</strong></h2><p>在创建了管道文件之后，接下来就要实现两个非父子进程之间的通信了。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200710204551367.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>通过上图可以看到，管道文件是可以调用open函数去打开它的，在打开管道文件后，进程之间就可以通过write函数和read函数进行读写通信了。</p>
+<p>下面通过几个代码来实现一下：</p>
+<h3 id="创建第一个进程："><a href="#创建第一个进程：" class="headerlink" title="创建第一个进程："></a><strong>创建第一个进程：</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> writeBuf[] = <span class="string">"hello linux!"</span>;</span><br><span class="line">    <span class="keyword">int</span> fd = <span class="built_in">open</span>(<span class="string">"fifo"</span>, O_WRONLY);</span><br><span class="line">    <span class="keyword">if</span>(fd &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"open fifo failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> wr_ret = <span class="built_in">write</span>(fd, writeBuf, <span class="keyword">sizeof</span>(writeBuf));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里是以只写方式打开管道文件的。</p>
+<p>运行此程序，此时就会在内核空间创建一个管道，程序此时不会结束运行，因为在管道中还需要另一个进程去读取（接受）此进程写入管道内的数据。</p>
+<h3 id="创建第二个进程："><a href="#创建第二个进程：" class="headerlink" title="创建第二个进程："></a><strong>创建第二个进程：</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> readBuf[<span class="number">128</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> fd = <span class="built_in">open</span>(<span class="string">"fifo"</span>, O_RDONLY);</span><br><span class="line">    <span class="keyword">if</span>(fd &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"open fifo failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">read</span>(fd, readBuf, <span class="number">128</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, readBuf);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里是以只写方式打开管道文件的。</p>
+<p>运行此程序，此时就会打印输出第一个进程往管道里写入的的东西，然后两个进程结束运行。</p>
+<p>此时就验证了有名管道在两个非父子进程之间进行通信的作用。</p>
 
       
 
@@ -317,7 +316,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://vvcao.github.io/2020/07/08/linux%E7%BC%96%E7%A8%8B%E5%8A%A8%E6%80%81%E5%BA%93%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%88%B6%E4%BD%9C%E5%8F%8A%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://vvcao.github.io/2020/07/10/Linux%E7%BC%96%E7%A8%8B%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E6%9C%89%E5%90%8D%E7%AE%A1%E9%81%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -331,18 +330,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/08/%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-c%E8%AF%AD%E8%A8%80-%E5%AE%9E%E7%8E%B0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          冒泡、选择、插入排序算法(c语言)实现
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/07/08/linux%E7%BC%96%E7%A8%8B-%E6%A0%87%E5%87%86%E9%AB%98%E7%BA%A7I-O%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">linux编程---标准高级I/O基础知识</div>
+    <a href="/2020/07/09/Linux%E7%BC%96%E7%A8%8B%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E6%97%A0%E5%90%8D%E7%AE%A1%E9%81%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux编程进程间通信---无名管道基础知识点</div>
       <i class="icon-circle-right"></i>
     </a>
   
