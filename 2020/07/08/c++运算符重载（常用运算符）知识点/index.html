@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | 思考。。。</title>
+  <title>c++运算符重载(常用运算符)知识点 | 思考。。。</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="思考。。。">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="c++运算符重载">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++运算符重载(常用运算符)知识点">
+<meta property="og:url" content="http://yoursite.com/2020/07/08/c++%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%EF%BC%88%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%89%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
 <meta property="og:site_name" content="思考。。。">
+<meta property="og:description" content="c++运算符重载">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-08T14:49:44.000Z">
+<meta property="article:modified_time" content="2020-07-08T14:59:14.369Z">
 <meta property="article:author" content="小人物C_vv">
+<meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="思考。。。" type="application/atom+xml">
@@ -142,74 +147,104 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-c++运算符重载（常用运算符）知识点" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/09/Linux%E7%BC%96%E7%A8%8B%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E6%97%A0%E5%90%8D%E7%AE%A1%E9%81%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2020-07-09T04:10:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/09/Linux%E7%BC%96%E7%A8%8B%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E6%97%A0%E5%90%8D%E7%AE%A1%E9%81%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/">Linux编程进程间通信---无名管道基础知识点</a>
+    <h1 class="article-title" itemprop="name">
+      c++运算符重载(常用运算符)知识点
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linux编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/c++%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%EF%BC%88%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%89%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
+        
+        <a href="/2020/07/08/c++%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%EF%BC%88%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%89%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
   	<time datetime="2020-07-08T14:49:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/c++%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%EF%BC%88%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%89%E7%9F%A5%E8%AF%86%E7%82%B9/">c++运算符重载(常用运算符)知识点</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="c-运算符重载"><a href="#c-运算符重载" class="headerlink" title="c++运算符重载"></a>c++运算符重载</h1><a id="more"></a>
+<p>先给出一段代码，具体函数内容会在下面给出:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Person()&#123;&#125;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>==(Person &amp;p);<span class="comment">//重载"=="</span></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>!=(Person &amp;p);<span class="comment">//重载"!="</span></span><br><span class="line">    Person &amp;<span class="keyword">operator</span>++();<span class="comment">//前置++重载</span></span><br><span class="line">    Person <span class="keyword">operator</span>++(<span class="keyword">int</span>);<span class="comment">//后置++重载</span></span><br><span class="line">    <span class="keyword">friend</span> ostream &amp;<span class="keyword">operator</span>&lt;&lt;(ostream &amp;out, <span class="keyword">const</span> Person p);<span class="comment">//重载"&lt;&lt;"</span></span><br><span class="line">    <span class="keyword">friend</span> istream &amp;<span class="keyword">operator</span>&gt;&gt;(istream &amp;in, Person &amp;p);<span class="comment">//重载"&gt;&gt;"</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get_Age</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">string</span> m_name;</span><br><span class="line">    <span class="keyword">int</span> m_age;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h2><pre><code>重载运算符是具有特殊名字的函数。</code></pre><h2 id="二、函数名字组成"><a href="#二、函数名字组成" class="headerlink" title="二、函数名字组成"></a>二、函数名字组成</h2><pre><code>关键字operator和其后要定义的运算符号共同组成;同样也包含返回类型、参数列表以及函数体。</code></pre><h2 id="三、常用运算符重载示例"><a href="#三、常用运算符重载示例" class="headerlink" title="三、常用运算符重载示例"></a>三、常用运算符重载示例</h2><h3 id="1-重载输入输出运算符-gt-gt-、-lt-lt"><a href="#1-重载输入输出运算符-gt-gt-、-lt-lt" class="headerlink" title="1.重载输入输出运算符&gt;&gt;、&lt;&lt;"></a>1.重载输入输出运算符&gt;&gt;、&lt;&lt;</h3><p>注意事项:</p>
+<pre><code>输入输出运算符必须是非成员函数。
+输入运算符必须处理输入可能失败的情况。
+输入运算符重载函数的参数必须加引用。</code></pre><p>“&lt;&lt;”重载:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ostream &amp;<span class="keyword">operator</span>&lt;&lt;(ostream &amp;out, <span class="keyword">const</span> Person p)&#123;</span><br><span class="line">    out &lt;&lt; p.m_age;</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>“&gt;&gt;”重载:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">istream &amp;<span class="keyword">operator</span>&gt;&gt;(istream &amp;in, Person &amp;p)&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"姓名:"</span>;</span><br><span class="line">    in &gt;&gt; p.m_name;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"年龄:"</span>;</span><br><span class="line">    in &gt;&gt; p.m_age;</span><br><span class="line">    <span class="keyword">return</span> in;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h3 id="2-重载运算符-和"><a href="#2-重载运算符-和" class="headerlink" title="2.重载运算符==和!="></a>2.重载运算符==和!=</h3><p>“==”重载</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> Person::<span class="keyword">operator</span>==(Person &amp;p)&#123;</span><br><span class="line">    <span class="keyword">return</span>  <span class="keyword">this</span>-&gt;m_age == p.m_age &amp;&amp; <span class="keyword">this</span>-&gt;m_name == p.m_name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>“!=”重载</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> Person::<span class="keyword">operator</span>!=(Person &amp;p)&#123;</span><br><span class="line">    <span class="keyword">return</span>  !(<span class="keyword">this</span>-&gt;m_age == p.m_age &amp;&amp; <span class="keyword">this</span>-&gt;m_name == p.m_name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<hr>
+<hr>
+<h3 id="3-赋值运算符-重载"><a href="#3-赋值运算符-重载" class="headerlink" title="3.赋值运算符=重载"></a>3.赋值运算符=重载</h3><p>注意事项:</p>
+<pre><code>赋值运算符必须定义为成员函数。
+重载的赋值运算符必须先释放当前内存空间，再创建一片新空间。</code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class &amp;Class::<span class="keyword">operator</span>=(Class &amp;obj)</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h3 id="4-复合赋值运算符重载"><a href="#4-复合赋值运算符重载" class="headerlink" title="4. 复合赋值运算符重载"></a>4. 复合赋值运算符重载</h3><p>可以是非成员函数也可以是成员函数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class &amp;Class::<span class="keyword">operator</span>+=(Class &amp;obj)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h3 id="5-下标运算符-的重载"><a href="#5-下标运算符-的重载" class="headerlink" title="5.下标运算符[ ]的重载"></a>5.下标运算符[ ]的重载</h3><p>注意事项:</p>
+<pre><code>下标运算符必须是成员函数。
+最好同时定义下标运算符的常量版本和非常量版本，当作用域一个常量对象时，下标运算符返回常量引用以确保我们不会给返回的对象赋值。</code></pre><h3 id="6-递增和递减运算符重载"><a href="#6-递增和递减运算符重载" class="headerlink" title="6.递增和递减运算符重载"></a>6.递增和递减运算符重载</h3><p>注意事项:</p>
+<pre><code>应同时定义前置版本和后置版本。
+为了区分前置和后置，后置版本接受一个额外的(不被使用)int类型的实参。
+前置运算符应该返回递增或递减后对象的引用。
+后置运算符应该返回递增或递减后对象的原值。</code></pre><p>前置”++”重载</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Person &amp;Person::<span class="keyword">operator</span>++()&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;m_age++;</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后置”++”重载</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Person Person::<span class="keyword">operator</span>++(<span class="keyword">int</span>)&#123;</span><br><span class="line">    Person ret = *<span class="keyword">this</span>;</span><br><span class="line">    ++m_age;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码测试"><a href="#代码测试" class="headerlink" title="代码测试"></a>代码测试</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Person()&#123;&#125;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>==(Person &amp;p);</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>!=(Person &amp;p);</span><br><span class="line">    Person &amp;<span class="keyword">operator</span>++();<span class="comment">//前置++重载</span></span><br><span class="line">    Person <span class="keyword">operator</span>++(<span class="keyword">int</span>);<span class="comment">//后置++重载</span></span><br><span class="line">    <span class="keyword">friend</span> ostream &amp;<span class="keyword">operator</span>&lt;&lt;(ostream &amp;out, <span class="keyword">const</span> Person p);</span><br><span class="line">    <span class="keyword">friend</span> istream &amp;<span class="keyword">operator</span>&gt;&gt;(istream &amp;in, Person &amp;p);</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get_Age</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">string</span> m_name;</span><br><span class="line">    <span class="keyword">int</span> m_age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Person::get_Age</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> m_age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> Person::<span class="keyword">operator</span>==(Person &amp;p)&#123;</span><br><span class="line">    <span class="keyword">return</span>  <span class="keyword">this</span>-&gt;m_age == p.m_age &amp;&amp; <span class="keyword">this</span>-&gt;m_name == p.m_name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> Person::<span class="keyword">operator</span>!=(Person &amp;p)&#123;</span><br><span class="line">    <span class="keyword">return</span>  !(<span class="keyword">this</span>-&gt;m_age == p.m_age &amp;&amp; <span class="keyword">this</span>-&gt;m_name == p.m_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ostream &amp;<span class="keyword">operator</span>&lt;&lt;(ostream &amp;out, <span class="keyword">const</span> Person p)&#123;</span><br><span class="line">    out &lt;&lt; p.m_age;</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">istream &amp;<span class="keyword">operator</span>&gt;&gt;(istream &amp;in, Person &amp;p)&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"姓名:"</span>;</span><br><span class="line">    in &gt;&gt; p.m_name;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"年龄:"</span>;</span><br><span class="line">    in &gt;&gt; p.m_age;</span><br><span class="line">    <span class="keyword">return</span> in;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person &amp;Person::<span class="keyword">operator</span>++()&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;m_age++;</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person Person::<span class="keyword">operator</span>++(<span class="keyword">int</span>)&#123;</span><br><span class="line">    Person ret = *<span class="keyword">this</span>;</span><br><span class="line">    ++m_age;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Person p1, p2;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"p1:"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; p1;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"p2:"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; p2;</span><br><span class="line">    <span class="keyword">if</span>(p1 == p2)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"p1和p2相同"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"p1和p2不相同"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ++(++p1) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; p2++ &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; p2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechatpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -221,247 +256,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/08/c++%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%EF%BC%88%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%89%E7%9F%A5%E8%AF%86%E7%82%B9/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:44:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/07/09/Linux%E7%BC%96%E7%A8%8B%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E6%97%A0%E5%90%8D%E7%AE%A1%E9%81%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Linux编程进程间通信---无名管道基础知识点
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">用C语言实现数据结构---双向链表</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/">用C语言实现数据结构---双向链表</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%BB%A5%E5%8F%8A%E5%AE%83%E7%9A%84%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:36:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%BB%A5%E5%8F%8A%E5%AE%83%E7%9A%84%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F/">用C语言实现二叉搜索树以及它的三种遍历方式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-c%E8%AF%AD%E8%A8%80-%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:32:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-c%E8%AF%AD%E8%A8%80-%E5%AE%9E%E7%8E%B0/">冒泡、选择、插入排序算法(c语言)实现</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/linux%E7%BC%96%E7%A8%8B%E5%8A%A8%E6%80%81%E5%BA%93%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%88%B6%E4%BD%9C%E5%8F%8A%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:12:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/linux%E7%BC%96%E7%A8%8B%E5%8A%A8%E6%80%81%E5%BA%93%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%88%B6%E4%BD%9C%E5%8F%8A%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">linux编程动态库和静态库的制作及编译过程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linux编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/linux%E7%BC%96%E7%A8%8B-%E6%A0%87%E5%87%86%E9%AB%98%E7%BA%A7I-O%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:10:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/linux%E7%BC%96%E7%A8%8B-%E6%A0%87%E5%87%86%E9%AB%98%E7%BA%A7I-O%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">linux编程---标准高级I/O基础知识</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linux编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/linux%E7%BC%96%E7%A8%8B-C%E8%AF%AD%E8%A8%80%E5%BA%95%E5%B1%82%E6%96%87%E4%BB%B6I-O%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-07-08T13:21:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/linux%E7%BC%96%E7%A8%8B-C%E8%AF%AD%E8%A8%80%E5%BA%95%E5%B1%82%E6%96%87%E4%BB%B6I-O%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0/">linux编程---C语言底层文件I/O常用文件操作函数.md</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linux编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -484,8 +387,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

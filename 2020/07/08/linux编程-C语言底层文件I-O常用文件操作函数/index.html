@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | 思考。。。</title>
+  <title>linux编程---C语言底层文件I/O常用文件操作函数.md | 思考。。。</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="思考。。。">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="底层文件IO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux编程---C语言底层文件I&#x2F;O常用文件操作函数.md">
+<meta property="og:url" content="http://yoursite.com/2020/07/08/linux%E7%BC%96%E7%A8%8B-C%E8%AF%AD%E8%A8%80%E5%BA%95%E5%B1%82%E6%96%87%E4%BB%B6I-O%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="思考。。。">
+<meta property="og:description" content="底层文件IO">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-08T13:21:15.000Z">
+<meta property="article:modified_time" content="2020-07-09T03:30:26.396Z">
 <meta property="article:author" content="小人物C_vv">
+<meta property="article:tag" content="linux编程">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="思考。。。" type="application/atom+xml">
@@ -142,302 +147,148 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-linux编程-C语言底层文件I-O常用文件操作函数" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/09/Linux%E7%BC%96%E7%A8%8B%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E6%97%A0%E5%90%8D%E7%AE%A1%E9%81%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2020-07-09T04:10:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/09/Linux%E7%BC%96%E7%A8%8B%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E6%97%A0%E5%90%8D%E7%AE%A1%E9%81%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/">Linux编程进程间通信---无名管道基础知识点</a>
+    <h1 class="article-title" itemprop="name">
+      linux编程---C语言底层文件I/O常用文件操作函数.md
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linux编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/c++%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%EF%BC%88%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%89%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:49:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/c++%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%EF%BC%88%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%89%E7%9F%A5%E8%AF%86%E7%82%B9/">c++运算符重载(常用运算符)知识点</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:44:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/">用C语言实现数据结构---双向链表</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%BB%A5%E5%8F%8A%E5%AE%83%E7%9A%84%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:36:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%BB%A5%E5%8F%8A%E5%AE%83%E7%9A%84%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F/">用C语言实现二叉搜索树以及它的三种遍历方式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-c%E8%AF%AD%E8%A8%80-%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:32:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-c%E8%AF%AD%E8%A8%80-%E5%AE%9E%E7%8E%B0/">冒泡、选择、插入排序算法(c语言)实现</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/linux%E7%BC%96%E7%A8%8B%E5%8A%A8%E6%80%81%E5%BA%93%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%88%B6%E4%BD%9C%E5%8F%8A%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:12:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/linux%E7%BC%96%E7%A8%8B%E5%8A%A8%E6%80%81%E5%BA%93%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%88%B6%E4%BD%9C%E5%8F%8A%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">linux编程动态库和静态库的制作及编译过程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linux编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/linux%E7%BC%96%E7%A8%8B-%E6%A0%87%E5%87%86%E9%AB%98%E7%BA%A7I-O%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:10:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/linux%E7%BC%96%E7%A8%8B-%E6%A0%87%E5%87%86%E9%AB%98%E7%BA%A7I-O%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">linux编程---标准高级I/O基础知识</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linux编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/linux%E7%BC%96%E7%A8%8B-C%E8%AF%AD%E8%A8%80%E5%BA%95%E5%B1%82%E6%96%87%E4%BB%B6I-O%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0/" class="archive-article-date">
+        
+        <a href="/2020/07/08/linux%E7%BC%96%E7%A8%8B-C%E8%AF%AD%E8%A8%80%E5%BA%95%E5%B1%82%E6%96%87%E4%BB%B6I-O%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0/" class="archive-article-date">
   	<time datetime="2020-07-08T13:21:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/linux%E7%BC%96%E7%A8%8B-C%E8%AF%AD%E8%A8%80%E5%BA%95%E5%B1%82%E6%96%87%E4%BB%B6I-O%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0/">linux编程---C语言底层文件I/O常用文件操作函数.md</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="底层文件IO"><a href="#底层文件IO" class="headerlink" title="底层文件IO"></a>底层文件IO</h1><a id="more"></a>
+<h2 id="一、包含的头文件"><a href="#一、包含的头文件" class="headerlink" title="一、包含的头文件"></a>一、包含的头文件</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;unistdio.h&gt;</span><br><span class="line">&lt;fcntl.h&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="二、文件描述符与open函数与close函数"><a href="#二、文件描述符与open函数与close函数" class="headerlink" title="二、文件描述符与open函数与close函数"></a>二、文件描述符与open函数与close函数</h2><h3 id="1-文件描述符fd-自己命名用以区分不同的文件"><a href="#1-文件描述符fd-自己命名用以区分不同的文件" class="headerlink" title="1.文件描述符fd(自己命名用以区分不同的文件)"></a>1.文件描述符fd(自己命名用以区分不同的文件)</h3><h3 id="2-open函数-打开或创建一个文件"><a href="#2-open函数-打开或创建一个文件" class="headerlink" title="2.open函数(打开或创建一个文件)"></a>2.open函数(打开或创建一个文件)</h3><p>用文件描述符去接收其返回值(int)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> fd = <span class="built_in">open</span>(<span class="keyword">char</span> *, flag, Authority);</span><br></pre></td></tr></table></figure>
+<p>这里fd的值在不加修改的情况下是等于3的，因为内核在打开或者创建一个文件时会自动分配3个文件描述符，分别为0，1，2，而fd是我们自己设置的一个文件描述符。</p>
+<p>第一个参数(char*):包含有文件名和路径</p>
+<p>第二个参数(flag):打开文件的方式</p>
+<table>
+<thead>
+<tr>
+<th>flag</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>O_RDONLY</td>
+<td>只读</td>
+</tr>
+<tr>
+<td>O_WRONLY</td>
+<td>只写</td>
+</tr>
+<tr>
+<td>O_RDWR</td>
+<td>可读可写</td>
+</tr>
+<tr>
+<td>O_CREAT</td>
+<td>创建一个文件</td>
+</tr>
+<tr>
+<td>O_EXCL</td>
+<td>测试文件是否存在</td>
+</tr>
+<tr>
+<td>O_TRUNC</td>
+<td>打开一个文件并把文件内原来的内容删除</td>
+</tr>
+<tr>
+<td>O_APPEND</td>
+<td>追加方式打开文件</td>
+</tr>
+</tbody></table>
+<p>这里尤其要注意O_CREAT不是英文中的那个create，少了一个E，在不借助编译器的情况下通常很容易记错。</p>
+<p>第三个参数(Authoritty):创建文件的权限(打开一个文件不需要写此参数)</p>
+<h3 id="3-close函数"><a href="#3-close函数" class="headerlink" title="3.close函数"></a>3.close函数</h3><p>作用:关闭文件</p>
+<h2 id="三、write函数"><a href="#三、write函数" class="headerlink" title="三、write函数"></a>三、write函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> wr_ret = <span class="built_in">write</span>(<span class="keyword">int</span> fd, <span class="keyword">void</span> *wr_buf, <span class="keyword">size_t</span> count);</span><br></pre></td></tr></table></figure>
+<p>第一个参数(fd):文件描述符</p>
+<p>第二个参数(wr_buf):向文件中写入的内容</p>
+<p>第三个参数(count):将要向文件中写多少内容</p>
+<p>返回值(wr_ret):实际所写的内容d</p>
+<h2 id="四、read函数"><a href="#四、read函数" class="headerlink" title="四、read函数"></a>四、read函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> rd_buf = <span class="built_in">read</span>(<span class="keyword">int</span> fd, <span class="keyword">void</span> *rd_buf, <span class="keyword">size_t</span> count);</span><br></pre></td></tr></table></figure>
+<p>第一个参数(fd):文件描述符</p>
+<p>第二个参数(rd_buf):为即将读取的内容设置一个缓冲区</p>
+<p>第三个参数(count):读多少个</p>
+<p>返回值(rd_ret):实际所读取内容的字节数</p>
+<h2 id="五、lseek函数"><a href="#五、lseek函数" class="headerlink" title="五、lseek函数"></a>五、lseek函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lseek(<span class="keyword">int</span> fd, <span class="keyword">off_t</span> offset, <span class="keyword">int</span> whence);</span><br></pre></td></tr></table></figure>
+<p>第一个参数(fd):文件描述符</p>
+<p>第二个参数(offset):文件位置指针移动的位数</p>
+<p>第三个参数(whence):将文件位置指针移动到何处</p>
+<table>
+<thead>
+<tr>
+<th>whence</th>
+<th>位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SEEK_SET</td>
+<td>文件的开头</td>
+</tr>
+<tr>
+<td>SEEK_CUR</td>
+<td>文件位置指针的当前位置</td>
+</tr>
+<tr>
+<td>SEEK_END</td>
+<td>文件末尾</td>
+</tr>
+</tbody></table>
+<p>函数的返回值:</p>
+<p>成功:文件的当前位置</p>
+<p>失败:-1</p>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//定义读写缓冲区</span></span><br><span class="line">    <span class="keyword">char</span> wr_buf[] = <span class="string">"hello world!"</span>;</span><br><span class="line">    <span class="keyword">char</span> rd_buf[<span class="number">128</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="comment">//定义文件描述符</span></span><br><span class="line">    <span class="keyword">int</span> fd = <span class="built_in">open</span>(<span class="string">"1.txt"</span>, O_TRUNC|O_RDWR, <span class="number">0777</span>);</span><br><span class="line">    <span class="keyword">if</span>(fd &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"open error!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">write</span>(fd, wr_buf, <span class="keyword">sizeof</span>(wr_buf));</span><br><span class="line">    lseek(fd, <span class="number">-6</span>, SEEK_END);</span><br><span class="line">    <span class="built_in">read</span>(fd, rd_buf, <span class="keyword">sizeof</span>(rd_buf));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, rd_buf);</span><br><span class="line">    <span class="comment">//关闭文件</span></span><br><span class="line">    <span class="built_in">close</span>(fd);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
 
-        <div class="article-info info-on-right">
-          
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechatpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -449,19 +300,110 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/08/linux%E7%BC%96%E7%A8%8B-C%E8%AF%AD%E8%A8%80%E5%BA%95%E5%B1%82%E6%96%87%E4%BB%B6I-O%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/07/08/linux%E7%BC%96%E7%A8%8B-%E6%A0%87%E5%87%86%E9%AB%98%E7%BA%A7I-O%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          linux编程---标准高级I/O基础知识
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -484,8 +426,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
