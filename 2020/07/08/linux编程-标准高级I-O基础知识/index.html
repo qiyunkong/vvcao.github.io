@@ -69,6 +69,8 @@
 			
 				<li><a href="/">主页</a></li>
 	        
+				<li><a href="/tags">标签云</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -119,6 +121,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -135,7 +139,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/tags">标签云</a></li>
 		        
 				</ul>
 			</nav>
@@ -205,6 +211,148 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
+
+      
+        
+          
+            <h1 id="标准高级I-O"><a href="#标准高级I-O" class="headerlink" title="标准高级I/O"></a>标准高级I/O</h1><a id="more"></a>
+<p><img src="https://img-blog.csdnimg.cn/20200704123605772.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="一、文件流指针和fopen函数"><a href="#一、文件流指针和fopen函数" class="headerlink" title="一、文件流指针和fopen函数"></a>一、文件流指针和fopen函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FILE *fp = fopen(<span class="keyword">const</span> <span class="keyword">char</span> *path, <span class="keyword">const</span> <span class="keyword">char</span> *mode);</span><br></pre></td></tr></table></figure>
+
+<p>第一个参数(path):打开文件的路径和文件名</p>
+<p>第二个参数(mode):打开文件的方式</p>
+<table>
+<thead>
+<tr>
+<th>mode</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>b</td>
+<td>二进制文件</td>
+</tr>
+<tr>
+<td>r</td>
+<td>以制度方式打开文件,文件必须存在</td>
+</tr>
+<tr>
+<td>w</td>
+<td>以只写覆盖方式打开文件,文件不存在则创建</td>
+</tr>
+<tr>
+<td>a</td>
+<td>以只写追加方式打开文件,文件不存在则创建</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>以读写方式打开文件,文件必须存在</td>
+</tr>
+<tr>
+<td>w+、a+</td>
+<td>…读写方式…</td>
+</tr>
+</tbody></table>
+<p>另外，stdio.h头文件把三个文件指针与三个标准文件相关联，C程序会自动打开这三个标准文件。</p>
+<table>
+<thead>
+<tr>
+<th>标准文件</th>
+<th>文件指针</th>
+<th>常用功能</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>标准输入</td>
+<td>stdin</td>
+<td>从键盘输入</td>
+<td></td>
+</tr>
+<tr>
+<td>标准输出</td>
+<td>stdout</td>
+<td>从显示器输出</td>
+<td>行缓存</td>
+</tr>
+<tr>
+<td>标准错误</td>
+<td>stderr</td>
+<td>从现实器输出</td>
+<td>无缓存</td>
+</tr>
+<tr>
+<td>这些指针都是指向FILE的指针,可以将其用作标准I/O的参数，也就是和fp是同一种性质。</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>返回值:文件流指针</p>
+<hr>
+<hr>
+<h2 id="二、读写函数"><a href="#二、读写函数" class="headerlink" title="二、读写函数"></a>二、读写函数</h2><h3 id="1-行缓存的读写函数-出现”-n”或写满标准库分配的缓存才会调用系统调用函数"><a href="#1-行缓存的读写函数-出现”-n”或写满标准库分配的缓存才会调用系统调用函数" class="headerlink" title="1.行缓存的读写函数(出现”\n”或写满标准库分配的缓存才会调用系统调用函数)"></a>1.行缓存的读写函数(出现”\n”或写满标准库分配的缓存才会调用系统调用函数)</h3><h4 id="写函数"><a href="#写函数" class="headerlink" title="写函数:"></a>写函数:</h4><p>puts、fputs、scanf</p>
+<p>以fputs为例:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fputs</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s, FILE *stream)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>例如:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">fputs</span>(<span class="string">"hello world!"</span>, <span class="built_in">stdout</span>);<span class="comment">//stdout表示标准的输出</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在此程序中，只有在hello world后面加”\n”才能输出到显示屏上，即验证了fputs是行缓存</p>
+<h4 id="读函数"><a href="#读函数" class="headerlink" title="读函数:"></a>读函数:</h4><p>gets、fgets、printf、sprintf、fprintf</p>
+<p>以fgets为例:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">fgets</span><span class="params">(<span class="keyword">char</span> *s, <span class="keyword">int</span> <span class="built_in">size</span>, FILE *stream)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>例如:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> rd_buf[<span class="number">128</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    fgets(rd_buf, <span class="number">128</span>, <span class="built_in">stdin</span>);<span class="comment">//从标准输入中去读，即从键盘输入</span></span><br><span class="line">    <span class="built_in">fputs</span>(rd_buf, <span class="built_in">stdout</span>);<span class="comment">//写到标准输出中去，即显示屏显示</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此程序运行后会从键盘输入后从显示器输出。</p>
+<h3 id="2-全缓存读写函数-只有写满标准库分配的缓存才会调用系统调用函数"><a href="#2-全缓存读写函数-只有写满标准库分配的缓存才会调用系统调用函数" class="headerlink" title="2.全缓存读写函数(只有写满标准库分配的缓存才会调用系统调用函数)"></a>2.全缓存读写函数(只有写满标准库分配的缓存才会调用系统调用函数)</h3><p>1.fwrite</p>
+<p>2.fread</p>
+<hr>
+<hr>
+<h2 id="三、刷新缓存函数-fflush-FILE-stream"><a href="#三、刷新缓存函数-fflush-FILE-stream" class="headerlink" title="三、刷新缓存函数(fflush(FILE *stream))"></a>三、刷新缓存函数(fflush(FILE *stream))</h2><p>功能：把库函数中的缓存强制写到内核中去。</p>
+<p>例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">fputs</span>(<span class="string">"hello world!"</span>, <span class="built_in">stdout</span>);<span class="comment">//stdout表示标准的输出</span></span><br><span class="line">    fflush(<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>就算hello world后面不加”\n”，也会将其输出到显示器上。</p>
+<hr>
+<hr>
+<h2 id="四、fclose函数"><a href="#四、fclose函数" class="headerlink" title="四、fclose函数"></a>四、fclose函数</h2><p>功能：在改文件被关闭之前，刷新缓存中的数据，释放标准I/O库为其分配的缓存。</p>
+<p>例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">fputs</span>(<span class="string">"hello world!"</span>, <span class="built_in">stdout</span>);<span class="comment">//stdout表示标准的输出</span></span><br><span class="line">    fclose(<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其作用和fflush相同，因为fclose函数里包含了fflush函数。</p>
+<hr>
+<hr>
+<h2 id="五、读写位置指针函数"><a href="#五、读写位置指针函数" class="headerlink" title="五、读写位置指针函数"></a>五、读写位置指针函数</h2><h3 id="1-fseek函数"><a href="#1-fseek函数" class="headerlink" title="1.fseek函数"></a>1.fseek函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fseek</span><span class="params">(FILE *stream, <span class="keyword">long</span> offset, <span class="keyword">int</span> whence)</span></span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>whence</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SEEK_SET</td>
+<td>调整位置指针到开头</td>
+</tr>
+<tr>
+<td>SEEK_CUR</td>
+<td>调整位置指针为当前位置</td>
+</tr>
+<tr>
+<td>SEEK_END</td>
+<td>调整位置指针到末尾</td>
+</tr>
+</tbody></table>
+<h3 id="2-rewind函数"><a href="#2-rewind函数" class="headerlink" title="2.rewind函数"></a>2.rewind函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rewind</span><span class="params">(FILE *stream)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>功能:</p>
+<pre><code>等价于(void)fseek(FILE *stream, 0, SEEK_SET);</code></pre><hr>
+<hr>
+<h2 id="六、其他函数"><a href="#六、其他函数" class="headerlink" title="六、其他函数"></a>六、其他函数</h2><p>1.feof函数：判断是否已经到达文件结尾</p>
+<p>2.ferror函数：判断是否读写错误</p>
+<p>3.clearerr函数：清除流错误</p>
+
+          
+        
+
+
       
         <h1 id="标准高级I-O"><a href="#标准高级I-O" class="headerlink" title="标准高级I/O"></a>标准高级I/O</h1><a id="more"></a>
 <p><img src="https://img-blog.csdnimg.cn/20200704123605772.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
@@ -638,15 +786,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">我要过四级！</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>

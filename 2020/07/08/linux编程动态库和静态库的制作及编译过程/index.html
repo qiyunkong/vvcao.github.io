@@ -69,6 +69,8 @@
 			
 				<li><a href="/">主页</a></li>
 	        
+				<li><a href="/tags">标签云</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -119,6 +121,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -135,7 +139,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/tags">标签云</a></li>
 		        
 				</ul>
 			</nav>
@@ -205,6 +211,54 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
+
+      
+        
+          
+            <h1 id="动态库和静态库的制作和编译"><a href="#动态库和静态库的制作和编译" class="headerlink" title="动态库和静态库的制作和编译"></a>动态库和静态库的制作和编译</h1><a id="more"></a>
+<h2 id="一、gcc编译流程"><a href="#一、gcc编译流程" class="headerlink" title="一、gcc编译流程"></a>一、gcc编译流程</h2><p><img src="https://img-blog.csdnimg.cn/20200706132444840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="二、静态库的制作和编译"><a href="#二、静态库的制作和编译" class="headerlink" title="二、静态库的制作和编译"></a>二、静态库的制作和编译</h2><h3 id="1-生成目标文件"><a href="#1-生成目标文件" class="headerlink" title="1.生成目标文件"></a>1.生成目标文件</h3><p>例如编写一个main.c文件和一个fun.c文件</p>
+<p>main.c：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">3</span>, b = <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = Add(a, b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"a + b = %d\n"</span>, sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>fun.c：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后执行此命令：</p>
+<pre><code>gcc -c fun.c</code></pre><p>此时会生成目标文件fun.o</p>
+<h3 id="2-静态函数库创建"><a href="#2-静态函数库创建" class="headerlink" title="2.静态函数库创建"></a>2.静态函数库创建</h3><p>执行此命令：</p>
+<pre><code>ar -cr libxxx.a fun.o</code></pre><p>此时会创建生成一个静态库，库名为libxxx.a，xxx是你自己定义的名字</p>
+<p>c：create</p>
+<p>r：replace</p>
+<h3 id="3-静态库的编译"><a href="#3-静态库的编译" class="headerlink" title="3.静态库的编译"></a>3.静态库的编译</h3><p>执行此命令：</p>
+<pre><code>gcc file.c -L ./ -l xxx</code></pre><p>-L：指定静态函数库的位置供查找，’./‘表示静态函数库在本目录下查找</p>
+<p>-l：指定静态函数库名</p>
+<p>此时会生成可执行文件a.out</p>
+<p>执行</p>
+<pre><code>./a.out</code></pre><p>即输出</p>
+<pre><code>a + b = 7</code></pre><h3 id="三、动态库的制作和编译"><a href="#三、动态库的制作和编译" class="headerlink" title="三、动态库的制作和编译"></a>三、动态库的制作和编译</h3><h3 id="1-生成目标文件-同上"><a href="#1-生成目标文件-同上" class="headerlink" title="1.生成目标文件(同上)"></a>1.生成目标文件(同上)</h3><pre><code>gcc -c fun.c</code></pre><p>此时生成目标文件fun.o</p>
+<h3 id="2-动态函数库创建"><a href="#2-动态函数库创建" class="headerlink" title="2.动态函数库创建"></a>2.动态函数库创建</h3><p>执行此命令：</p>
+<pre><code>gcc -shared -fpic fun.o -o libxxx.so</code></pre><p>-shared：生成共享库</p>
+<p>-fpic：产生位置无关代码</p>
+<p>此时会生成一个动态库，库名为libxxx.so</p>
+<h3 id="3-动态库的编译"><a href="#3-动态库的编译" class="headerlink" title="3.动态库的编译"></a>3.动态库的编译</h3><p>执行此命令：</p>
+<pre><code>gcc main.c -L ./ -l xxx</code></pre><p>此时会生成可执行文件a.out</p>
+<p>执行./a.out命令，此时发现会报错</p>
+<pre><code>No such file or directory...</code></pre><p>因为动态库在使用时，会查找/usr/lib/目录下的动态函数库，而此时我们生成的libxxx.so不在这个目录下。</p>
+<p>所以接下来第一种方法可以将这个动态库移动到这个目录下，执行命令</p>
+<pre><code>sudo mv libxxx.so /usr/lib/</code></pre><p>再次执行./a.out命令，输出a + b = 7。</p>
+<p>第二种方法可以将生成的动态库的目录添加到环境变量LD_LIBRARY_PATH中去</p>
+<p>执行此命令</p>
+<pre><code>sudo export LD_LIBRARY_PATH=/...</code></pre><p>/…表示你创建生成动态库的路径</p>
+<p>此时再次运行./a.out，输出a + b = 7。</p>
+<p>还有第三种方法是修改配置脚本，将生成的动态库的目录加到/etc/ld.so.conf中去</p>
+<p>执行此命令</p>
+<pre><code>sudo vi /etc/ld.so.conf</code></pre><p>在此文档中加入你生成动态库的目录，保存退出。</p>
+<p>然后执行以下命令</p>
+<pre><code>ldconfig /etc/ld.so.conf</code></pre><p>接着运行./a.out，输出a + b = 7。</p>
+
+          
+        
+
+
       
         <h1 id="动态库和静态库的制作和编译"><a href="#动态库和静态库的制作和编译" class="headerlink" title="动态库和静态库的制作和编译"></a>动态库和静态库的制作和编译</h1><a id="more"></a>
 <h2 id="一、gcc编译流程"><a href="#一、gcc编译流程" class="headerlink" title="一、gcc编译流程"></a>一、gcc编译流程</h2><p><img src="https://img-blog.csdnimg.cn/20200706132444840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
@@ -544,15 +598,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">我要过四级！</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>

@@ -70,6 +70,8 @@
 			
 				<li><a href="/">主页</a></li>
 	        
+				<li><a href="/tags">标签云</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -120,6 +122,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -136,7 +140,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/tags">标签云</a></li>
 		        
 				</ul>
 			</nav>
@@ -206,6 +212,52 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
+
+      
+        
+          
+            <h1 id="有名管道"><a href="#有名管道" class="headerlink" title="有名管道"></a><strong>有名管道</strong></h1><a id="more"></a>
+
+<h2 id="一、从无名管道到有名管道"><a href="#一、从无名管道到有名管道" class="headerlink" title="一、从无名管道到有名管道"></a>一、<strong>从无名管道到有名管道</strong></h2><p>上篇博客中写到无名管道可以使父子进程之间进行通信，但是当两个进程的关系不是父子关系时，无名管道就失去了它的作用，这时候如果想要是的两个不是父子关系的进程之间进行通信，那么就得用到有名管道了。</p>
+<h2 id="二、有名管道的概念"><a href="#二、有名管道的概念" class="headerlink" title="二、有名管道的概念"></a>二、<strong>有名管道的概念</strong></h2><p>维基百科中把有名管道称作命名管道，正如上篇博客中把无名管道称作匿名管道一样，我们都不必去在意，因为它们的字面意思都是一样的。其中维基百科中是这样定义的：</p>
+<p><strong>命名管道是计算机进程间的一种先进先出通信机制。是类Unix系统传统管道的扩展。传统管道属于匿名管道，其生存期不超过创建管道的进程的生存期。但命名管道的生存期可以与操作系统运行期一样长。</strong></p>
+<p><strong>与传统的无名的shell管道不同，命名管道利用了文件系统。使用mkfifo()或mknod()创建命名管道。两个进程可以通过管道的名字打开、读写管道。</strong></p>
+<p>通过概念，可以用一个图来表示：</p>
+<p><img src="https://img-blog.csdnimg.cn/2020071020114099.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>在图中可以观察到，用户调用mkfifo这个系统调用函数来，然后内核便在用户空间生成了一个管道文件。</p>
+<p>需要注意的是，这里的管道文件并不是指有名管道，而是一个管道类型的文件节点。</p>
+<h2 id="三、mkfifo函数原型"><a href="#三、mkfifo函数原型" class="headerlink" title="三、mkfifo函数原型"></a>三、<strong>mkfifo函数原型</strong></h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mkfifo</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> * filename, <span class="keyword">mode_t</span> mode)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>第一个参数（filename）:创建的管道文件的名字</p>
+<p>第二个参数（mode）:创建的管道文件的权限</p>
+<p>需要添加的头文件：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>用一段代码来表示：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret = mkfifo(<span class="string">"fifo"</span>, <span class="number">0777</span>);</span><br><span class="line">    <span class="keyword">if</span>(ret &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"create fifo failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"create fifo success!, ret = %d\n"</span>, ret);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出ret = 1…</p>
+<p>即创建成功返回1，创建失败返回0。</p>
+<p>在这里需要注意的是，如果你是用的虚拟机进行操作的话，在共享文件目录（也就是/mnt/hgfs/XXshare）下面运行这段程序的话，它会输出create fifo failure!，即创建管道文件失败。</p>
+<p>原因是文件系统的问题的文件系统不支持管道文件，<strong>只要把创建的管道文件路径设为linux的本地文件夹就行了。</strong></p>
+<h2 id="四、通过管道文件实现两个非父子进程之间的通信"><a href="#四、通过管道文件实现两个非父子进程之间的通信" class="headerlink" title="四、通过管道文件实现两个非父子进程之间的通信"></a>四、<strong>通过管道文件实现两个非父子进程之间的通信</strong></h2><p>在创建了管道文件之后，接下来就要实现两个非父子进程之间的通信了。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200710204551367.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>通过上图可以看到，管道文件是可以调用open函数去打开它的，在打开管道文件后，进程之间就可以通过write函数和read函数进行读写通信了。</p>
+<p>下面通过几个代码来实现一下：</p>
+<h3 id="创建第一个进程："><a href="#创建第一个进程：" class="headerlink" title="创建第一个进程："></a><strong>创建第一个进程：</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> writeBuf[] = <span class="string">"hello linux!"</span>;</span><br><span class="line">    <span class="keyword">int</span> fd = <span class="built_in">open</span>(<span class="string">"fifo"</span>, O_WRONLY);</span><br><span class="line">    <span class="keyword">if</span>(fd &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"open fifo failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> wr_ret = <span class="built_in">write</span>(fd, writeBuf, <span class="keyword">sizeof</span>(writeBuf));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里是以只写方式打开管道文件的。</p>
+<p>运行此程序，此时就会在内核空间创建一个管道，程序此时不会结束运行，因为在管道中还需要另一个进程去读取（接收）此进程写入管道内的数据。</p>
+<h3 id="创建第二个进程："><a href="#创建第二个进程：" class="headerlink" title="创建第二个进程："></a><strong>创建第二个进程：</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> readBuf[<span class="number">128</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> fd = <span class="built_in">open</span>(<span class="string">"fifo"</span>, O_RDONLY);</span><br><span class="line">    <span class="keyword">if</span>(fd &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"open fifo failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">read</span>(fd, readBuf, <span class="number">128</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, readBuf);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里是以只写方式打开管道文件的。</p>
+<p>运行此程序，此时就会打印输出第一个进程往管道里写入的的东西，然后两个进程结束运行。</p>
+<p>此时就验证了有名管道在两个非父子进程之间进行通信的作用。</p>
+
+          
+        
+
+
       
         <h1 id="有名管道"><a href="#有名管道" class="headerlink" title="有名管道"></a><strong>有名管道</strong></h1><a id="more"></a>
 
@@ -543,15 +595,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">我要过四级！</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>

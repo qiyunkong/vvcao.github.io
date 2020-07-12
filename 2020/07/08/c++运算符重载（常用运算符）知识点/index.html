@@ -67,6 +67,8 @@
 			
 				<li><a href="/">主页</a></li>
 	        
+				<li><a href="/tags">标签云</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -117,6 +119,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -133,7 +137,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/tags">标签云</a></li>
 		        
 				</ul>
 			</nav>
@@ -203,6 +209,54 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
+
+      
+        
+          
+            <h1 id="c-运算符重载"><a href="#c-运算符重载" class="headerlink" title="c++运算符重载"></a>c++运算符重载</h1><a id="more"></a>
+<p>先给出一段代码，具体函数内容会在下面给出:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Person()&#123;&#125;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>==(Person &amp;p);<span class="comment">//重载"=="</span></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>!=(Person &amp;p);<span class="comment">//重载"!="</span></span><br><span class="line">    Person &amp;<span class="keyword">operator</span>++();<span class="comment">//前置++重载</span></span><br><span class="line">    Person <span class="keyword">operator</span>++(<span class="keyword">int</span>);<span class="comment">//后置++重载</span></span><br><span class="line">    <span class="keyword">friend</span> ostream &amp;<span class="keyword">operator</span>&lt;&lt;(ostream &amp;out, <span class="keyword">const</span> Person p);<span class="comment">//重载"&lt;&lt;"</span></span><br><span class="line">    <span class="keyword">friend</span> istream &amp;<span class="keyword">operator</span>&gt;&gt;(istream &amp;in, Person &amp;p);<span class="comment">//重载"&gt;&gt;"</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get_Age</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">string</span> m_name;</span><br><span class="line">    <span class="keyword">int</span> m_age;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h2><pre><code>重载运算符是具有特殊名字的函数。</code></pre><h2 id="二、函数名字组成"><a href="#二、函数名字组成" class="headerlink" title="二、函数名字组成"></a>二、函数名字组成</h2><pre><code>关键字operator和其后要定义的运算符号共同组成;同样也包含返回类型、参数列表以及函数体。</code></pre><h2 id="三、常用运算符重载示例"><a href="#三、常用运算符重载示例" class="headerlink" title="三、常用运算符重载示例"></a>三、常用运算符重载示例</h2><h3 id="1-重载输入输出运算符-gt-gt-、-lt-lt"><a href="#1-重载输入输出运算符-gt-gt-、-lt-lt" class="headerlink" title="1.重载输入输出运算符&gt;&gt;、&lt;&lt;"></a>1.重载输入输出运算符&gt;&gt;、&lt;&lt;</h3><p>注意事项:</p>
+<pre><code>输入输出运算符必须是非成员函数。
+输入运算符必须处理输入可能失败的情况。
+输入运算符重载函数的参数必须加引用。</code></pre><p>“&lt;&lt;”重载:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ostream &amp;<span class="keyword">operator</span>&lt;&lt;(ostream &amp;out, <span class="keyword">const</span> Person p)&#123;</span><br><span class="line">    out &lt;&lt; p.m_age;</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>“&gt;&gt;”重载:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">istream &amp;<span class="keyword">operator</span>&gt;&gt;(istream &amp;in, Person &amp;p)&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"姓名:"</span>;</span><br><span class="line">    in &gt;&gt; p.m_name;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"年龄:"</span>;</span><br><span class="line">    in &gt;&gt; p.m_age;</span><br><span class="line">    <span class="keyword">return</span> in;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h3 id="2-重载运算符-和"><a href="#2-重载运算符-和" class="headerlink" title="2.重载运算符==和!="></a>2.重载运算符==和!=</h3><p>“==”重载</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> Person::<span class="keyword">operator</span>==(Person &amp;p)&#123;</span><br><span class="line">    <span class="keyword">return</span>  <span class="keyword">this</span>-&gt;m_age == p.m_age &amp;&amp; <span class="keyword">this</span>-&gt;m_name == p.m_name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>“!=”重载</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> Person::<span class="keyword">operator</span>!=(Person &amp;p)&#123;</span><br><span class="line">    <span class="keyword">return</span>  !(<span class="keyword">this</span>-&gt;m_age == p.m_age &amp;&amp; <span class="keyword">this</span>-&gt;m_name == p.m_name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<hr>
+<h3 id="3-赋值运算符-重载"><a href="#3-赋值运算符-重载" class="headerlink" title="3.赋值运算符=重载"></a>3.赋值运算符=重载</h3><p>注意事项:</p>
+<pre><code>赋值运算符必须定义为成员函数。
+重载的赋值运算符必须先释放当前内存空间，再创建一片新空间。</code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class &amp;Class::<span class="keyword">operator</span>=(Class &amp;obj)</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h3 id="4-复合赋值运算符重载"><a href="#4-复合赋值运算符重载" class="headerlink" title="4. 复合赋值运算符重载"></a>4. 复合赋值运算符重载</h3><p>可以是非成员函数也可以是成员函数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class &amp;Class::<span class="keyword">operator</span>+=(Class &amp;obj)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h3 id="5-下标运算符-的重载"><a href="#5-下标运算符-的重载" class="headerlink" title="5.下标运算符[ ]的重载"></a>5.下标运算符[ ]的重载</h3><p>注意事项:</p>
+<pre><code>下标运算符必须是成员函数。
+最好同时定义下标运算符的常量版本和非常量版本，当作用域一个常量对象时，下标运算符返回常量引用以确保我们不会给返回的对象赋值。</code></pre><h3 id="6-递增和递减运算符重载"><a href="#6-递增和递减运算符重载" class="headerlink" title="6.递增和递减运算符重载"></a>6.递增和递减运算符重载</h3><p>注意事项:</p>
+<pre><code>应同时定义前置版本和后置版本。
+为了区分前置和后置，后置版本接受一个额外的(不被使用)int类型的实参。
+前置运算符应该返回递增或递减后对象的引用。
+后置运算符应该返回递增或递减后对象的原值。</code></pre><p>前置”++”重载</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Person &amp;Person::<span class="keyword">operator</span>++()&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;m_age++;</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后置”++”重载</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Person Person::<span class="keyword">operator</span>++(<span class="keyword">int</span>)&#123;</span><br><span class="line">    Person ret = *<span class="keyword">this</span>;</span><br><span class="line">    ++m_age;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码测试"><a href="#代码测试" class="headerlink" title="代码测试"></a>代码测试</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Person()&#123;&#125;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>==(Person &amp;p);</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>!=(Person &amp;p);</span><br><span class="line">    Person &amp;<span class="keyword">operator</span>++();<span class="comment">//前置++重载</span></span><br><span class="line">    Person <span class="keyword">operator</span>++(<span class="keyword">int</span>);<span class="comment">//后置++重载</span></span><br><span class="line">    <span class="keyword">friend</span> ostream &amp;<span class="keyword">operator</span>&lt;&lt;(ostream &amp;out, <span class="keyword">const</span> Person p);</span><br><span class="line">    <span class="keyword">friend</span> istream &amp;<span class="keyword">operator</span>&gt;&gt;(istream &amp;in, Person &amp;p);</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get_Age</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">string</span> m_name;</span><br><span class="line">    <span class="keyword">int</span> m_age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Person::get_Age</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> m_age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> Person::<span class="keyword">operator</span>==(Person &amp;p)&#123;</span><br><span class="line">    <span class="keyword">return</span>  <span class="keyword">this</span>-&gt;m_age == p.m_age &amp;&amp; <span class="keyword">this</span>-&gt;m_name == p.m_name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> Person::<span class="keyword">operator</span>!=(Person &amp;p)&#123;</span><br><span class="line">    <span class="keyword">return</span>  !(<span class="keyword">this</span>-&gt;m_age == p.m_age &amp;&amp; <span class="keyword">this</span>-&gt;m_name == p.m_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ostream &amp;<span class="keyword">operator</span>&lt;&lt;(ostream &amp;out, <span class="keyword">const</span> Person p)&#123;</span><br><span class="line">    out &lt;&lt; p.m_age;</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">istream &amp;<span class="keyword">operator</span>&gt;&gt;(istream &amp;in, Person &amp;p)&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"姓名:"</span>;</span><br><span class="line">    in &gt;&gt; p.m_name;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"年龄:"</span>;</span><br><span class="line">    in &gt;&gt; p.m_age;</span><br><span class="line">    <span class="keyword">return</span> in;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person &amp;Person::<span class="keyword">operator</span>++()&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;m_age++;</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person Person::<span class="keyword">operator</span>++(<span class="keyword">int</span>)&#123;</span><br><span class="line">    Person ret = *<span class="keyword">this</span>;</span><br><span class="line">    ++m_age;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Person p1, p2;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"p1:"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; p1;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"p2:"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; p2;</span><br><span class="line">    <span class="keyword">if</span>(p1 == p2)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"p1和p2相同"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"p1和p2不相同"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ++(++p1) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; p2++ &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; p2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+
+
       
         <h1 id="c-运算符重载"><a href="#c-运算符重载" class="headerlink" title="c++运算符重载"></a>c++运算符重载</h1><a id="more"></a>
 <p>先给出一段代码，具体函数内容会在下面给出:</p>
@@ -542,15 +596,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">我要过四级！</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>

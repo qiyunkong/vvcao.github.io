@@ -67,6 +67,8 @@
 			
 				<li><a href="/">主页</a></li>
 	        
+				<li><a href="/tags">标签云</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -117,6 +119,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -133,7 +137,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/tags">标签云</a></li>
 		        
 				</ul>
 			</nav>
@@ -203,6 +209,98 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
+
+      
+        
+          
+            <h1 id="底层文件IO"><a href="#底层文件IO" class="headerlink" title="底层文件IO"></a>底层文件IO</h1><a id="more"></a>
+<h2 id="一、包含的头文件"><a href="#一、包含的头文件" class="headerlink" title="一、包含的头文件"></a>一、包含的头文件</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;unistdio.h&gt;</span><br><span class="line">&lt;fcntl.h&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="二、文件描述符与open函数与close函数"><a href="#二、文件描述符与open函数与close函数" class="headerlink" title="二、文件描述符与open函数与close函数"></a>二、文件描述符与open函数与close函数</h2><h3 id="1-文件描述符fd-自己命名用以区分不同的文件"><a href="#1-文件描述符fd-自己命名用以区分不同的文件" class="headerlink" title="1.文件描述符fd(自己命名用以区分不同的文件)"></a>1.文件描述符fd(自己命名用以区分不同的文件)</h3><h3 id="2-open函数-打开或创建一个文件"><a href="#2-open函数-打开或创建一个文件" class="headerlink" title="2.open函数(打开或创建一个文件)"></a>2.open函数(打开或创建一个文件)</h3><p>用文件描述符去接收其返回值(int)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> fd = <span class="built_in">open</span>(<span class="keyword">char</span> *, flag, Authority);</span><br></pre></td></tr></table></figure>
+<p>这里fd的值在不加修改的情况下是等于3的，因为内核在打开或者创建一个文件时会自动分配3个文件描述符，分别为0，1，2，而fd是我们自己设置的一个文件描述符。</p>
+<p>第一个参数(char*):包含有文件名和路径</p>
+<p>第二个参数(flag):打开文件的方式</p>
+<table>
+<thead>
+<tr>
+<th>flag</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>O_RDONLY</td>
+<td>只读</td>
+</tr>
+<tr>
+<td>O_WRONLY</td>
+<td>只写</td>
+</tr>
+<tr>
+<td>O_RDWR</td>
+<td>可读可写</td>
+</tr>
+<tr>
+<td>O_CREAT</td>
+<td>创建一个文件</td>
+</tr>
+<tr>
+<td>O_EXCL</td>
+<td>测试文件是否存在</td>
+</tr>
+<tr>
+<td>O_TRUNC</td>
+<td>打开一个文件并把文件内原来的内容删除</td>
+</tr>
+<tr>
+<td>O_APPEND</td>
+<td>追加方式打开文件</td>
+</tr>
+</tbody></table>
+<p>这里尤其要注意O_CREAT不是英文中的那个create，少了一个E，在不借助编译器的情况下通常很容易记错。</p>
+<p>第三个参数(Authoritty):创建文件的权限(打开一个文件不需要写此参数)</p>
+<h3 id="3-close函数"><a href="#3-close函数" class="headerlink" title="3.close函数"></a>3.close函数</h3><p>作用:关闭文件</p>
+<h2 id="三、write函数"><a href="#三、write函数" class="headerlink" title="三、write函数"></a>三、write函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> wr_ret = <span class="built_in">write</span>(<span class="keyword">int</span> fd, <span class="keyword">void</span> *wr_buf, <span class="keyword">size_t</span> count);</span><br></pre></td></tr></table></figure>
+<p>第一个参数(fd):文件描述符</p>
+<p>第二个参数(wr_buf):向文件中写入的内容</p>
+<p>第三个参数(count):将要向文件中写多少内容</p>
+<p>返回值(wr_ret):实际所写的内容d</p>
+<h2 id="四、read函数"><a href="#四、read函数" class="headerlink" title="四、read函数"></a>四、read函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> rd_buf = <span class="built_in">read</span>(<span class="keyword">int</span> fd, <span class="keyword">void</span> *rd_buf, <span class="keyword">size_t</span> count);</span><br></pre></td></tr></table></figure>
+<p>第一个参数(fd):文件描述符</p>
+<p>第二个参数(rd_buf):为即将读取的内容设置一个缓冲区</p>
+<p>第三个参数(count):读多少个</p>
+<p>返回值(rd_ret):实际所读取内容的字节数</p>
+<h2 id="五、lseek函数"><a href="#五、lseek函数" class="headerlink" title="五、lseek函数"></a>五、lseek函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lseek(<span class="keyword">int</span> fd, <span class="keyword">off_t</span> offset, <span class="keyword">int</span> whence);</span><br></pre></td></tr></table></figure>
+<p>第一个参数(fd):文件描述符</p>
+<p>第二个参数(offset):文件位置指针移动的位数</p>
+<p>第三个参数(whence):将文件位置指针移动到何处</p>
+<table>
+<thead>
+<tr>
+<th>whence</th>
+<th>位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SEEK_SET</td>
+<td>文件的开头</td>
+</tr>
+<tr>
+<td>SEEK_CUR</td>
+<td>文件位置指针的当前位置</td>
+</tr>
+<tr>
+<td>SEEK_END</td>
+<td>文件末尾</td>
+</tr>
+</tbody></table>
+<p>函数的返回值:</p>
+<p>成功:文件的当前位置</p>
+<p>失败:-1</p>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//定义读写缓冲区</span></span><br><span class="line">    <span class="keyword">char</span> wr_buf[] = <span class="string">"hello world!"</span>;</span><br><span class="line">    <span class="keyword">char</span> rd_buf[<span class="number">128</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="comment">//定义文件描述符</span></span><br><span class="line">    <span class="keyword">int</span> fd = <span class="built_in">open</span>(<span class="string">"1.txt"</span>, O_TRUNC|O_RDWR, <span class="number">0777</span>);</span><br><span class="line">    <span class="keyword">if</span>(fd &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"open error!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">write</span>(fd, wr_buf, <span class="keyword">sizeof</span>(wr_buf));</span><br><span class="line">    lseek(fd, <span class="number">-6</span>, SEEK_END);</span><br><span class="line">    <span class="built_in">read</span>(fd, rd_buf, <span class="keyword">sizeof</span>(rd_buf));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, rd_buf);</span><br><span class="line">    <span class="comment">//关闭文件</span></span><br><span class="line">    <span class="built_in">close</span>(fd);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+
+
       
         <h1 id="底层文件IO"><a href="#底层文件IO" class="headerlink" title="底层文件IO"></a>底层文件IO</h1><a id="more"></a>
 <h2 id="一、包含的头文件"><a href="#一、包含的头文件" class="headerlink" title="一、包含的头文件"></a>一、包含的头文件</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;unistdio.h&gt;</span><br><span class="line">&lt;fcntl.h&gt;</span><br></pre></td></tr></table></figure>
@@ -581,15 +679,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">我要过四级！</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>

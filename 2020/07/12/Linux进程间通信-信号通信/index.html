@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://vvcao.github.io">
-  <title>Archives | 思考。。。</title>
+  <title>Linux进程间通信---信号通信 | 思考。。。</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="思考。。。">
-<meta property="og:url" content="https://vvcao.github.io/archives/index.html">
+  <meta name="description" content="信号通信">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux进程间通信---信号通信">
+<meta property="og:url" content="https://vvcao.github.io/2020/07/12/Linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E4%BF%A1%E5%8F%B7%E9%80%9A%E4%BF%A1/index.html">
 <meta property="og:site_name" content="思考。。。">
+<meta property="og:description" content="信号通信">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200712193859701.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-07-12T10:07:21.000Z">
+<meta property="article:modified_time" content="2020-07-12T14:57:27.053Z">
 <meta property="article:author" content="小人物C_vv">
+<meta property="article:tag" content="linux编程">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200712193859701.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="思考。。。" type="application/atom+xml">
   
@@ -149,36 +156,530 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Linux进程间通信-信号通信" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Linux进程间通信---信号通信
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/12/Linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E4%BF%A1%E5%8F%B7%E9%80%9A%E4%BF%A1/" class="archive-article-date">
+
+        
+        <a href="/2020/07/12/Linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E4%BF%A1%E5%8F%B7%E9%80%9A%E4%BF%A1/" class="archive-article-date">
   	<time datetime="2020-07-12T10:07:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-12</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/12/Linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E4%BF%A1%E5%8F%B7%E9%80%9A%E4%BF%A1/">Linux进程间通信---信号通信</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
+         <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-keyboard-o"></i>
+      <span class="post-meta-item-text">  字数统计: </span>
+      <span class="post-count">1k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="fa fa-hourglass-half"></i>
+      <span class="post-meta-item-text">  阅读时长: </span>
+      <span class="post-count">3分</span>
+    </span>
+  </span>
+</div>
+
+
           
+        <!-- 添加完成 -->
+        
+
+            <!-- 添加代码 -->
+      
+      <span class="archive-article-date">
+          阅读量 <span id="busuanzi_value_page_pv"></span>
+      </span>
+      
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+      
+        
+          
+            <h1 id="信号通信"><a href="#信号通信" class="headerlink" title="信号通信"></a><strong>信号通信</strong></h1><a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、<strong>概念</strong></h2><h3 id="1、UNIX信号的概念"><a href="#1、UNIX信号的概念" class="headerlink" title="1、UNIX信号的概念"></a>1、<strong>UNIX信号的概念</strong></h3><p><strong>在计算机科学中，信号（英语：Signals）是Unix、类Unix以及其他POSIX兼容的操作系统中进程间通讯的一种有限制的方式。它是一种异步的通知机制，用来提醒进程一个事件已经发生。当一个信号发送给一个进程，操作系统中断了进程正常的控制流程，此时，任何非原子操作都将被中断。如果进程定义了信号的处理函数，那么它将被执行，否则就执行默认的处理函数。</strong>                                                —维基百科</p>
+<h3 id="2、默认行为"><a href="#2、默认行为" class="headerlink" title="2、默认行为"></a>2、<strong>默认行为</strong></h3><p><strong>一个进程可以自定义如何处理传入的POSIX信号。如果一个进程没有定义一个信号处理程序，那么这个信号的默认处理程序将被使用。</strong>    —维基百科</p>
+<p>下表列出了一些与POSIX兼容的UNIX系统的默认操作，例如FreeBSD、OpenBSD和Linux：</p>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>可移植代号</th>
+<th>默认行为</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SIGABRT</td>
+<td>6</td>
+<td>终止</td>
+<td>(核心转储)</td>
+</tr>
+<tr>
+<td>SIGALRM</td>
+<td>14</td>
+<td>终止</td>
+<td>计时器告警</td>
+</tr>
+<tr>
+<td>SIGBUS</td>
+<td>不适用</td>
+<td>终止 (核心转储)</td>
+<td>访问内存对象未定义区域</td>
+</tr>
+<tr>
+<td>SIGCHLD</td>
+<td>不适用</td>
+<td>忽略</td>
+<td>子进程终止、暂停、继续</td>
+</tr>
+<tr>
+<td>SIGCONT</td>
+<td>不适用</td>
+<td>继续</td>
+<td>如果被暂停，重新继续执行</td>
+</tr>
+<tr>
+<td>SIGFPE</td>
+<td>8</td>
+<td>终止 (核心转储)</td>
+<td>错误的算术运算</td>
+</tr>
+<tr>
+<td>SIGHUP</td>
+<td>1</td>
+<td>终止</td>
+<td>挂起</td>
+</tr>
+<tr>
+<td>SIGILL</td>
+<td>4</td>
+<td>终止 (核心转储)</td>
+<td>非法的指令</td>
+</tr>
+<tr>
+<td>SIGINT</td>
+<td>2</td>
+<td>终止</td>
+<td>终端中断信号</td>
+</tr>
+<tr>
+<td>SIGKILL</td>
+<td>9</td>
+<td>终止</td>
+<td>杀死 (无法被捕获或忽略的信号)</td>
+</tr>
+<tr>
+<td>SIGPIPE</td>
+<td>13</td>
+<td>终止</td>
+<td>写入一个没有连接另一端的管道</td>
+</tr>
+<tr>
+<td>SIGPOLL</td>
+<td>不适用</td>
+<td>终止</td>
+<td>可轮询事件</td>
+</tr>
+<tr>
+<td>SIGPROF</td>
+<td>不适用</td>
+<td>终止</td>
+<td>性能调优定时器超时</td>
+</tr>
+<tr>
+<td>SIGQUIT</td>
+<td>3</td>
+<td>终止 (核心转储)</td>
+<td>终端退出信号</td>
+</tr>
+<tr>
+<td>SIGSEGV</td>
+<td>11</td>
+<td>终止 (核心转储)</td>
+<td>非法的内存引用</td>
+</tr>
+<tr>
+<td>SIGSTOP</td>
+<td>不适用</td>
+<td>暂停</td>
+<td>暂停执行（无法被捕获或忽略的信号）</td>
+</tr>
+<tr>
+<td>SIGSYS</td>
+<td>不适用</td>
+<td>终止 (核心转储)</td>
+<td>错误的系统调用</td>
+</tr>
+<tr>
+<td>SIGTERM</td>
+<td>15</td>
+<td>终止</td>
+<td>终止信号</td>
+</tr>
+<tr>
+<td>SIGTRAP</td>
+<td>5</td>
+<td>终止 (核心转储)</td>
+<td>追踪/断点陷阱</td>
+</tr>
+<tr>
+<td>SIGTSTP</td>
+<td>不适用</td>
+<td>暂停</td>
+<td>终端中止信号</td>
+</tr>
+<tr>
+<td>SIGTTIN</td>
+<td>不适用</td>
+<td>暂停</td>
+<td>后台进程尝试读</td>
+</tr>
+<tr>
+<td>SIGTTOU</td>
+<td>不适用</td>
+<td>暂停</td>
+<td>后台进程尝试写</td>
+</tr>
+<tr>
+<td>SIGUSR1</td>
+<td>不适用</td>
+<td>终止</td>
+<td>用户自定义信号1</td>
+</tr>
+<tr>
+<td>SIGUSR2</td>
+<td>不适用</td>
+<td>终止</td>
+<td>用户自定义信号2</td>
+</tr>
+<tr>
+<td>SIGURG</td>
+<td>不适用</td>
+<td>忽略</td>
+<td>Out-of-band data is available at a socket</td>
+</tr>
+<tr>
+<td>SIGVTALRM</td>
+<td>不适用</td>
+<td>终止</td>
+<td>虚拟定时器超时</td>
+</tr>
+<tr>
+<td>SIGXCPU</td>
+<td>不适用</td>
+<td>终止 (核心转储)</td>
+<td>超出CPU时间限制</td>
+</tr>
+<tr>
+<td>SIGXFSZ</td>
+<td>不适用</td>
+<td>终止 (核心转储)</td>
+<td>超出文件大小限制</td>
+</tr>
+<tr>
+<td>SIGWINCH</td>
+<td>不适用</td>
+<td>忽略</td>
+<td>终端窗口大小已变化</td>
+</tr>
+</tbody></table>
+<h3 id="3、信号的处理方式"><a href="#3、信号的处理方式" class="headerlink" title="3、信号的处理方式"></a>3、<strong>信号的处理方式</strong></h3><p>信号的发送、信号的接收、信号的处理。</p>
+<p>信号本身就存在于内核中，不需要创建。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200712193859701.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="二、信号的发送"><a href="#二、信号的发送" class="headerlink" title="二、信号的发送"></a>二、<strong>信号的发送</strong></h2><p>告诉内核发送什么信号。</p>
+<h3 id="1、kill函数"><a href="#1、kill函数" class="headerlink" title="1、kill函数"></a>1、<strong>kill函数</strong></h3><p>函数原型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kill</span><span class="params">(<span class="keyword">pid_t</span> pid, <span class="keyword">int</span> sig)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>pid:要接收信号的进程号。</p>
+<p>sig:要发送的信号</p>
+<p>例如用这样一个代码来实现信号的发送与接收：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;signal.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sig;<span class="comment">//选择要发送哪种信号</span></span><br><span class="line">    <span class="keyword">int</span> pid;<span class="comment">//选择要接收信号的进程的进程号</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(argc &lt; <span class="number">3</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"please run a program\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//atoi：将字符串转换为整型</span></span><br><span class="line">    sig = atoi(argv[<span class="number">1</span>]);</span><br><span class="line">    pid = atoi(argv[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"pid = %d\nsig = %d\n"</span>, pid, sig);</span><br><span class="line"></span><br><span class="line">    kill(pid, sig);<span class="comment">//调用kill函数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行生成可执行文件a.out。</p>
+<p>然后编写另一个死循环程序：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行这个程序让该进程一直运行。</p>
+<p>然后用终端命令查看此进程的进程号。</p>
+<pre><code>ps -axj</code></pre><p>然后</p>
+<pre><code>./a.out 9 process_pid</code></pre><p>这里的9代表终止信号SIGKILL,process_id是刚刚没退出的进程的进程号。</p>
+<p>执行此命令之后该进程会被终止运行。</p>
+<h2 id="三、信号的接收"><a href="#三、信号的接收" class="headerlink" title="三、信号的接收"></a>三、<strong>信号的接收</strong></h2><h2 id="四、信号的处理"><a href="#四、信号的处理" class="headerlink" title="四、信号的处理"></a>四、<strong>信号的处理</strong></h2>
+          
+        
+
+
+      
+        <h1 id="信号通信"><a href="#信号通信" class="headerlink" title="信号通信"></a><strong>信号通信</strong></h1><a id="more"></a>
+
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、<strong>概念</strong></h2><h3 id="1、UNIX信号的概念"><a href="#1、UNIX信号的概念" class="headerlink" title="1、UNIX信号的概念"></a>1、<strong>UNIX信号的概念</strong></h3><p><strong>在计算机科学中，信号（英语：Signals）是Unix、类Unix以及其他POSIX兼容的操作系统中进程间通讯的一种有限制的方式。它是一种异步的通知机制，用来提醒进程一个事件已经发生。当一个信号发送给一个进程，操作系统中断了进程正常的控制流程，此时，任何非原子操作都将被中断。如果进程定义了信号的处理函数，那么它将被执行，否则就执行默认的处理函数。</strong>                                                —维基百科</p>
+<h3 id="2、默认行为"><a href="#2、默认行为" class="headerlink" title="2、默认行为"></a>2、<strong>默认行为</strong></h3><p><strong>一个进程可以自定义如何处理传入的POSIX信号。如果一个进程没有定义一个信号处理程序，那么这个信号的默认处理程序将被使用。</strong>    —维基百科</p>
+<p>下表列出了一些与POSIX兼容的UNIX系统的默认操作，例如FreeBSD、OpenBSD和Linux：</p>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>可移植代号</th>
+<th>默认行为</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SIGABRT</td>
+<td>6</td>
+<td>终止</td>
+<td>(核心转储)</td>
+</tr>
+<tr>
+<td>SIGALRM</td>
+<td>14</td>
+<td>终止</td>
+<td>计时器告警</td>
+</tr>
+<tr>
+<td>SIGBUS</td>
+<td>不适用</td>
+<td>终止 (核心转储)</td>
+<td>访问内存对象未定义区域</td>
+</tr>
+<tr>
+<td>SIGCHLD</td>
+<td>不适用</td>
+<td>忽略</td>
+<td>子进程终止、暂停、继续</td>
+</tr>
+<tr>
+<td>SIGCONT</td>
+<td>不适用</td>
+<td>继续</td>
+<td>如果被暂停，重新继续执行</td>
+</tr>
+<tr>
+<td>SIGFPE</td>
+<td>8</td>
+<td>终止 (核心转储)</td>
+<td>错误的算术运算</td>
+</tr>
+<tr>
+<td>SIGHUP</td>
+<td>1</td>
+<td>终止</td>
+<td>挂起</td>
+</tr>
+<tr>
+<td>SIGILL</td>
+<td>4</td>
+<td>终止 (核心转储)</td>
+<td>非法的指令</td>
+</tr>
+<tr>
+<td>SIGINT</td>
+<td>2</td>
+<td>终止</td>
+<td>终端中断信号</td>
+</tr>
+<tr>
+<td>SIGKILL</td>
+<td>9</td>
+<td>终止</td>
+<td>杀死 (无法被捕获或忽略的信号)</td>
+</tr>
+<tr>
+<td>SIGPIPE</td>
+<td>13</td>
+<td>终止</td>
+<td>写入一个没有连接另一端的管道</td>
+</tr>
+<tr>
+<td>SIGPOLL</td>
+<td>不适用</td>
+<td>终止</td>
+<td>可轮询事件</td>
+</tr>
+<tr>
+<td>SIGPROF</td>
+<td>不适用</td>
+<td>终止</td>
+<td>性能调优定时器超时</td>
+</tr>
+<tr>
+<td>SIGQUIT</td>
+<td>3</td>
+<td>终止 (核心转储)</td>
+<td>终端退出信号</td>
+</tr>
+<tr>
+<td>SIGSEGV</td>
+<td>11</td>
+<td>终止 (核心转储)</td>
+<td>非法的内存引用</td>
+</tr>
+<tr>
+<td>SIGSTOP</td>
+<td>不适用</td>
+<td>暂停</td>
+<td>暂停执行（无法被捕获或忽略的信号）</td>
+</tr>
+<tr>
+<td>SIGSYS</td>
+<td>不适用</td>
+<td>终止 (核心转储)</td>
+<td>错误的系统调用</td>
+</tr>
+<tr>
+<td>SIGTERM</td>
+<td>15</td>
+<td>终止</td>
+<td>终止信号</td>
+</tr>
+<tr>
+<td>SIGTRAP</td>
+<td>5</td>
+<td>终止 (核心转储)</td>
+<td>追踪/断点陷阱</td>
+</tr>
+<tr>
+<td>SIGTSTP</td>
+<td>不适用</td>
+<td>暂停</td>
+<td>终端中止信号</td>
+</tr>
+<tr>
+<td>SIGTTIN</td>
+<td>不适用</td>
+<td>暂停</td>
+<td>后台进程尝试读</td>
+</tr>
+<tr>
+<td>SIGTTOU</td>
+<td>不适用</td>
+<td>暂停</td>
+<td>后台进程尝试写</td>
+</tr>
+<tr>
+<td>SIGUSR1</td>
+<td>不适用</td>
+<td>终止</td>
+<td>用户自定义信号1</td>
+</tr>
+<tr>
+<td>SIGUSR2</td>
+<td>不适用</td>
+<td>终止</td>
+<td>用户自定义信号2</td>
+</tr>
+<tr>
+<td>SIGURG</td>
+<td>不适用</td>
+<td>忽略</td>
+<td>Out-of-band data is available at a socket</td>
+</tr>
+<tr>
+<td>SIGVTALRM</td>
+<td>不适用</td>
+<td>终止</td>
+<td>虚拟定时器超时</td>
+</tr>
+<tr>
+<td>SIGXCPU</td>
+<td>不适用</td>
+<td>终止 (核心转储)</td>
+<td>超出CPU时间限制</td>
+</tr>
+<tr>
+<td>SIGXFSZ</td>
+<td>不适用</td>
+<td>终止 (核心转储)</td>
+<td>超出文件大小限制</td>
+</tr>
+<tr>
+<td>SIGWINCH</td>
+<td>不适用</td>
+<td>忽略</td>
+<td>终端窗口大小已变化</td>
+</tr>
+</tbody></table>
+<h3 id="3、信号的处理方式"><a href="#3、信号的处理方式" class="headerlink" title="3、信号的处理方式"></a>3、<strong>信号的处理方式</strong></h3><p>信号的发送、信号的接收、信号的处理。</p>
+<p>信号本身就存在于内核中，不需要创建。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200712193859701.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="二、信号的发送"><a href="#二、信号的发送" class="headerlink" title="二、信号的发送"></a>二、<strong>信号的发送</strong></h2><p>告诉内核发送什么信号。</p>
+<h3 id="1、kill函数"><a href="#1、kill函数" class="headerlink" title="1、kill函数"></a>1、<strong>kill函数</strong></h3><p>函数原型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kill</span><span class="params">(<span class="keyword">pid_t</span> pid, <span class="keyword">int</span> sig)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>pid:要接收信号的进程号。</p>
+<p>sig:要发送的信号</p>
+<p>例如用这样一个代码来实现信号的发送与接收：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;signal.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sig;<span class="comment">//选择要发送哪种信号</span></span><br><span class="line">    <span class="keyword">int</span> pid;<span class="comment">//选择要接收信号的进程的进程号</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(argc &lt; <span class="number">3</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"please run a program\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//atoi：将字符串转换为整型</span></span><br><span class="line">    sig = atoi(argv[<span class="number">1</span>]);</span><br><span class="line">    pid = atoi(argv[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"pid = %d\nsig = %d\n"</span>, pid, sig);</span><br><span class="line"></span><br><span class="line">    kill(pid, sig);<span class="comment">//调用kill函数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行生成可执行文件a.out。</p>
+<p>然后编写另一个死循环程序：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行这个程序让该进程一直运行。</p>
+<p>然后用终端命令查看此进程的进程号。</p>
+<pre><code>ps -axj</code></pre><p>然后</p>
+<pre><code>./a.out 9 process_pid</code></pre><p>这里的9代表终止信号SIGKILL,process_id是刚刚没退出的进程的进程号。</p>
+<p>执行此命令之后该进程会被终止运行。</p>
+<h2 id="三、信号的接收"><a href="#三、信号的接收" class="headerlink" title="三、信号的接收"></a>三、<strong>信号的接收</strong></h2><h2 id="四、信号的处理"><a href="#四、信号的处理" class="headerlink" title="四、信号的处理"></a>四、<strong>信号的处理</strong></h2>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你让我少搬一天砖<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechatpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -190,364 +691,118 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://vvcao.github.io/2020/07/12/Linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E4%BF%A1%E5%8F%B7%E9%80%9A%E4%BF%A1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/11/%E8%8B%B1%E8%AF%AD%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E4%BB%8E%E5%8F%A5/" class="archive-article-date">
-  	<time datetime="2020-07-11T12:36:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/11/%E8%8B%B1%E8%AF%AD%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E4%BB%8E%E5%8F%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">英语基础语法---从句</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/11/%E8%8B%B1%E8%AF%AD%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E4%BB%8E%E5%8F%A5/">英语基础语法---从句</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">我要过四级！</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#信号通信"><span class="toc-number">1.</span> <span class="toc-text">信号通信</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、概念"><span class="toc-number">1.1.</span> <span class="toc-text">一、概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、UNIX信号的概念"><span class="toc-number">1.1.1.</span> <span class="toc-text">1、UNIX信号的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、默认行为"><span class="toc-number">1.1.2.</span> <span class="toc-text">2、默认行为</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、信号的处理方式"><span class="toc-number">1.1.3.</span> <span class="toc-text">3、信号的处理方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、信号的发送"><span class="toc-number">1.2.</span> <span class="toc-text">二、信号的发送</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、kill函数"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、kill函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、信号的接收"><span class="toc-number">1.3.</span> <span class="toc-text">三、信号的接收</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、信号的处理"><span class="toc-number">1.4.</span> <span class="toc-text">四、信号的处理</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/11/%E8%8B%B1%E8%AF%AD%E7%AE%80%E5%8D%95%E5%8F%A5%E7%9A%84%E7%BB%84%E6%88%90/" class="archive-article-date">
-  	<time datetime="2020-07-11T02:50:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/11/%E8%8B%B1%E8%AF%AD%E7%AE%80%E5%8D%95%E5%8F%A5%E7%9A%84%E7%BB%84%E6%88%90/">英语简单句的组成</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">我要过四级！</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/10/Linux%E7%BC%96%E7%A8%8B%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E6%9C%89%E5%90%8D%E7%AE%A1%E9%81%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2020-07-10T10:06:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/10/Linux%E7%BC%96%E7%A8%8B%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E6%9C%89%E5%90%8D%E7%AE%A1%E9%81%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/">Linux编程进程间通信---有名管道基础知识点</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linux编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/09/Linux%E7%BC%96%E7%A8%8B%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E6%97%A0%E5%90%8D%E7%AE%A1%E9%81%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2020-07-09T04:10:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/09/Linux%E7%BC%96%E7%A8%8B%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E6%97%A0%E5%90%8D%E7%AE%A1%E9%81%93%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/">Linux编程进程间通信---无名管道基础知识点</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linux编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/c++%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%EF%BC%88%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%89%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:49:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/c++%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%EF%BC%88%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%89%E7%9F%A5%E8%AF%86%E7%82%B9/">c++运算符重载(常用运算符)知识点</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:44:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/">用C语言实现数据结构---双向链表</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%BB%A5%E5%8F%8A%E5%AE%83%E7%9A%84%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:36:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%BB%A5%E5%8F%8A%E5%AE%83%E7%9A%84%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F/">用C语言实现二叉搜索树以及它的三种遍历方式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-c%E8%AF%AD%E8%A8%80-%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:32:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-c%E8%AF%AD%E8%A8%80-%E5%AE%9E%E7%8E%B0/">冒泡、选择、插入排序算法(c语言)实现</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/linux%E7%BC%96%E7%A8%8B%E5%8A%A8%E6%80%81%E5%BA%93%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%88%B6%E4%BD%9C%E5%8F%8A%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:12:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/linux%E7%BC%96%E7%A8%8B%E5%8A%A8%E6%80%81%E5%BA%93%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%88%B6%E4%BD%9C%E5%8F%8A%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">linux编程动态库和静态库的制作及编译过程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linux编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -598,8 +853,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
