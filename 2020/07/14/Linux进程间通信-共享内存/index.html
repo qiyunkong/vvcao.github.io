@@ -6,21 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://vvcao.github.io">
-  <title>Linux进程间通信---共享内存 | be yourself</title>
+  <title>Linux进程间通信基础篇---共享内存&lt;一&gt; | be yourself</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="共享内存">
+  <meta name="description" content="共享内存常用函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux进程间通信---共享内存">
+<meta property="og:title" content="Linux进程间通信基础篇---共享内存&lt;一&gt;">
 <meta property="og:url" content="https://vvcao.github.io/2020/07/14/Linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98/index.html">
 <meta property="og:site_name" content="be yourself">
-<meta property="og:description" content="共享内存">
+<meta property="og:description" content="共享内存常用函数">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200714205535717.png?type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200714211141784.png?type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200714231933209.png?type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-07-14T03:05:26.000Z">
-<meta property="article:modified_time" content="2020-07-14T03:06:20.570Z">
+<meta property="article:modified_time" content="2020-07-14T15:33:32.761Z">
 <meta property="article:author" content="C_vv">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200714205535717.png?type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="be yourself" type="application/atom+xml">
   
@@ -68,7 +72,7 @@
 		  <h1 class="header-author"><a href="/">C_vv</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">今日事，今日毕</p>
+		<p class="header-subtitle">道阻且长，行则将至~</p>
 		
 
 		<nav class="header-menu">
@@ -136,7 +140,7 @@
 			  <h1 class="header-author js-header-author">C_vv</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>今日事，今日毕<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>道阻且长，行则将至~<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -192,7 +196,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Linux进程间通信---共享内存
+      Linux进程间通信基础篇---共享内存&lt;一&gt;
     </h1>
   
 
@@ -209,7 +213,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-keyboard-o"></i>
       <span class="post-meta-item-text">  字数统计: </span>
-      <span class="post-count">4字</span>
+      <span class="post-count">1.6k字</span>
     </span>
   </span>
 
@@ -218,7 +222,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-hourglass-half"></i>
       <span class="post-meta-item-text">  阅读时长: </span>
-      <span class="post-count">1分</span>
+      <span class="post-count">7分</span>
     </span>
   </span>
 </div>
@@ -245,7 +249,75 @@
               
 
           
-            <h1 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h1><a id="more"></a>
+            <h1 id="共享内存常用函数"><a href="#共享内存常用函数" class="headerlink" title="共享内存常用函数"></a>共享内存常用函数</h1><a id="more"></a>
+
+<h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、<strong>概述</strong></h2><p>软件术语：</p>
+<p><strong>在软件中，术语共享内存指可被多个进程存取的内存，一个进程是一段程序的单个运行实例。在这种情况下，共享内存被用作进程间的通讯</strong>。</p>
+<pre><code>---维基百科</code></pre><p>共享内存和管道类似，本身是不存在与内核中的，需要我们对其进行创建；但和管道又不同的是，共享内存需要将其映射到用户缓冲区后才能对其进行读写操作，下面用一张图来描述共享内存从创建到被释放的全过程：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200714205535717.png?type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>下面将一一介绍这些函数的用法。</p>
+<h2 id="二、shmget函数"><a href="#二、shmget函数" class="headerlink" title="二、shmget函数"></a>二、<strong>shmget函数</strong></h2><p>在这之前首先介绍两个linux命令：</p>
+<pre><code>ipcs -m</code></pre><p>查看内核中已经存在的共享内存的属性。</p>
+<pre><code>ipcrm -m -xxx</code></pre><p>根据shm_id号释放共享内存，xxx表示共享内存的id号。</p>
+<p>函数功能：在内核中创建一块共享内存</p>
+<p>函数原型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">shmget</span><span class="params">(<span class="keyword">key_t</span> key, <span class="keyword">int</span> <span class="built_in">size</span>, <span class="keyword">int</span> shmflag)</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>参数一（key）</strong>：</p>
+<p>key有两种形式：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200714211141784.png?type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>当传入的参数key是IPC_PRIVATE时，创建的共享内存只能用于有亲缘关系的进程之间的通信；</p>
+<p>当传入的参数key是由ftok函数创建时，创建的共享内存可以用于任意两个进程之间的通信，下面来简单介绍一下ftok函数：</p>
+<p>ftok函数原型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">key_t</span> <span class="title">ftok</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *pathname, <span class="keyword">int</span> proj_id)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>函数的第一个参数是一个文件名，只要该文件存在即可，第二个参数通常指一个字符，函数的返回值即是我们所说的key值。</p>
+<p>当key值创建成功后便可调用shmget函数来创建共享内存了，如下：</p>
+<p>demo：</p>
+<p>直接调用IPC_PRIVATE：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/shm.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"create share memory before:\n"</span>);</span><br><span class="line">    system(<span class="string">"ipcs -m"</span>);<span class="comment">//创建之前查看一下id</span></span><br><span class="line">    <span class="keyword">int</span> shm_id = shmget(IPC_PRIVATE, <span class="number">128</span>, <span class="number">0777</span>);</span><br><span class="line">    <span class="keyword">if</span>(shm_id &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"shm failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"create share memory success! shm_id = %d\n"</span>, shm_id);</span><br><span class="line">    system(<span class="string">"ipcs -m"</span>);<span class="comment">//创建之后查看一下id</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用ftok函数创建key：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/shm.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"create share memory before:\n"</span>);</span><br><span class="line">    system(<span class="string">"ipcs -m"</span>);</span><br><span class="line">    <span class="keyword">int</span> key = ftok(<span class="string">"a.c"</span>, <span class="string">'a'</span>);</span><br><span class="line">    <span class="keyword">if</span>(key &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"create key failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> shm_id = shmget(key, <span class="number">128</span>, IPC_CREAT|<span class="number">0777</span>);</span><br><span class="line">    <span class="keyword">if</span>(shm_id &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"shm failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"create share memory success! shm_id = %d\n"</span>, shm_id);</span><br><span class="line">    system(<span class="string">"ipcs -m"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，使用ftok创建的key值时要在创建函数的权限中加上IPC_CREAT。</p>
+<p>通过这两个的输出结果也能很直观的看出这两个的差别。</p>
+<h2 id="三、shmmat函数"><a href="#三、shmmat函数" class="headerlink" title="三、shmmat函数"></a>三、<strong>shmmat函数</strong></h2><p>在内核中创建完共享内存之后，就得将这块内存映射到用户空间的缓冲区去了，因为这样方便对共享内存进行读写操作，这时候就得用到shmat函数了。</p>
+<p>函数原型</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">shmat</span><span class="params">(<span class="keyword">int</span> shm_id, <span class="keyword">const</span> <span class="keyword">void</span> *shmaddr, <span class="keyword">int</span> shmflg)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>第一个参数(shmid)：shmget函数的返回值。</p>
+<p>第二个参数（shmaddr）：分为两种</p>
+<p>当shmaddr为NULL时，使用系统默认分配的地址（下面的demo只采用NULL）。</p>
+<p>当shmaddr不为NULL是，自定义。</p>
+<p>demo：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/shm.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *p;</span><br><span class="line">    <span class="keyword">int</span> key = ftok(<span class="string">"a.c"</span>, <span class="string">'c'</span>);<span class="comment">//create key</span></span><br><span class="line">    <span class="keyword">if</span>(key &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"create key failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"create key success! key = %x\n"</span>, key);</span><br><span class="line">    system(<span class="string">"ipcs -m"</span>);</span><br><span class="line">    <span class="keyword">int</span> shm_id = shmget(key, <span class="number">128</span>, IPC_CREAT|<span class="number">0777</span>);<span class="comment">//create share memory id</span></span><br><span class="line">    <span class="keyword">if</span>(shm_id &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"create shm_id failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"create shm_id success! shm_id = %d\n"</span>, shm_id);</span><br><span class="line">    system(<span class="string">"ipcs -m"</span>);</span><br><span class="line">    <span class="comment">//start map to userBuffer</span></span><br><span class="line">    p = (<span class="keyword">char</span> *)shmat(shm_id, <span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(p == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"share memory mat failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//start read</span></span><br><span class="line">    fgets(p, <span class="number">128</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"share memory data: %s\n"</span>, p);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"second read share meory data: %s\n"</span>, p);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在输出结果中，第二次输出时还能得到共享内存中的数据，说明共享内存的读写操作不会删除自身数据，会一直存在于内核中，从另一方面也验证了共享内存和管道的区别。</p>
+<h2 id="四、shmdt函数"><a href="#四、shmdt函数" class="headerlink" title="四、shmdt函数"></a>四、<strong>shmdt函数</strong></h2><p>功能：</p>
+<p>释放用户空间的缓冲区的数据（由共享内存映射形成的）。</p>
+<p>函数原型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">shmdt</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *shmaddr)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>参数（shmaddr）：函数shmat的返回值。</p>
+<p>demo：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/shm.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> key = ftok(<span class="string">"a.c"</span>, <span class="string">'a'</span>);</span><br><span class="line">    <span class="keyword">if</span>(key &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"create key failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"create share memory before:\n"</span>);</span><br><span class="line">    system(<span class="string">"ipcs -m"</span>);</span><br><span class="line">    <span class="keyword">int</span> shm_id = shmget(key, <span class="number">128</span>, IPC_CREAT|<span class="number">0777</span>);</span><br><span class="line">    <span class="keyword">if</span>(shm_id &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"create shm_id failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"create share memory after:\n"</span>);</span><br><span class="line">    system(<span class="string">"ipcs -m"</span>);</span><br><span class="line">    <span class="keyword">char</span> *p = (<span class="keyword">char</span> *)shmat(shm_id, <span class="literal">NULL</span>, <span class="number">0</span>);<span class="comment">//Map to user buffer</span></span><br><span class="line">    <span class="keyword">if</span>(p == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Map failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    fgets(p, <span class="number">128</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"share memory data: %s\n"</span>, p);</span><br><span class="line">    <span class="keyword">int</span> ret = shmdt(p);</span><br><span class="line">    <span class="keyword">if</span>(ret &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"delete failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-4</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"userBuffer delete after:\n"</span>);</span><br><span class="line">    system(<span class="string">"ipcs -m"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"share memory data:%s\n"</span>, p);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在输出结果中，释放用户空间缓冲区后共享内存里面的数据便不能被读取了，但是会发现共享内存还没有完全被删除，因为它的shm_id号还存在，就说明共享内存现在依然存在于内核之中，所以最后一步便是把这个存在于内核之中的共享内存彻底删除。</p>
+<h2 id="五、shmctl函数"><a href="#五、shmctl函数" class="headerlink" title="五、shmctl函数"></a>五、<strong>shmctl函数</strong></h2><p>功能：释放存在于内核缓冲区中的共享内存。</p>
+<p>函数原型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">shmctl</span><span class="params">(<span class="keyword">int</span> shm_id, <span class="keyword">int</span> cmd, struct shm_id_buffer)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>第一个参数（shm_id）:前面说了</p>
+<p>第二个参数（cmd）:</p>
+<p>cmd有三种，下面请看图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200714231933209.png?type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>因为这里是讲如何释放共享内存，即删除其id号，所以只用到第三个参数（IPC_RMID）。</p>
+<p>demo：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/shm.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> key = ftok(<span class="string">"a.c"</span>, <span class="string">'a'</span>);</span><br><span class="line">    <span class="keyword">if</span>(key &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"create key failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"create share memory before:\n"</span>);</span><br><span class="line">    system(<span class="string">"ipcs -m"</span>);</span><br><span class="line">    <span class="keyword">int</span> shm_id = shmget(key, <span class="number">128</span>, IPC_CREAT|<span class="number">0777</span>);</span><br><span class="line">    <span class="keyword">if</span>(shm_id &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"create share memory id failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Map before stat:\n"</span>);</span><br><span class="line">    system(<span class="string">"ipcs -m"</span>);</span><br><span class="line">    <span class="comment">//Map to user buffer</span></span><br><span class="line">    <span class="keyword">char</span> *p = (<span class="keyword">char</span> *)shmat(shm_id, <span class="literal">NULL</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(p == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Map to user buffer failure!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//start read to keyboard</span></span><br><span class="line">    fgets(p, <span class="number">128</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"share memory data: %s\n"</span>, p);</span><br><span class="line">    shmdt(p);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"shmdt after stat:\n"</span>);</span><br><span class="line">    system(<span class="string">"ipcs -m"</span>);</span><br><span class="line">    shmctl(shm_id, IPC_RMID, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"shmctl after:\n"</span>);</span><br><span class="line">    system(<span class="string">"ipcs -m"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果一目了然，自己去领悟吧~</p>
+<p>到这结束就介绍完了共享内存从创建到被释放的全过程了~</p>
 
           
         
@@ -403,7 +475,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#共享内存"><span class="toc-number">1.</span> <span class="toc-text">共享内存</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#共享内存常用函数"><span class="toc-number">1.</span> <span class="toc-text">共享内存常用函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、概述"><span class="toc-number">1.1.</span> <span class="toc-text">一、概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、shmget函数"><span class="toc-number">1.2.</span> <span class="toc-text">二、shmget函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、shmmat函数"><span class="toc-number">1.3.</span> <span class="toc-text">三、shmmat函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、shmdt函数"><span class="toc-number">1.4.</span> <span class="toc-text">四、shmdt函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、shmctl函数"><span class="toc-number">1.5.</span> <span class="toc-text">五、shmctl函数</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -556,11 +628,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
