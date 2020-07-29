@@ -6,21 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://vvcao.github.io">
-  <title>用C语言实现二叉搜索树以及它的三种遍历方式 | be yourself</title>
+  <title>stm32第一天上课笔记整理 | be yourself</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="二叉搜索树">
+  <meta name="description" content="第一天上课笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用C语言实现二叉搜索树以及它的三种遍历方式">
-<meta property="og:url" content="https://vvcao.github.io/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%BB%A5%E5%8F%8A%E5%AE%83%E7%9A%84%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:title" content="stm32第一天上课笔记整理">
+<meta property="og:url" content="https://vvcao.github.io/2020/07/29/stm32%E7%AC%AC%E4%B8%80%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="be yourself">
-<meta property="og:description" content="二叉搜索树">
+<meta property="og:description" content="第一天上课笔记">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-08T14:36:23.000Z">
-<meta property="article:modified_time" content="2020-07-14T01:16:34.996Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200729181326274.jpg?,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200729182557319.jpg?,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200729184138546.jpg?,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-07-29T09:13:12.000Z">
+<meta property="article:modified_time" content="2020-07-29T12:17:48.372Z">
 <meta property="article:author" content="C_vv">
 <meta property="article:tag" content="C语言">
-<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="stm32">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200729181326274.jpg?,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="be yourself" type="application/atom+xml">
   
@@ -187,20 +191,20 @@
 
 
 
-<article id="post-用C语言实现二叉搜索树以及它的三种遍历方式" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-stm32第一天上课笔记整理" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      用C语言实现二叉搜索树以及它的三种遍历方式
+      stm32第一天上课笔记整理
     </h1>
   
 
         
-        <a href="/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%BB%A5%E5%8F%8A%E5%AE%83%E7%9A%84%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:36:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
+        <a href="/2020/07/29/stm32%E7%AC%AC%E4%B8%80%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-07-29T09:13:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
 </a>
 
          <!-- 需要添加的位置 -->
@@ -211,7 +215,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-keyboard-o"></i>
       <span class="post-meta-item-text">  字数统计: </span>
-      <span class="post-count">994字</span>
+      <span class="post-count">1.7k字</span>
     </span>
   </span>
 
@@ -220,7 +224,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-hourglass-half"></i>
       <span class="post-meta-item-text">  阅读时长: </span>
-      <span class="post-count">4分</span>
+      <span class="post-count">6分</span>
     </span>
   </span>
 </div>
@@ -247,17 +251,90 @@
               
 
           
-            <h1 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="二叉搜索树"></a>二叉搜索树</h1><a id="more"></a>
-<h2 id="一、基本概述"><a href="#一、基本概述" class="headerlink" title="一、基本概述"></a>一、基本概述</h2><p>   二叉查找树（Binary Search Tree），（又：二叉搜索树，二叉排序树）它或者是一棵空树，或者是具有下列性质的二叉树： 若它的左子树不空，则左子树上所有结点的值均小于它的根结点的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子树也分别为二叉排序树。二叉搜索树作为一种经典的数据结构，它既有链表的快速插入与删除操作的特点，又有数组快速查找的优势；所以应用十分广泛，例如在文件系统和数据库系统一般会采用这种数据结构进行高效率的排序与检索操作。<br>                                                                —百度百科</p>
-<h2 id="二、常用操作"><a href="#二、常用操作" class="headerlink" title="二、常用操作"></a>二、常用操作</h2><h3 id="1-定义结点结构体"><a href="#1-定义结点结构体" class="headerlink" title="1.定义结点结构体"></a>1.定义结点结构体</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>//定义节点结构体</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">left</span>;</span><span class="comment">//指向左子节点</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">right</span>;</span><span class="comment">//指向右子节点</span></span><br><span class="line">&#125;N;</span><br></pre></td></tr></table></figure>
-<h3 id="2-定义二叉树的结构体"><a href="#2-定义二叉树的结构体" class="headerlink" title="2.定义二叉树的结构体"></a>2.定义二叉树的结构体</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Tree</span>//定义二叉树结构体</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    N *root;<span class="comment">//根节点</span></span><br><span class="line">&#125;T;</span><br></pre></td></tr></table></figure>
-<h3 id="3-定义创建结点函数"><a href="#3-定义创建结点函数" class="headerlink" title="3.定义创建结点函数"></a>3.定义创建结点函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">N *<span class="title">create_Node</span><span class="params">(<span class="keyword">int</span> Data)</span></span>&#123;</span><br><span class="line">    N *new_Node = (N *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(N));</span><br><span class="line">    new_Node-&gt;left = <span class="literal">NULL</span>;</span><br><span class="line">    new_Node-&gt;right = <span class="literal">NULL</span>;</span><br><span class="line">    new_Node-&gt;data = Data;</span><br><span class="line">    <span class="keyword">return</span> new_Node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="4-结点的插入"><a href="#4-结点的插入" class="headerlink" title="4.结点的插入"></a>4.结点的插入</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(T *tree, <span class="keyword">int</span> Data)</span></span>&#123;</span><br><span class="line">    N *new_Node = create_Node(Data);</span><br><span class="line">    <span class="keyword">if</span>(tree-&gt;root == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        tree-&gt;root = new_Node;<span class="comment">//创建根节点</span></span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        N *temp = tree-&gt;root;<span class="comment">//创建一个临时节点去代替根节点</span></span><br><span class="line">        <span class="keyword">while</span>(temp != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(Data &lt; temp-&gt;data)&#123;</span><br><span class="line">                <span class="keyword">if</span>(temp-&gt;left == <span class="literal">NULL</span>)&#123;</span><br><span class="line">                    temp-&gt;left = new_Node;</span><br><span class="line">                    <span class="keyword">return</span> ; </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    temp = temp-&gt;left;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(Data &gt; temp-&gt;data)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(temp-&gt;right == <span class="literal">NULL</span>)&#123;</span><br><span class="line">                        temp-&gt;right = new_Node;</span><br><span class="line">                        <span class="keyword">return</span> ;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        temp = temp-&gt;right;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">             &#125;</span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="5-定义先序遍历函数-根–-gt-左–-gt-右-，采用递归的方法进行遍历"><a href="#5-定义先序遍历函数-根–-gt-左–-gt-右-，采用递归的方法进行遍历" class="headerlink" title="5.定义先序遍历函数(根–&gt;左–&gt;右)，采用递归的方法进行遍历"></a>5.定义先序遍历函数(根–&gt;左–&gt;右)，采用递归的方法进行遍历</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">preorder</span><span class="params">(N *node)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, node-&gt;data);</span><br><span class="line">        preorder(node-&gt;left);</span><br><span class="line">        preorder(node-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="6-定义中序遍历函数-左–-gt-根–-gt-右-，采用递归的方法进行遍历"><a href="#6-定义中序遍历函数-左–-gt-根–-gt-右-，采用递归的方法进行遍历" class="headerlink" title="6.定义中序遍历函数(左–&gt;根–&gt;右)，采用递归的方法进行遍历"></a>6.定义中序遍历函数(左–&gt;根–&gt;右)，采用递归的方法进行遍历</h3><p>中序遍历常用作排序</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">in_Order</span><span class="params">(N *node)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        in_Order(node-&gt;left);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, node-&gt;data);</span><br><span class="line">        in_Order(node-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="7-定义后序遍历函数-左–-gt-右–-gt-根-，采用递归的方法进行遍历"><a href="#7-定义后序遍历函数-左–-gt-右–-gt-根-，采用递归的方法进行遍历" class="headerlink" title="7.定义后序遍历函数(左–&gt;右–&gt;根)，采用递归的方法进行遍历"></a>7.定义后序遍历函数(左–&gt;右–&gt;根)，采用递归的方法进行遍历</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">post_Order</span><span class="params">(N *node)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        post_Order(node-&gt;left);</span><br><span class="line">        post_Order(node-&gt;right);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, node-&gt;data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="三、加入主函数代码实现"><a href="#三、加入主函数代码实现" class="headerlink" title="三、加入主函数代码实现"></a>三、加入主函数代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>//定义节点结构体</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">left</span>;</span><span class="comment">//指向左子节点</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">right</span>;</span><span class="comment">//指向右子节点</span></span><br><span class="line">&#125;N;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Tree</span>//定义二叉树结构体</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    N *root;</span><br><span class="line">&#125;T;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建结点</span></span><br><span class="line"><span class="function">N *<span class="title">create_Node</span><span class="params">(<span class="keyword">int</span> Data)</span></span>&#123;</span><br><span class="line">    N *new_Node = (N *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(N));</span><br><span class="line">    new_Node-&gt;left = <span class="literal">NULL</span>;</span><br><span class="line">    new_Node-&gt;right = <span class="literal">NULL</span>;</span><br><span class="line">    new_Node-&gt;data = Data;</span><br><span class="line">    <span class="keyword">return</span> new_Node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//结点的插入</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(T *tree, <span class="keyword">int</span> Data)</span></span>&#123;</span><br><span class="line">    N *new_Node = create_Node(Data);</span><br><span class="line">    <span class="keyword">if</span>(tree-&gt;root == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        tree-&gt;root = new_Node;<span class="comment">//创建根节点</span></span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        N *temp = tree-&gt;root;<span class="comment">//创建一个临时节点去代替根节点</span></span><br><span class="line">        <span class="keyword">while</span>(temp != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(Data &lt; temp-&gt;data)&#123;</span><br><span class="line">                <span class="keyword">if</span>(temp-&gt;left == <span class="literal">NULL</span>)&#123;</span><br><span class="line">                    temp-&gt;left = new_Node;</span><br><span class="line">                    <span class="keyword">return</span> ; </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    temp = temp-&gt;left;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(Data &gt; temp-&gt;data)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(temp-&gt;right == <span class="literal">NULL</span>)&#123;</span><br><span class="line">                        temp-&gt;right = new_Node;</span><br><span class="line">                        <span class="keyword">return</span> ;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        temp = temp-&gt;right;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">             &#125;</span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//先序遍历(根--&gt;左--&gt;右)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">preorder</span><span class="params">(N *node)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, node-&gt;data);</span><br><span class="line">        preorder(node-&gt;left);</span><br><span class="line">        preorder(node-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//中序遍历(左--&gt;根--&gt;右)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">in_Order</span><span class="params">(N *node)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        in_Order(node-&gt;left);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, node-&gt;data);</span><br><span class="line">        in_Order(node-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//后序遍历(左--&gt;右--&gt;根)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">post_Order</span><span class="params">(N *node)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        post_Order(node-&gt;left);</span><br><span class="line">        post_Order(node-&gt;right);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, node-&gt;data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    T *myTree;</span><br><span class="line">    myTree-&gt;root = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">int</span> arr[<span class="number">7</span>] = &#123;<span class="number">7</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">9</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">7</span>; i++)&#123;</span><br><span class="line">        insert(myTree, arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"先序遍历:"</span>);</span><br><span class="line">    preorder(myTree-&gt;root);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"中序遍历:"</span>);</span><br><span class="line">    in_Order(myTree-&gt;root);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"中序遍历:"</span>);</span><br><span class="line">    post_Order(myTree-&gt;root);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    <span class="built_in">free</span>(myTree-&gt;root);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="第一天上课笔记"><a href="#第一天上课笔记" class="headerlink" title="第一天上课笔记"></a>第一天上课笔记</h1><a id="more"></a>
+
+<h2 id="一、ARM处理器（Advanced-RISC-Machine）"><a href="#一、ARM处理器（Advanced-RISC-Machine）" class="headerlink" title="一、ARM处理器（Advanced RISC Machine）"></a>一、<strong>ARM处理器（Advanced RISC Machine）</strong></h2><p>ARM处理器是英国Acorn有限公司设计的低功耗成本的第一款RISC微处理器。ARM处理器本身是32位设计，但也配备16位指令集，一般来讲比等价32位代码节省达35%，却能保留32位系统的所有优势。</p>
+<p>英国ARM公司是全球领先的半导体知识产权（IP）提供商。本身只卖技术，不负责生产芯片。全世界超过95%的智能手机和平板电脑都采用ARM架构。ARM设计了大量高性价比、耗能低的RISC处理器、相关技术及软件。2014年基于ARM技术的全年全球出货量是120亿颗。</p>
+<p>从诞生到现在为止基于ARM技术的芯片有600亿颗。技术具有性能高、成本低和能耗省的特点。在智能机、平板电脑、嵌入控制、多媒体数字等处理器领域拥有主导地位。2016年7月18日消息，日本软银已经同意以234亿英镑（约合310亿美元）<br>的价格收购英国芯片设计公司ARM。软银认为，凭借这笔收购，ARM将让软银成为<br>下一个潜力巨大的科技市场（即物联网）的领导者。</p>
+<h2 id="二、计算机系统的组成"><a href="#二、计算机系统的组成" class="headerlink" title="二、计算机系统的组成"></a>二、<strong>计算机系统的组成</strong></h2><h3 id="1、嵌入式系统"><a href="#1、嵌入式系统" class="headerlink" title="1、嵌入式系统"></a>1、<strong>嵌入式系统</strong></h3><p><strong>嵌入式系统是</strong>以应用为中心、以计算机技术为基础软硬件可裁剪，是一款适用于对功能、可靠性、成本和体积有有严格要求的<strong>专用计算机系统</strong>。</p>
+<h3 id="2、计算机"><a href="#2、计算机" class="headerlink" title="2、计算机"></a>2、<strong>计算机</strong></h3><p><img src="https://img-blog.csdnimg.cn/20200729181326274.jpg?,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>可以跑程序的电子元器件。</p>
+<p>通用计算机（硬件、软件都是通用的）</p>
+<p>专用计算机（嵌入式系统–&gt;软硬件可裁剪）</p>
+<h3 id="3、嵌入式系统的组成"><a href="#3、嵌入式系统的组成" class="headerlink" title="3、嵌入式系统的组成"></a>3、<strong>嵌入式系统的组成</strong></h3><p><img src="https://img-blog.csdnimg.cn/20200729182557319.jpg?,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h4 id="a-硬件"><a href="#a-硬件" class="headerlink" title="a.硬件"></a>a.<strong>硬件</strong></h4><p>芯片：CPU + 总线 + 控制电路</p>
+<p>外围电路：供电电路 + 晶振电路…</p>
+<h4 id="b-软件"><a href="#b-软件" class="headerlink" title="b.软件"></a>b.<strong>软件</strong></h4><h5 id="1-bootloader：引导程序（引导OS）"><a href="#1-bootloader：引导程序（引导OS）" class="headerlink" title="1.bootloader：引导程序（引导OS）"></a>1.bootloader：引导程序（引导OS）</h5><p>OS的运行需要把硬件的环境搞好；</p>
+<p>一上电，硬件没有初始化，CPU只能在低频下面运行；</p>
+<h5 id="2-OS（操作系统）"><a href="#2-OS（操作系统）" class="headerlink" title="2.OS（操作系统）"></a>2.OS（操作系统）</h5><h6 id="实时操作系统"><a href="#实时操作系统" class="headerlink" title="实时操作系统"></a>实时操作系统</h6><p>以程序的优先级来进行程序的调度，优先级越高的程序越先运行，优先级低的程序必须等到优先级高的程序运行完或者高优先级的程序主动让出我们的CPU。（ucos）</p>
+<h6 id="分时操作系统"><a href="#分时操作系统" class="headerlink" title="分时操作系统"></a>分时操作系统</h6><p>以时间片轮换的形式进行我们的系统调动，每个程序只运行“一段时间”，依次交替运行。（Windows、Linux、Unix）</p>
+<h5 id="3-应用软件"><a href="#3-应用软件" class="headerlink" title="3.应用软件"></a>3.应用软件</h5><h2 id="三、什么是计算机系统"><a href="#三、什么是计算机系统" class="headerlink" title="三、什么是计算机系统"></a>三、<strong>什么是计算机系统</strong></h2><h3 id="冯诺依曼体系结构（存储程序型电脑）"><a href="#冯诺依曼体系结构（存储程序型电脑）" class="headerlink" title="冯诺依曼体系结构（存储程序型电脑）"></a>冯诺依曼体系结构（存储程序型电脑）</h3><p>最早的计算机仅含有固定用途的程序（除了固定用途不能用来处理其它事物（打游戏、处理文字…））</p>
+<p>冯诺依曼把计算机系统分为了如下几个部分：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200729184138546.jpg?,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>1、算术逻辑单元（运算器）</p>
+<p>2、控制电路</p>
+<p>3、存储器</p>
+<p>4、输入设备、输出设备</p>
+<p>指令和数据是以同等的地位存放在我们的存储器中，并且呢，可以按位寻址=》》指令按照我们顺序执行</p>
+<p>指令：只读属性</p>
+<p>数据：可读可写</p>
+<p>ROM：</p>
+<pre><code>read only memory
+只读存储器
+ROM只对于CPU是只读的，其中的数据是通过“烧机、刷机”烧写进去的。</code></pre><p>RAM：</p>
+<pre><code>random access memory
+随机存储器</code></pre><h3 id="哈佛架构"><a href="#哈佛架构" class="headerlink" title="哈佛架构"></a>哈佛架构</h3><p>一种将程序和我们的数据分开存储的存储器结构， 并没有完全突破所谓的冯诺依曼结构。</p>
+<h2 id="四、总线"><a href="#四、总线" class="headerlink" title="四、总线"></a>四、<strong>总线</strong></h2><p>负责的是各个组件之间的通信</p>
+<p>表示多根电线</p>
+<p>总线的两个特点：</p>
+<pre><code>1、多个部件可以同时从总线上接=接受相同的数据
+2、任意时刻只能有一个设备向总线上发送数据</code></pre><p>总线按功能分：</p>
+<pre><code>1、数据总线
+2、地址总线：
+    单向的， CPU发送一个地址，告诉那个设备去接受数据
+3、控制总线：
+    命令、状态</code></pre><p>总线按位置分：</p>
+<pre><code>1、片内总线
+2、系统总线
+3、通信总线</code></pre><h2 id="五、基本概念"><a href="#五、基本概念" class="headerlink" title="五、基本概念"></a>五、<strong>基本概念</strong></h2><p>机器字长</p>
+<pre><code>是指CPU可以一次性处理的位数</code></pre><p>bit:</p>
+<pre><code>一个存储元件，寄存一个二进制代码，
+高电平、低电平</code></pre><p>byte；</p>
+<pre><code>一个存储元件，是由8bit组成</code></pre><p>芯片：</p>
+<pre><code>CPU + 总线 + 控制单元 + 寄存器</code></pre><h2 id="六、CPU厂商"><a href="#六、CPU厂商" class="headerlink" title="六、CPU厂商"></a>六、<strong>CPU厂商</strong></h2><p>负责研发或者生产CPU的目前来说主流CPU框架有：</p>
+<h3 id="1、X86"><a href="#1、X86" class="headerlink" title="1、X86"></a>1、<strong>X86</strong></h3><p>英特尔公司设计的，既设计芯片也制造芯片</p>
+<p>特点：</p>
+<p>复杂的指令集，功能强大，功耗也大</p>
+<h3 id="2、ARM"><a href="#2、ARM" class="headerlink" title="2、ARM"></a>2、<strong>ARM</strong></h3><p>ARM公司生产的，该公司只提供生产资料和技术方案给其它生产芯片的生产厂家，自己不制造芯片</p>
+<p>生产芯片的公司：三星、ST、海思、苹果</p>
+<p>特点：</p>
+<p>精简指令集，但是功能同样强大，功耗比X86的小</p>
+<h2 id="七、ARM-Cortex-M4-体系结构"><a href="#七、ARM-Cortex-M4-体系结构" class="headerlink" title="七、ARM Cortex M4 体系结构"></a>七、<strong>ARM Cortex M4 体系结构</strong></h2><h3 id="1、Cortex-M4的工作状态（处理器的状态）"><a href="#1、Cortex-M4的工作状态（处理器的状态）" class="headerlink" title="1、Cortex M4的工作状态（处理器的状态）"></a>1、<strong>Cortex M4的工作状态（处理器的状态）</strong></h3><p>ARM公司设计的CPU可以支持多种指令集</p>
+<p>ARM指令集：</p>
+<pre><code>32bit（每一个ARM指令都是32bit的），功能比较强大，是一种通用的指令集</code></pre><p>Thumb指令集：</p>
+<pre><code>1、Thumb指令集：16bit,功能也强大
+2、Thumb-2指令集，32bit,功能强大，同时加了不少的专用DSP数字处理指令</code></pre><p>我们将CPU正在执行某种指令集我们就称处理器的状态处在哪里.</p>
+<p>ARM状态：</p>
+<p>Thumb状态：目前Cortex M4只支持Thumb指令</p>
+<h3 id="2、寄存器"><a href="#2、寄存器" class="headerlink" title="2、寄存器"></a>2、<strong>寄存器</strong></h3><h4 id="通用寄存器"><a href="#通用寄存器" class="headerlink" title="通用寄存器"></a>通用寄存器</h4><p>没有特殊用途，你想怎么用就怎么用</p>
+<p>R0-R7 Thumb/Thumb-2都可以访问</p>
+<p>R8-R12 Thumb-2指令集可以访问，只有少部分Thumb可以访问</p>
+<h4 id="专用寄存器"><a href="#专用寄存器" class="headerlink" title="专用寄存器"></a>专用寄存器</h4><p>R(13) – R(16)</p>
+<h4 id="一些其它的寄存器"><a href="#一些其它的寄存器" class="headerlink" title="一些其它的寄存器"></a>一些其它的寄存器</h4><h5 id="中断屏蔽寄存器："><a href="#中断屏蔽寄存器：" class="headerlink" title="中断屏蔽寄存器："></a>中断屏蔽寄存器：</h5><p>中断：打断指令的正常执行</p>
+<p>如果你正在做一件事，不想被打断，“屏蔽”中断</p>
+<h3 id="3、Cortex-M4的工作模式"><a href="#3、Cortex-M4的工作模式" class="headerlink" title="3、Cortex M4的工作模式"></a>3、<strong>Cortex M4的工作模式</strong></h3><h4 id="线程模式"><a href="#线程模式" class="headerlink" title="线程模式"></a>线程模式</h4><p>是指没有产生中断的情况下，可以“分时”、“实时”等待我们的任务调度</p>
+<h4 id="处理模式（中断异常处理）"><a href="#处理模式（中断异常处理）" class="headerlink" title="处理模式（中断异常处理）"></a>处理模式（中断异常处理）</h4><p>是指产生中断或者异常的情况下，必须优先处理中断或异常</p>
+<hr>
+<p>为什么要用两种模式，而不是一种？</p>
+<p>有时候我们需要关注一些外部事物（例如：用户按下按键）</p>
+<h2 id="八、轮询"><a href="#八、轮询" class="headerlink" title="八、轮询"></a>八、<strong>轮询</strong></h2><p>轮流询问</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(KEY == DOWM)</span><br><span class="line">    &#123;</span><br><span class="line">        *****</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>轮询的缺点：</p>
+<p>1、浪费了我们的CPU</p>
+<p>2、响应不及时，存在响应时间差</p>
+<p>3、占用了我们的总线（我们的总线一直处在一个繁忙的状态）</p>
+<p>不去轮询，来了事件，为例支持中断，我们引入了（中断处理模式）</p>
 
           
         
@@ -307,7 +384,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">stm32</a>
         		</li>
       		
 		</ul>
@@ -363,7 +440,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://vvcao.github.io/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%BB%A5%E5%8F%8A%E5%AE%83%E7%9A%84%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://vvcao.github.io/2020/07/29/stm32%E7%AC%AC%E4%B8%80%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -377,18 +454,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/08/%E7%94%A8C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/6666/06/06/top/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          用C语言实现数据结构---双向链表
+          Read
         
       </div>
     </a>
   
   
-    <a href="/2020/07/08/%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-c%E8%AF%AD%E8%A8%80-%E5%AE%9E%E7%8E%B0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">冒泡、选择、插入排序算法(c语言)实现</div>
+    <a href="/2020/07/20/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">线程与进程</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -415,7 +492,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#二叉搜索树"><span class="toc-number">1.</span> <span class="toc-text">二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、基本概述"><span class="toc-number">1.1.</span> <span class="toc-text">一、基本概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、常用操作"><span class="toc-number">1.2.</span> <span class="toc-text">二、常用操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-定义结点结构体"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.定义结点结构体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-定义二叉树的结构体"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.定义二叉树的结构体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-定义创建结点函数"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.定义创建结点函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-结点的插入"><span class="toc-number">1.2.4.</span> <span class="toc-text">4.结点的插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-定义先序遍历函数-根–-gt-左–-gt-右-，采用递归的方法进行遍历"><span class="toc-number">1.2.5.</span> <span class="toc-text">5.定义先序遍历函数(根–&gt;左–&gt;右)，采用递归的方法进行遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-定义中序遍历函数-左–-gt-根–-gt-右-，采用递归的方法进行遍历"><span class="toc-number">1.2.6.</span> <span class="toc-text">6.定义中序遍历函数(左–&gt;根–&gt;右)，采用递归的方法进行遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-定义后序遍历函数-左–-gt-右–-gt-根-，采用递归的方法进行遍历"><span class="toc-number">1.2.7.</span> <span class="toc-text">7.定义后序遍历函数(左–&gt;右–&gt;根)，采用递归的方法进行遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、加入主函数代码实现"><span class="toc-number">1.3.</span> <span class="toc-text">三、加入主函数代码实现</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第一天上课笔记"><span class="toc-number">1.</span> <span class="toc-text">第一天上课笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、ARM处理器（Advanced-RISC-Machine）"><span class="toc-number">1.1.</span> <span class="toc-text">一、ARM处理器（Advanced RISC Machine）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、计算机系统的组成"><span class="toc-number">1.2.</span> <span class="toc-text">二、计算机系统的组成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、嵌入式系统"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、嵌入式系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、计算机"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、计算机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、嵌入式系统的组成"><span class="toc-number">1.2.3.</span> <span class="toc-text">3、嵌入式系统的组成</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-硬件"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">a.硬件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b-软件"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">b.软件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-bootloader：引导程序（引导OS）"><span class="toc-number">1.2.3.2.1.</span> <span class="toc-text">1.bootloader：引导程序（引导OS）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-OS（操作系统）"><span class="toc-number">1.2.3.2.2.</span> <span class="toc-text">2.OS（操作系统）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#实时操作系统"><span class="toc-number">1.2.3.2.2.1.</span> <span class="toc-text">实时操作系统</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#分时操作系统"><span class="toc-number">1.2.3.2.2.2.</span> <span class="toc-text">分时操作系统</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-应用软件"><span class="toc-number">1.2.3.2.3.</span> <span class="toc-text">3.应用软件</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、什么是计算机系统"><span class="toc-number">1.3.</span> <span class="toc-text">三、什么是计算机系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#冯诺依曼体系结构（存储程序型电脑）"><span class="toc-number">1.3.1.</span> <span class="toc-text">冯诺依曼体系结构（存储程序型电脑）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#哈佛架构"><span class="toc-number">1.3.2.</span> <span class="toc-text">哈佛架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、总线"><span class="toc-number">1.4.</span> <span class="toc-text">四、总线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、基本概念"><span class="toc-number">1.5.</span> <span class="toc-text">五、基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、CPU厂商"><span class="toc-number">1.6.</span> <span class="toc-text">六、CPU厂商</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、X86"><span class="toc-number">1.6.1.</span> <span class="toc-text">1、X86</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、ARM"><span class="toc-number">1.6.2.</span> <span class="toc-text">2、ARM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、ARM-Cortex-M4-体系结构"><span class="toc-number">1.7.</span> <span class="toc-text">七、ARM Cortex M4 体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、Cortex-M4的工作状态（处理器的状态）"><span class="toc-number">1.7.1.</span> <span class="toc-text">1、Cortex M4的工作状态（处理器的状态）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、寄存器"><span class="toc-number">1.7.2.</span> <span class="toc-text">2、寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通用寄存器"><span class="toc-number">1.7.2.1.</span> <span class="toc-text">通用寄存器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#专用寄存器"><span class="toc-number">1.7.2.2.</span> <span class="toc-text">专用寄存器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一些其它的寄存器"><span class="toc-number">1.7.2.3.</span> <span class="toc-text">一些其它的寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#中断屏蔽寄存器："><span class="toc-number">1.7.2.3.1.</span> <span class="toc-text">中断屏蔽寄存器：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、Cortex-M4的工作模式"><span class="toc-number">1.7.3.</span> <span class="toc-text">3、Cortex M4的工作模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#线程模式"><span class="toc-number">1.7.3.1.</span> <span class="toc-text">线程模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#处理模式（中断异常处理）"><span class="toc-number">1.7.3.2.</span> <span class="toc-text">处理模式（中断异常处理）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、轮询"><span class="toc-number">1.8.</span> <span class="toc-text">八、轮询</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
