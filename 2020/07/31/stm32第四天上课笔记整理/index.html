@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://vvcao.github.io">
-  <title>Tag: c++ | be yourself</title>
+  <title>stm32第四天上课笔记整理 | be yourself</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人学习博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="be yourself">
-<meta property="og:url" content="https://vvcao.github.io/tags/c/index.html">
+  <meta name="description" content="关键字：定时器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stm32第四天上课笔记整理">
+<meta property="og:url" content="https://vvcao.github.io/2020/07/31/stm32%E7%AC%AC%E5%9B%9B%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="be yourself">
-<meta property="og:description" content="个人学习博客">
+<meta property="og:description" content="关键字：定时器">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-31T07:53:20.000Z">
+<meta property="article:modified_time" content="2020-08-04T12:11:38.993Z">
 <meta property="article:author" content="C_vv">
+<meta property="article:tag" content="stm32">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="be yourself" type="application/atom+xml">
@@ -180,59 +183,445 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+
+
+
+<article id="post-stm32第四天上课笔记整理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/c++%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%EF%BC%88%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%89%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:49:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/c++%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%EF%BC%88%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%89%E7%9F%A5%E8%AF%86%E7%82%B9/">c++运算符重载(常用运算符)知识点</a>
+    <h1 class="article-title" itemprop="name">
+      stm32第四天上课笔记整理
     </h1>
   
 
-        <div class="article-info info-on-right">
+        
+        <a href="/2020/07/31/stm32%E7%AC%AC%E5%9B%9B%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-07-31T07:53:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-31</time>
+</a>
+
+         <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-keyboard-o"></i>
+      <span class="post-meta-item-text">  字数统计: </span>
+      <span class="post-count">2.9k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="fa fa-hourglass-half"></i>
+      <span class="post-meta-item-text">  阅读时长: </span>
+      <span class="post-count">11分</span>
+    </span>
+  </span>
+</div>
+
+
           
+        <!-- 添加完成 -->
+        
+
+            <!-- 添加代码 -->
+      
+      <span class="archive-article-date">
+          阅读量 <span id="busuanzi_value_page_pv"></span>
+      </span>
+      
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+        <!-- 设置标签云begin -->
+              
+
+          
+            <h1 id="关键字：定时器"><a href="#关键字：定时器" class="headerlink" title="关键字：定时器"></a>关键字：定时器</h1><a id="more"></a>
+
+<h2 id="一、通过外部中断的方式实现按键点灯以及翻转灯的状态"><a href="#一、通过外部中断的方式实现按键点灯以及翻转灯的状态" class="headerlink" title="一、通过外部中断的方式实现按键点灯以及翻转灯的状态"></a>一、<strong>通过外部中断的方式实现按键点灯以及翻转灯的状态</strong></h2><p>代码实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stm32f4xx.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">gec_led_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    GPIO_InitTypeDef GPIO_InitStruct;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*1、使能GPIO分组时钟*/</span></span><br><span class="line">    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*配置GPIO控制器*/</span></span><br><span class="line">        <span class="comment">//给结构体赋值，输出模式</span></span><br><span class="line">    </span><br><span class="line">    GPIO_InitStruct.GPIO_Pin = GPIO_Pin_9 | GPIO_Pin_10;<span class="comment">//引脚9、10</span></span><br><span class="line">    GPIO_InitStruct.GPIO_Mode = GPIO_Mode_OUT;<span class="comment">//输出模式</span></span><br><span class="line">    GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;<span class="comment">//输出推挽</span></span><br><span class="line">    GPIO_InitStruct.GPIO_Speed = GPIO_Speed_100MHz;<span class="comment">//速率100M</span></span><br><span class="line">    GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;<span class="comment">//无上下拉</span></span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">    GPIO_Init(GPIOE, &amp;GPIO_InitStruct);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//配置输入模式</span></span><br><span class="line">    GPIO_InitStruct.GPIO_Pin = GPIO_Pin_0;<span class="comment">//引脚0</span></span><br><span class="line">    GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IN;<span class="comment">//输入模式</span></span><br><span class="line">    GPIO_InitStruct.GPIO_Speed = GPIO_Speed_100MHz;<span class="comment">//速率100M</span></span><br><span class="line">    GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_UP;<span class="comment">//输入接上拉电阻</span></span><br><span class="line">        <span class="comment">//初始化</span></span><br><span class="line">    GPIO_Init(GPIOE, &amp;GPIO_InitStruct);</span><br><span class="line"></span><br><span class="line">    GPIO_SetBits(GPIOE, GPIO_Pin_9);<span class="comment">//引脚9设置为高电平</span></span><br><span class="line">    GPIO_SetBits(GPIOE, GPIO_Pin_10);<span class="comment">//引脚10设置为高电平</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">EXTI0_IRQHandler</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//GPIO_ResetBits(GPIOE, GPIO_Pin_9);</span></span><br><span class="line">        GPIO_ToggleBits(GPIOE, GPIO_Pin_9);</span><br><span class="line">    &#125;</span><br><span class="line">    EXTI_ClearITPendingBit(EXTI_Line0);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">gec_exti_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    GPIO_InitTypeDef GPIO_InitStruct;</span><br><span class="line">    EXTI_InitTypeDef EXTI_InitStruct;</span><br><span class="line">    NVIC_InitTypeDef NVIC_InitStruct;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使能GPIOA分组时钟</span></span><br><span class="line">    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//初始化我们的GPIO引脚===&gt;输入功能</span></span><br><span class="line">    GPIO_InitStruct.GPIO_Pin = GPIO_Pin_0;<span class="comment">//引脚0</span></span><br><span class="line">    GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IN;<span class="comment">//输入模式</span></span><br><span class="line">    GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_UP;<span class="comment">//接上拉电阻</span></span><br><span class="line">    GPIO_Init(GPIOA, &amp;GPIO_InitStruct);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使能SYSFG时钟</span></span><br><span class="line">    RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);</span><br><span class="line">    <span class="comment">//选择外部中断的信号输入来源</span></span><br><span class="line">    SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA, EXTI_PinSource0);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//EXTI_InitStruct结构体赋值（配置外部中断）</span></span><br><span class="line">    EXTI_InitStruct.EXTI_Line = EXTI_Line0;<span class="comment">//指定外部中断线</span></span><br><span class="line">    EXTI_InitStruct.EXTI_Mode = EXTI_Mode_Interrupt;<span class="comment">//中断模式</span></span><br><span class="line">    EXTI_InitStruct.EXTI_Trigger = EXTI_Trigger_Falling;<span class="comment">//下降沿触发</span></span><br><span class="line">    EXTI_InitStruct.EXTI_LineCmd = ENABLE;</span><br><span class="line">    EXTI_Init(&amp;EXTI_InitStruct);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//NVIC（中断控制器）配置</span></span><br><span class="line">        <span class="comment">//指定要初始化的中断通道（中断编号）</span></span><br><span class="line">    NVIC_InitStruct.NVIC_IRQChannel = EXTI0_IRQn;</span><br><span class="line">        <span class="comment">//抢占优先级配置</span></span><br><span class="line">    NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = <span class="number">2</span>;</span><br><span class="line">        <span class="comment">//子优先级配置</span></span><br><span class="line">    NVIC_InitStruct.NVIC_IRQChannelSubPriority = <span class="number">2</span>;</span><br><span class="line">    NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;</span><br><span class="line">    NVIC_Init(&amp;NVIC_InitStruct);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);</span><br><span class="line">    gec_led_init();</span><br><span class="line">    gec_led_init();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    while(1)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        GPIO_ResetBits(GPIOE, GPIO_Pin_9);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    while(1)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        GPIO_ResetBits(GPIOE, GPIO_Pin_9);//引脚9复位为低电平</span></span><br><span class="line"><span class="comment">        GPIO_SetBits(GPIOE, GPIO_Pin_10);//设置引脚10为高电平</span></span><br><span class="line"><span class="comment">        delay(500);//延时500ms</span></span><br><span class="line"><span class="comment">        GPIO_SetBits(GPIOE, GPIO_Pin_9);//设置引脚9为高电平</span></span><br><span class="line"><span class="comment">        GPIO_ResetBits(GPIOE, GPIO_Pin_10);//引脚10复位为低电平</span></span><br><span class="line"><span class="comment">        delay_ms(500);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    while(1)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        GPIO_SetBits(GPIOE, GPIO_Pin_9);//设置引脚9为高电平</span></span><br><span class="line"><span class="comment">        GPIO_SetBits(GPIOE, GPIO_Pin_10);//设置引脚10为高电平</span></span><br><span class="line"><span class="comment">        uint16_t a = GPIO_ReadInputData(GPIOE);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        if(a &amp; 1)</span></span><br><span class="line"><span class="comment">        &#123;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">        else</span></span><br><span class="line"><span class="comment">        &#123;</span></span><br><span class="line"><span class="comment">            GPIO_ResetBits(GPIOE, GPIO_Pin_9);</span></span><br><span class="line"><span class="comment">            delay_ms(1000);</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、时钟系统"><a href="#二、时钟系统" class="headerlink" title="二、时钟系统"></a>二、<strong>时钟系统</strong></h2><p>什么是时钟？</p>
+<p>1</p>
+<pre><code>-----   -----</code></pre><p>0</p>
+<pre><code>————————    ————————</code></pre><p>两个重要符号：</p>
+<p>T:</p>
+<pre><code>时钟周期，表示最小重复单位的时间长度（单位是s）</code></pre><p>f:</p>
+<p>频率（单位：Hz）</p>
+<pre><code>表示1s内有多少个“振荡”的次数
+1s内有多少个重复的信号单元
+
+T * f = 1</code></pre><p>例子：</p>
+<p>f = 200Hz===&gt;1s以内会振荡200次，每次振荡的时间为 1/f s = 1/200 = 0.05s = 5ms;</p>
+<h2 id="三、时钟信号"><a href="#三、时钟信号" class="headerlink" title="三、时钟信号"></a>三、<strong>时钟信号</strong></h2><p>怎么来的？</p>
+<p>在自然界中，有一些物质天生就会产生摆动  “打摆子”</p>
+<p>石英（晶振）：</p>
+<pre><code>产生周期的一个信号</code></pre><p>倍频：</p>
+<pre><code>就是放大我们的频率</code></pre><p>分频：</p>
+<pre><code>就是降低我们的频率</code></pre><p>时钟对于设备来说就相当于人类的心脏。</p>
+<h2 id="四、STM32F4时钟树（时钟系统）"><a href="#四、STM32F4时钟树（时钟系统）" class="headerlink" title="四、STM32F4时钟树（时钟系统）"></a>四、<strong>STM32F4时钟树（时钟系统）</strong></h2><pre><code>LSL（LOW speed internal）：低速内部时钟
+
+LSE（LOW speed external）：高速外部时钟
+
+HSI（HIGH speed internal）：高速内部时钟
+
+HSE（HIGH speef external）:高速外部时钟</code></pre><p>在我们的GECM4开发板上：HSE_VALUE = 8M;</p>
+<p>Cortex————M4的SYSCLK（系统主频）最高可达168MHz；</p>
+<p>PLLCLK：锁相环时钟</p>
+<pre><code>PLLCLK = (HSE_VALUE / M) * N / P</code></pre><p>例如：</p>
+<p>已知：</p>
+<p>PLLCLK max === 168M</p>
+<p>HSE_VALUE == 8M</p>
+<p>PLL_M ===&gt; 8</p>
+<p>PLL_N ===&gt; 336</p>
+<p>PLL_P ===&gt; 2</p>
+<hr>
+<p>PLL_CLK == 168M</p>
+<p>AHN BUS Clock 最大值 ===&gt; 168M</p>
+<p>AHB BUS  = PLLCLK / (AHB prescaler)[预分频] = 168 / 1 = 168</p>
+<p>APBx BUS = AHB Clock / (APB prescaler)</p>
+<p>可以通过多个预分频器来配置我们的AHB频率，高速APB（APB2），低速APB（APB1）</p>
+<p>AHB域最大的允许频率是168M</p>
+<p>高速APB2的最大允许频率是84M</p>
+<p>低速APB1的最大允许频率是42M</p>
+<pre><code>APB1 BUS = AHB Clock / (APB prescaler)
+===&gt; 42M = 168M / (APB prescaler)
+===&gt; (APB prescaler) == 4
+
+APB2 BUS = AHB Clock / (APB prescaler)
+===&gt; 84M = 168M / (APB prescaler)
+===&gt; (APB prescaler) == 2</code></pre><h2 id="五、定时器"><a href="#五、定时器" class="headerlink" title="五、定时器"></a>五、<strong>定时器</strong></h2><p>什么是定时器?</p>
+<pre><code>定时器就是用来定时的器件。</code></pre><p>定时器怎么实现？</p>
+<pre><code>计数===&gt;计输入时钟的脉冲个数</code></pre><p>例如：</p>
+<p>输入时钟的频率为200Hz，则一个脉冲的时间为多少？</p>
+<pre><code>1 / 200 ===&gt; 5ms</code></pre><p>我要定时1s===&gt;数多少个脉冲？</p>
+<pre><code>200个</code></pre><p>定时器其实就是一个计数器，当计数到指定数量时，产生一个“溢出中断”</p>
+<h2 id="六、定时器的基本原理"><a href="#六、定时器的基本原理" class="headerlink" title="六、定时器的基本原理"></a>六、<strong>定时器的基本原理</strong></h2><p>STM32上，一般来说，定时器由三个部分组成</p>
+<h3 id="1、时基单元"><a href="#1、时基单元" class="headerlink" title="1、时基单元"></a>1、时基单元</h3><p>概念：定时器的基本单元，所有的定时器都会具有的单元（器件）</p>
+<p>由一个“计数器”为核心做成，“计数器”可以设置为一个值，按照一定的时钟频率递减到0或者也可以设置从0按照特定时钟递增到N。</p>
+<p>TIM_CNT：计数器，到达预设值后，会自动产生中断/事件</p>
+<p>TIM_ARR：自动重载寄存器===&gt;N值</p>
+<p>TIM_CLK：定时器的计数时钟频率===&gt;计数脉冲===&gt;由定时器的时钟总线经过定时器的预分频得到</p>
+<p>TIM_PSC：定时器预分频值，将定时器外设时钟频率分频成适合计数的频率</p>
+<p>比如：</p>
+<pre><code>TIM13在外线总线APB1上
+
+TIM13的外设时钟为42M
+
+可以设置我们的TIM_PSC-42
+
+====&gt;TIM_CLK == 1MHz
+
+一个计数脉冲就是1us, 1000us = 1ms
+
+设置我们的TIM_ARR = N;
+
+也就是说
+
+TIM_CNT：
+    0-&gt;1 需要 1 us
+    1-&gt;2 需要 1 us
+
+    ...
+
+    0-&gt;N需要 N us
+
+    定时时间为：n+1 us（因为定时器计数溢出之后才产生一个中断）</code></pre><h4 id="例如："><a href="#例如：" class="headerlink" title="例如："></a>例如：</h4><pre><code>一个定时器的FIN（输入频率）为 84 MHz，1s后我有一个重要会议要开，请通知我，请问如何设置这个定时器?</code></pre><h5 id="选择我们的计数方式"><a href="#选择我们的计数方式" class="headerlink" title="选择我们的计数方式"></a>选择我们的计数方式</h5><pre><code>递增：0-N
+
+递减：N-0</code></pre><h5 id="计算出一个合理的定时器计数频率"><a href="#计算出一个合理的定时器计数频率" class="headerlink" title="计算出一个合理的定时器计数频率"></a>计算出一个合理的定时器计数频率</h5><pre><code>定时器F = FIN / (TIM_PSC) = 84M / 84000 = 1 kHz ===&gt; T = 1ms
+
+1s = T * (N + 1) ===&gt; N = 999</code></pre><h3 id="2、输入捕获单元"><a href="#2、输入捕获单元" class="headerlink" title="2、输入捕获单元"></a>2、输入捕获单元</h3><pre><code>可以对一个或多个输入信号进行处理，有些定时器没有；
+
+作用：捕获一个或者多个输入信号（需要看我们的定时器有多少个channel通道）
+      可以用来计算输入信号的频率；
+
+原理：输入信号通过“输入捕获阶段时”时（数字滤波，多路复用，预分频，去噪等等），到信号检测，当检测到需要的信号状态变化时（上升沿或者下降沿）就会把定时器时基单元中的TIM_CNT的值锁定到“捕获/比较寄存器TIM_CCRX”中，这样，就可以根据时基单元预设定的定时器参数来计算出该信号的周期。</code></pre><h3 id="3、输出比较单元"><a href="#3、输出比较单元" class="headerlink" title="3、输出比较单元"></a>3、输出比较单元</h3><pre><code>可以输出一个或者多个信号（需要看定时器由多少个通道），有些定时器没有。
+
+定时器起始也可以输出一个电平，并且可以根据“比较寄存器”的值，反转电平的状态。
+
+比如：
+CNT &gt;= CRR 输出一个高电平
+CNT &lt; CRR 输出一个低电平
+
+PWM波：
+占空比的概念：高电平占整个周期的比例；
+电机如何调速：通过占空比调，越大越快；</code></pre><h2 id="七、STM32定时器的概述"><a href="#七、STM32定时器的概述" class="headerlink" title="七、STM32定时器的概述"></a>七、<strong>STM32定时器的概述</strong></h2><h3 id="1、sysTick时钟滴答定时器-系统定时器"><a href="#1、sysTick时钟滴答定时器-系统定时器" class="headerlink" title="1、sysTick时钟滴答定时器 系统定时器"></a>1、sysTick时钟滴答定时器 系统定时器</h3><p>在所有的Cortex M3M4，搜会在NVIC里面内置一个sysTick,这个定时器被称作系统滴答定时器，它只有一个时基单元，并且在溢出的时候，会产生一个sysTick中断</p>
+<hr>
+<p>为什么要配置一个这样的玩意呢？？</p>
+<p>因为大多数操作系统都需要一个硬件定时器来产生操作系统需要的时钟滴答中断，用于操作系统计时，这个定时器被称作整个系统的基本时间单位；</p>
+<hr>
+<p>如果没有操作系统呢？</p>
+<p>裸奔</p>
+<hr>
+<p>延时函数就能通过我们的sysTick来实现；</p>
+<hr>
+<p><strong><em>（重点）</em></strong></p>
+<p>sysTick是被集成在NVIC中，当我们的定时时间到了时，就会产生一个中断</p>
+<h4 id="sysTick应用"><a href="#sysTick应用" class="headerlink" title="sysTick应用"></a>sysTick应用</h4><p>比如：实现我们的ms级延时函数</p>
+<p>思路：可以设置定时器的中断间隔为1ms，并且让sysTick来完成这个定时</p>
+<h6 id="1、选择我们的时钟源-gt-168M内核时钟"><a href="#1、选择我们的时钟源-gt-168M内核时钟" class="headerlink" title="1、选择我们的时钟源===&gt;168M内核时钟"></a>1、选择我们的时钟源===&gt;168M内核时钟</h6><p>递减计数，每减少1需要（1 / 168MHz）s</p>
+<h6 id="2、让sysTick产生一个1ms的定时时间"><a href="#2、让sysTick产生一个1ms的定时时间" class="headerlink" title="2、让sysTick产生一个1ms的定时时间"></a>2、让sysTick产生一个1ms的定时时间</h6><p>则N = ？</p>
+<p>1ms = (N + 1) * (1 / 168M)s ===&gt; N = 168000 - 1 = 167999</p>
+<p>===&gt;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sleep_time;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SysTick_Handler</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sleep_time &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        sleep_time--;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delay_ms</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//配置sysTick为1ms的定时中断模式</span></span><br><span class="line">    SysTick_config(SystemCoreClock / <span class="number">1000</span><span class="number">-1</span>);</span><br><span class="line">    sleep_time = n;</span><br><span class="line">    <span class="keyword">while</span>(sleep_time);</span><br><span class="line">    <span class="comment">//禁用sysTick</span></span><br><span class="line">    SysTick-&gt;CTRL&amp; = ~SysTick_CTRL_ENABLE_Msk;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>uint32_t SysTick_config(uint32_t ticks)</p>
+<p>ticks：自动加载的计数器的值</p>
+<p>SysTick采用的时钟频率一般选择系统内核时钟（GECM4 168MHz）</p>
+<p>一次滴答为1 / 168 ms</p>
+<p>计数SystemCoreClock - 1次则为1s</p>
+<p>计数SystemCoreClock / 1000-1则为1ms</p>
+<p>计数SystemCoreClock / 1000000-1次则为1us</p>
+<p>SystemCoreClock是一个全局变量，代表当前处理器的时钟频率；</p>
+<h3 id="2、通用定时器"><a href="#2、通用定时器" class="headerlink" title="2、通用定时器"></a>2、通用定时器</h3><h4 id="TIM2-—-TIM5"><a href="#TIM2-—-TIM5" class="headerlink" title="TIM2 — TIM5"></a>TIM2 — TIM5</h4><p>16bit（TIM3 TIM4）或者32bit（TIM2 TIM5）计数器，可以配置为递增或者先递增再递减模式；</p>
+<p>有4个独立的channel通道，可以用于</p>
+<pre><code>输入捕获
+输出比较
+PWM波的生成
+单脉冲模式输出</code></pre><h4 id="TIM2-—-TIM14"><a href="#TIM2-—-TIM14" class="headerlink" title="TIM2 — TIM14"></a>TIM2 — TIM14</h4><p>16bit计数器，为递增计数器</p>
+<p>2个独立的channel通道，可以用于：</p>
+<pre><code>输入捕获
+输出比较
+PWM波的生成
+单脉冲模式输出</code></pre><h3 id="3、基本定时器（TIM6和TIM7）"><a href="#3、基本定时器（TIM6和TIM7）" class="headerlink" title="3、基本定时器（TIM6和TIM7）"></a>3、基本定时器（TIM6和TIM7）</h3><p>只有时基单元</p>
+<p>没有输入捕获和输出比较</p>
+<p>16bit计数器，只支持递增计数</p>
+<h3 id="4、高级定时器（TIM1-TIM8）"><a href="#4、高级定时器（TIM1-TIM8）" class="headerlink" title="4、高级定时器（TIM1 TIM8）"></a>4、高级定时器（TIM1 TIM8）</h3><p>16bit计数器，可以配置成递增 递减 先递增在递减</p>
+<p>有4个独立的channel通道，可以用于</p>
+<pre><code>输入捕获
+
+输出比较
+
+pwm波的生成
+
+单脉冲模式输出</code></pre><p>“高级”：</p>
+<pre><code>可以重复计数（TIMx_RCR）
+
+如果不适合重复计数，则在每次计数器溢出之后，都会产生中断事件（此时与通用定时器没什么两样）
+
+如果使用了重复计数，则当计数器计数溢出重复的次数时，才会产生中断
+
+除此之外，高级定时器在对信号的处理方面也比较高级；</code></pre><h3 id="如果只需要配置定时器中断，则步骤如下："><a href="#如果只需要配置定时器中断，则步骤如下：" class="headerlink" title="如果只需要配置定时器中断，则步骤如下："></a>如果只需要配置定时器中断，则步骤如下：</h3><h4 id="1、配置定时器的时基单元"><a href="#1、配置定时器的时基单元" class="headerlink" title="1、配置定时器的时基单元"></a>1、配置定时器的时基单元</h4><h5 id="a、使能定时器的时钟"><a href="#a、使能定时器的时钟" class="headerlink" title="a、使能定时器的时钟"></a>a、使能定时器的时钟</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RCC_APB1PeriphClockCmd();</span><br><span class="line">RCC_APB2PeriphClockCmd();</span><br></pre></td></tr></table></figure>
+
+<h5 id="b、初始化时基单元"><a href="#b、初始化时基单元" class="headerlink" title="b、初始化时基单元"></a>b、初始化时基单元</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TIM_TimeBaseInit</span><span class="params">(TIM_TypeDef* TIMx, TIM_TimeBaseInitTypeDef* TIM_TimeBaseInitStruct)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>TIMx：用哪一个定时器</p>
+<p>TIM_TimeBaseInitStruct：指定要初始化的定时器</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    定时器预分频，整数0-65535</span></span><br><span class="line"><span class="comment">    f = FIN / 预分频</span></span><br><span class="line"><span class="comment">    FIN = 定时器外设时钟总线频率APBX</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">uint16_t</span> TIM_Prescaler;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    计数模式：</span></span><br><span class="line"><span class="comment">        TIM_CounterMode_Up：递增计数</span></span><br><span class="line"><span class="comment">        TIM_CounterMode_Down：递减计数</span></span><br><span class="line"><span class="comment">        TIM_CounterMode_CenterAligned1：对称计数1</span></span><br><span class="line"><span class="comment">        TIM_CounterMode_CenterAligned2：对称计数2</span></span><br><span class="line"><span class="comment">        TIM_CounterMode_CenterAligned2：对称计数3</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">uint16_t</span> TIM_CounterMode;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    指定自动加载寄存器的值===&gt;也就是我们的N值</span></span><br><span class="line"><span class="comment">    定时器的定时时间t = (N + 1) * (1 / F)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">uint16_t</span> TIM_Period;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    如果定时器具备输入捕获单元才需要配置</span></span><br><span class="line"><span class="comment">        指定“输入捕获阶段”，数字滤波的采集频率、分频值</span></span><br><span class="line"><span class="comment">            TIM_CKD_DIV1：采集频率 = 计数器频率 * 1</span></span><br><span class="line"><span class="comment">            TIM_CKD_DIV2：采集频率 = 计数器频率 * 2</span></span><br><span class="line"><span class="comment">            TIM_CKD_DIV3：采集频率 = 计数器频率 * 3</span></span><br><span class="line"><span class="comment">            TIM_CKD_DIV4：采集频率 = 计数器频率 * 4</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">uint16_t</span> TIM_ClockDivision;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    指定计数器重复溢出的次数</span></span><br><span class="line"><span class="comment">    这个玩意只有TIM1 TIM8高级定时器才具有的功能</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">uint8_t</span> TIM_RepetitionCounter;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2、使能定时器"><a href="#2、使能定时器" class="headerlink" title="2、使能定时器"></a>2、使能定时器</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TIM_Cmd</span><span class="params">(TIM_TypeDef* TIMx, FunctionState NewState)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="复用模式"><a href="#复用模式" class="headerlink" title="复用模式"></a>复用模式</h3><p>如果我们要使用输入捕获或者输出比较，那么我们需要配置对应的GPIO引脚—–AF模式（复用模式）</p>
+<h4 id="1、配置GPIO"><a href="#1、配置GPIO" class="headerlink" title="1、配置GPIO"></a>1、配置GPIO</h4><p>a)使能GPIO时钟</p>
+<p>b)初始化GPIO口===&gt;复用模式</p>
+<p>c)配置我们的GPIO口的复用引脚功能（GPIO_PinAFConfig()）</p>
+<h4 id="2、配置定时器的时基单元"><a href="#2、配置定时器的时基单元" class="headerlink" title="2、配置定时器的时基单元"></a>2、配置定时器的时基单元</h4><h4 id="3、定时器输出通道"><a href="#3、定时器输出通道" class="headerlink" title="3、定时器输出通道"></a>3、定时器输出通道</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">OC1 output channel 1：输出通道1</span></span><br><span class="line"><span class="comment">OC2 output channel 2：输出通道2</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">...</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">TIM_OCInit();</span><br><span class="line"></span><br><span class="line">TIM_ARRPreloadConfig();<span class="comment">//用来使能或者禁止加载比较寄存器的值</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4、定时器使能"><a href="#4、定时器使能" class="headerlink" title="4、定时器使能"></a>4、定时器使能</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TIM_ARRPreloadConfig();<span class="comment">//是否使能计算器预加载</span></span><br><span class="line"></span><br><span class="line">TIM_Cmd();</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你让我少搬一天砖<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechatpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">stm32</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://vvcao.github.io/2020/07/31/stm32%E7%AC%AC%E5%9B%9B%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/6666/06/06/top/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Read
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/07/30/stm32%E7%AC%AC%E4%B8%89%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">stm32第三天上课笔记整理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关键字：定时器"><span class="toc-number">1.</span> <span class="toc-text">关键字：定时器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、通过外部中断的方式实现按键点灯以及翻转灯的状态"><span class="toc-number">1.1.</span> <span class="toc-text">一、通过外部中断的方式实现按键点灯以及翻转灯的状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、时钟系统"><span class="toc-number">1.2.</span> <span class="toc-text">二、时钟系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、时钟信号"><span class="toc-number">1.3.</span> <span class="toc-text">三、时钟信号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、STM32F4时钟树（时钟系统）"><span class="toc-number">1.4.</span> <span class="toc-text">四、STM32F4时钟树（时钟系统）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、定时器"><span class="toc-number">1.5.</span> <span class="toc-text">五、定时器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、定时器的基本原理"><span class="toc-number">1.6.</span> <span class="toc-text">六、定时器的基本原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、时基单元"><span class="toc-number">1.6.1.</span> <span class="toc-text">1、时基单元</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#例如："><span class="toc-number">1.6.1.1.</span> <span class="toc-text">例如：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#选择我们的计数方式"><span class="toc-number">1.6.1.1.1.</span> <span class="toc-text">选择我们的计数方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#计算出一个合理的定时器计数频率"><span class="toc-number">1.6.1.1.2.</span> <span class="toc-text">计算出一个合理的定时器计数频率</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、输入捕获单元"><span class="toc-number">1.6.2.</span> <span class="toc-text">2、输入捕获单元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、输出比较单元"><span class="toc-number">1.6.3.</span> <span class="toc-text">3、输出比较单元</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、STM32定时器的概述"><span class="toc-number">1.7.</span> <span class="toc-text">七、STM32定时器的概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、sysTick时钟滴答定时器-系统定时器"><span class="toc-number">1.7.1.</span> <span class="toc-text">1、sysTick时钟滴答定时器 系统定时器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sysTick应用"><span class="toc-number">1.7.1.1.</span> <span class="toc-text">sysTick应用</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1、选择我们的时钟源-gt-168M内核时钟"><span class="toc-number">1.7.1.1.0.1.</span> <span class="toc-text">1、选择我们的时钟源&#x3D;&#x3D;&#x3D;&gt;168M内核时钟</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2、让sysTick产生一个1ms的定时时间"><span class="toc-number">1.7.1.1.0.2.</span> <span class="toc-text">2、让sysTick产生一个1ms的定时时间</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、通用定时器"><span class="toc-number">1.7.2.</span> <span class="toc-text">2、通用定时器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TIM2-—-TIM5"><span class="toc-number">1.7.2.1.</span> <span class="toc-text">TIM2 — TIM5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TIM2-—-TIM14"><span class="toc-number">1.7.2.2.</span> <span class="toc-text">TIM2 — TIM14</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、基本定时器（TIM6和TIM7）"><span class="toc-number">1.7.3.</span> <span class="toc-text">3、基本定时器（TIM6和TIM7）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、高级定时器（TIM1-TIM8）"><span class="toc-number">1.7.4.</span> <span class="toc-text">4、高级定时器（TIM1 TIM8）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果只需要配置定时器中断，则步骤如下："><span class="toc-number">1.7.5.</span> <span class="toc-text">如果只需要配置定时器中断，则步骤如下：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、配置定时器的时基单元"><span class="toc-number">1.7.5.1.</span> <span class="toc-text">1、配置定时器的时基单元</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a、使能定时器的时钟"><span class="toc-number">1.7.5.1.1.</span> <span class="toc-text">a、使能定时器的时钟</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b、初始化时基单元"><span class="toc-number">1.7.5.1.2.</span> <span class="toc-text">b、初始化时基单元</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、使能定时器"><span class="toc-number">1.7.5.2.</span> <span class="toc-text">2、使能定时器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复用模式"><span class="toc-number">1.7.6.</span> <span class="toc-text">复用模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、配置GPIO"><span class="toc-number">1.7.6.1.</span> <span class="toc-text">1、配置GPIO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、配置定时器的时基单元"><span class="toc-number">1.7.6.2.</span> <span class="toc-text">2、配置定时器的时基单元</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、定时器输出通道"><span class="toc-number">1.7.6.3.</span> <span class="toc-text">3、定时器输出通道</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、定时器使能"><span class="toc-number">1.7.6.4.</span> <span class="toc-text">4、定时器使能</span></a></li></ol></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+
+
 
 
           </div>
@@ -282,9 +671,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
