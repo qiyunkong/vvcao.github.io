@@ -6,21 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://vvcao.github.io">
-  <title>线程与进程 | be yourself</title>
+  <title>stm32第五天上课笔记整理 | be yourself</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="线程">
+  <meta name="description" content="串口、通信">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线程与进程">
-<meta property="og:url" content="https://vvcao.github.io/2020/07/20/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/index.html">
+<meta property="og:title" content="stm32第五天上课笔记整理">
+<meta property="og:url" content="https://vvcao.github.io/2020/08/05/stm32%E7%AC%AC%E4%BA%94%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="be yourself">
-<meta property="og:description" content="线程">
+<meta property="og:description" content="串口、通信">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-20T14:38:24.000Z">
-<meta property="article:modified_time" content="2020-07-21T04:28:40.192Z">
+<meta property="article:published_time" content="2020-08-05T02:03:08.000Z">
+<meta property="article:modified_time" content="2020-08-05T11:10:00.970Z">
 <meta property="article:author" content="C_vv">
-<meta property="article:tag" content="linux">
-<meta property="article:tag" content="C语言">
-<meta property="article:tag" content="线程">
+<meta property="article:tag" content="stm32">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="be yourself" type="application/atom+xml">
@@ -188,20 +186,20 @@
 
 
 
-<article id="post-线程与进程" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-stm32第五天上课笔记整理" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      线程与进程
+      stm32第五天上课笔记整理
     </h1>
   
 
         
-        <a href="/2020/07/20/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-07-20T14:38:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
+        <a href="/2020/08/05/stm32%E7%AC%AC%E4%BA%94%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-08-05T02:03:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-05</time>
 </a>
 
          <!-- 需要添加的位置 -->
@@ -212,7 +210,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-keyboard-o"></i>
       <span class="post-meta-item-text">  字数统计: </span>
-      <span class="post-count">715字</span>
+      <span class="post-count">1.4k字</span>
     </span>
   </span>
 
@@ -221,7 +219,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-hourglass-half"></i>
       <span class="post-meta-item-text">  阅读时长: </span>
-      <span class="post-count">2分</span>
+      <span class="post-count">5分</span>
     </span>
   </span>
 </div>
@@ -248,19 +246,100 @@
               
 
           
-            <h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><a id="more"></a>
+            <h1 id="串口、通信"><a href="#串口、通信" class="headerlink" title="串口、通信"></a><strong>串口、通信</strong></h1><a id="more"></a>
 
-<h2 id="一、线程与进程"><a href="#一、线程与进程" class="headerlink" title="一、线程与进程"></a><strong>一、线程与进程</strong></h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>进程：</p>
-<p>进程（英语：process），是指计算机中已运行的程序。进程曾经是分时系统的基本运作单位。在面向进程设计的系统（如早期的UNIX，Linux 2.4及更早的版本）中，进程是程序的基本执行实体；在面向线程设计的系统（如当代多数操作系统、Linux 2.6及更新的版本）中，进程本身不是基本运行单位，而是线程的容器。程序本身只是指令、数据及其组织形式的描述，进程才是程序（那些指令和数据）的真正运行实例。若干进程有可能与同一个程序相关系，且每个进程皆可以同步（循序）或异步（平行）的方式独立运行。现代计算机系统可在同一段时间内以进程的形式将多个程序加载到存储器中，并借由时间共享（或称时分复用），以在一个处理器上表现出同时（平行性）运行的感觉。同样的，使用多线程技术（多线程即每一个线程都代表一个进程内的一个独立执行上下文）的操作系统或计算机体系结构，同样程序的平行线程，可在多CPU主机或网络上真正同时运行（在不同的CPU上）。</p>
-<pre><code>---维基百科</code></pre><p>线程：</p>
-<p>线程（英语：thread）是操作系统能够进行运算调度的最小单位。大部分情况下，它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。在Unix System V及SunOS中也被称为轻量进程（lightweight processes），但轻量进程更多指内核线程（kernel thread），而把用户线程（user thread）称为线程。</p>
-<p>线程是独立调度和分派的基本单位。线程可以为操作系统内核调度的内核线程，如Win32线程；由用户进程自行调度的用户线程，如Linux平台的POSIX Thread；或者由内核与用户进程，如Windows 7的线程，进行混合调度。</p>
-<p>同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（register context），自己的线程本地存储（thread-local storage）。</p>
-<p>一个进程可以有很多线程，每条线程并行执行不同的任务。</p>
-<pre><code>---维基百科</code></pre><p>##　<strong>二、线程的创建</strong></p>
-<p>常用函数的使用：</p>
-<h3 id="1、pthread-self函数"><a href="#1、pthread-self函数" class="headerlink" title="1、pthread_self函数"></a><strong>1、pthread_self函数</strong></h3><p>函数原型：</p>
-<p>pthread_t pthread_self()</p>
+<h2 id="一、通信"><a href="#一、通信" class="headerlink" title="一、通信"></a>一、<strong>通信</strong></h2><h3 id="通信的实质"><a href="#通信的实质" class="headerlink" title="通信的实质"></a>通信的实质</h3><p>=====&gt; 数据的交换 =====&gt; 物理信号的传播</p>
+<h3 id="1、物理媒介"><a href="#1、物理媒介" class="headerlink" title="1、物理媒介"></a>1、物理媒介</h3><p>UART/IIC（各个场合都有）/SPI(flash)/CAN（汽车）</p>
+<p>===&gt;实质：“电线”</p>
+<p>无线通信模块：WiFi、蓝牙、Zigbee</p>
+<h3 id="2、协议"><a href="#2、协议" class="headerlink" title="2、协议"></a>2、协议</h3><p>私有协议、公共的协议</p>
+<h3 id="上位机和下位机的概念"><a href="#上位机和下位机的概念" class="headerlink" title="上位机和下位机的概念"></a>上位机和下位机的概念</h3><p>通信一般是两个或者两个以上的设备，我们把这些设备人为地分为上位机和下位机。</p>
+<h4 id="上位机："><a href="#上位机：" class="headerlink" title="上位机："></a>上位机：</h4><p>把处理能力较强的机子作为上位机</p>
+<p>=====&gt; 数据的后期处理，大部分都有上位机进行</p>
+<h4 id="下位机"><a href="#下位机" class="headerlink" title="下位机"></a>下位机</h4><p>用来采集数据的终端，作为下位机</p>
+<p>=====&gt;处理能力不要要太强</p>
+<h2 id="二、什么是串口？"><a href="#二、什么是串口？" class="headerlink" title="二、什么是串口？"></a>二、<strong>什么是串口？</strong></h2><p>UART(universal Asynchronous recieve/transmitter)：通用异步接受/发送器</p>
+<p>USART(universal Asynchronous/synchronous receive/transmitter)：通用 同步/异步 接受/发送器</p>
+<p>同步和异步的区别：有无时钟线</p>
+<p>串口是一种最常见、最常用的串行数据传输协议；</p>
+<h3 id="串行和并行的区别？"><a href="#串行和并行的区别？" class="headerlink" title="串行和并行的区别？"></a>串行和并行的区别？</h3><p>串行是一个个的发，并行是一次发多个BIT；</p>
+<h3 id="全双工和半双工"><a href="#全双工和半双工" class="headerlink" title="全双工和半双工"></a>全双工和半双工</h3><p>全双工：接受和发送数据互不影响，可以同时进行；</p>
+<p>半双工：同一时间只能收发数据</p>
+<p>数据线只需要两个就可以实现全双工</p>
+<h3 id="串口"><a href="#串口" class="headerlink" title="串口"></a>串口</h3><p>串口的两根线分别是</p>
+<p>RX：接受数据线</p>
+<p>TX：发送数据线</p>
+<p>怎样利用串口设备进行通信？</p>
+<pre><code>A                   B
+RX  &lt;============   TX
+TX  =&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;   RX</code></pre><p>串口实际上只有一根数据线，假设A要发送数据0100 1000给我们的B设备，该如何发送？</p>
+<p>A         —–<br>          ——      ————<strong>****</strong></p>
+<p>那么B怎么去接受来自A的数据？</p>
+<p>发送数据线只有两个状态（1/0）无论有没有发送数据，他都有一个电平，那么B又怎么知道A是不是在发送数据呢？？</p>
+<p>===》某个协议</p>
+<h2 id="三、UART协议"><a href="#三、UART协议" class="headerlink" title="三、UART协议"></a>三、<strong>UART协议</strong></h2><p>UART发送数据和接受数据都是以“帧”为单位的（数据包）</p>
+<p>一帧 ====&gt; 收发一次数据</p>
+<p>一帧 = 1 start bit（起始位）+ 5-9bit（数据位）+ 0/1（校验位）+ stop（停止位）</p>
+<h3 id="数据位"><a href="#数据位" class="headerlink" title="数据位"></a>数据位</h3><p>5-9数据位，具体是多少位，需要双方协定</p>
+<p>最好8位（1个子节），好传输数据，并且优先发送最低位。</p>
+<h3 id="校验位"><a href="#校验位" class="headerlink" title="校验位"></a>校验位</h3><p>0bit ===&gt; 没有校验位</p>
+<p>1bit ===&gt; 有校验位 实质上“赖子”，用来保证传输数据中的个数是奇数个还是偶数个。</p>
+<p>奇校验：要保证传输的数据中1的个数是奇数个</p>
+<p>偶校验：要保证传输的数据中1的个数是偶数个</p>
+<h3 id="停止位"><a href="#停止位" class="headerlink" title="停止位"></a>停止位</h3><p>0.5个停止位</p>
+<p>1个停止位</p>
+<p>1.5个停止位</p>
+<p>2个停止位</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>A发送一个VAL给我们B</p>
+<h4 id="1、双方坐下来协商一下“协议”"><a href="#1、双方坐下来协商一下“协议”" class="headerlink" title="1、双方坐下来协商一下“协议”"></a>1、双方坐下来协商一下“协议”</h4><p>假设：8个数据位 + 1个停止位 奇校验</p>
+<p>模拟数据发送：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">Tx = <span class="number">1</span>;<span class="comment">//Tx处于一个空闲状态</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*起始位*/</span></span><br><span class="line">Tx = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">delay</span>(<span class="number">1</span> / f);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*数据位*/</span></span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    Tx = (VAL &gt;&gt; i) &amp; <span class="number">1</span>;<span class="comment">//VAL是我们发送的一个值(1011 0110) &gt;&gt;1 0101 1011</span></span><br><span class="line">    <span class="keyword">if</span>(Tx == <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        sum++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">delay</span>(<span class="number">1</span> / f);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*校验位 奇校验*/</span></span><br><span class="line"><span class="keyword">if</span>(num % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//num是一个偶数，代表1的个数为偶数</span></span><br><span class="line">    Tx = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">delay</span>(<span class="number">1</span> / f);</span><br><span class="line">&#125;<span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//num是一个奇数，代表一个数为奇数</span></span><br><span class="line">    Tx = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">delay</span>(<span class="number">1</span> / f);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*停止位*/</span></span><br><span class="line">Tx = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">delay</span>(<span class="number">1</span> / f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果按上述约定来进行通信，接受方还是无法确定采用什么样的采用频率</p>
+<p>====&gt;不公时钟 异步</p>
+<p>因此我们只能再约定一个数据传输的“速率”</p>
+<h4 id="2、协商“速率”"><a href="#2、协商“速率”" class="headerlink" title="2、协商“速率”"></a>2、协商“速率”</h4><p>波特率的概念：传输速率的概念</p>
+<p>单位是bit/s，代表一秒钟传输多少个bit，===&gt;决定时钟周期</p>
+<p>11520</p>
+<p>9600</p>
+<p>57600</p>
+<p>…</p>
+<h2 id="四、物理层协议"><a href="#四、物理层协议" class="headerlink" title="四、物理层协议"></a>四、<strong>物理层协议</strong></h2><p>比较常用的串口有哪些：</p>
+<p>TTL(4根线)</p>
+<p>RX：数据接受端</p>
+<p>TX：数据发送端</p>
+<p>VCC：电源</p>
+<p>GND：地</p>
+<p>RS232：</p>
+<p>D89：</p>
+<p>RS422：</p>
+<p>RS485：</p>
+<p>…</p>
+<p>不仅电气协议不同，而且“电线”根数也不一样</p>
+<p>TTL：</p>
+<pre><code>逻辑低电平0：0V
+逻辑高电平：3.3V - 5V</code></pre><p>RS232适合较长距离的一个传输（TTL &lt; RS232 &lt; RS422 &lt; RS485）</p>
+<h2 id="五、STM32F4串口控制器（硬件）"><a href="#五、STM32F4串口控制器（硬件）" class="headerlink" title="五、STM32F4串口控制器（硬件）"></a>五、<strong>STM32F4串口控制器（硬件）</strong></h2><h3 id="1、接受过程"><a href="#1、接受过程" class="headerlink" title="1、接受过程"></a>1、接受过程</h3><p>对方TX发送数据 ===&gt; 本方RX接收数据 ====&gt; left_shift ====&gt; RDR接收我们的数据，CPU从RDR中将我们的数据读走。</p>
+<p>伪代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>(RXNE == <span class="number">0</span>);<span class="comment">//等待接受数据的寄存器中，有了数据才往下走</span></span><br><span class="line">    ch = RDR;<span class="comment">//接受数据寄存器中，接受了一个字节</span></span><br><span class="line">    s[i++] = ch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、发送过程"><a href="#2、发送过程" class="headerlink" title="2、发送过程"></a>2、发送过程</h3><p>CPU将数据写入到TDR寄存器中</p>
+<p>TDR ====&gt; right_shift ====&gt; 通过我们的引脚进行发送 ====&gt; 对方的RX接受</p>
+<p>比如：发送一个char *s = “hehe” char *s = “are you ok?”</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(*s != <span class="string">'\0'</span>)</span><br><span class="line">&#123;</span><br><span class="line">    TDR = *s;<span class="comment">//发送一个字节到发送数据的寄存器中去</span></span><br><span class="line">    <span class="keyword">while</span>(TXE == <span class="number">0</span>);<span class="comment">//等待发送完成 ===&gt; TDR为空</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>RDR：reciever data REGISTER</p>
+<p>TDR：transmitter data REGISTER</p>
+<p>CR：control register 控制寄存器 ===&gt; 控制串口的一些行为</p>
+<p>SR：status register 状态寄存器 ===&gt; 指示串口控制器的一些状态</p>
+<p>TXE：transmitter data REGISTER empty</p>
+<p>发送数据寄存去的数据已经传输到发送移位寄存器寄存器中了，并且开始发送</p>
+<p>TXE = 1的时候产生产生一个串口中断（发送寄存器为空）</p>
+<p><strong>重要</strong></p>
+<p>TEX == 1并不代表数据已经发送完成，只是开始发送，要想知道数据是否发送完成要看TC</p>
+<p>TC：数据发送完成，可以进行下一次发送了</p>
+<p>RXNE：rx not empty</p>
+<p>接受数据寄存器不为空，CPU可以从数据接收寄存器中获得数据； </p>
 
           
         
@@ -306,15 +385,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C语言</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">线程</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">stm32</a>
         		</li>
       		
 		</ul>
@@ -370,7 +441,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://vvcao.github.io/2020/07/20/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://vvcao.github.io/2020/08/05/stm32%E7%AC%AC%E4%BA%94%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -384,18 +455,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/29/stm32%E7%AC%AC%E4%B8%80%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/6666/06/06/top/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          stm32第一天上课笔记整理
+          Read
         
       </div>
     </a>
   
   
-    <a href="/2020/07/17/Linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%AF%87-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Linux进程间通信基础篇---消息队列</div>
+    <a href="/2020/07/31/stm32%E7%AC%AC%E5%9B%9B%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">stm32第四天上课笔记整理</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -422,7 +493,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#线程"><span class="toc-number">1.</span> <span class="toc-text">线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、线程与进程"><span class="toc-number">1.1.</span> <span class="toc-text">一、线程与进程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述"><span class="toc-number">1.1.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1、pthread-self函数"><span class="toc-number">1.1.2.</span> <span class="toc-text">1、pthread_self函数</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#串口、通信"><span class="toc-number">1.</span> <span class="toc-text">串口、通信</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、通信"><span class="toc-number">1.1.</span> <span class="toc-text">一、通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通信的实质"><span class="toc-number">1.1.1.</span> <span class="toc-text">通信的实质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1、物理媒介"><span class="toc-number">1.1.2.</span> <span class="toc-text">1、物理媒介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、协议"><span class="toc-number">1.1.3.</span> <span class="toc-text">2、协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上位机和下位机的概念"><span class="toc-number">1.1.4.</span> <span class="toc-text">上位机和下位机的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#上位机："><span class="toc-number">1.1.4.1.</span> <span class="toc-text">上位机：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下位机"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">下位机</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、什么是串口？"><span class="toc-number">1.2.</span> <span class="toc-text">二、什么是串口？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#串行和并行的区别？"><span class="toc-number">1.2.1.</span> <span class="toc-text">串行和并行的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全双工和半双工"><span class="toc-number">1.2.2.</span> <span class="toc-text">全双工和半双工</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#串口"><span class="toc-number">1.2.3.</span> <span class="toc-text">串口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、UART协议"><span class="toc-number">1.3.</span> <span class="toc-text">三、UART协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据位"><span class="toc-number">1.3.1.</span> <span class="toc-text">数据位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#校验位"><span class="toc-number">1.3.2.</span> <span class="toc-text">校验位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#停止位"><span class="toc-number">1.3.3.</span> <span class="toc-text">停止位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子"><span class="toc-number">1.3.4.</span> <span class="toc-text">例子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、双方坐下来协商一下“协议”"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">1、双方坐下来协商一下“协议”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、协商“速率”"><span class="toc-number">1.3.4.2.</span> <span class="toc-text">2、协商“速率”</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、物理层协议"><span class="toc-number">1.4.</span> <span class="toc-text">四、物理层协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、STM32F4串口控制器（硬件）"><span class="toc-number">1.5.</span> <span class="toc-text">五、STM32F4串口控制器（硬件）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、接受过程"><span class="toc-number">1.5.1.</span> <span class="toc-text">1、接受过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、发送过程"><span class="toc-number">1.5.2.</span> <span class="toc-text">2、发送过程</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
