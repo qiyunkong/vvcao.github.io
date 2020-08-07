@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://vvcao.github.io">
-  <title>Archives: 2020/8 | be yourself</title>
+  <title>智能家居项目第一天笔记整理 | be yourself</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人学习博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="be yourself">
-<meta property="og:url" content="https://vvcao.github.io/archives/2020/08/index.html">
+  <meta name="description" content="LCD屏的显示原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="智能家居项目第一天笔记整理">
+<meta property="og:url" content="https://vvcao.github.io/2020/08/07/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E9%A1%B9%E7%9B%AE%E7%AC%AC%E4%B8%80%E5%A4%A9%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="be yourself">
-<meta property="og:description" content="个人学习博客">
+<meta property="og:description" content="LCD屏的显示原理">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-07T00:41:20.000Z">
+<meta property="article:modified_time" content="2020-08-07T03:57:26.392Z">
 <meta property="article:author" content="C_vv">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="嵌入式">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="be yourself" type="application/atom+xml">
@@ -180,35 +184,161 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+
+
+
+<article id="post-智能家居项目第一天笔记整理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/07/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E9%A1%B9%E7%9B%AE%E7%AC%AC%E4%B8%80%E5%A4%A9%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-08-07T00:41:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-07</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/07/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E9%A1%B9%E7%9B%AE%E7%AC%AC%E4%B8%80%E5%A4%A9%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/">智能家居项目第一天笔记整理</a>
+    <h1 class="article-title" itemprop="name">
+      智能家居项目第一天笔记整理
     </h1>
   
 
-        <div class="article-info info-on-right">
+        
+        <a href="/2020/08/07/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E9%A1%B9%E7%9B%AE%E7%AC%AC%E4%B8%80%E5%A4%A9%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-08-07T00:41:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-07</time>
+</a>
+
+         <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-keyboard-o"></i>
+      <span class="post-meta-item-text">  字数统计: </span>
+      <span class="post-count">994字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="fa fa-hourglass-half"></i>
+      <span class="post-meta-item-text">  阅读时长: </span>
+      <span class="post-count">3分</span>
+    </span>
+  </span>
+</div>
+
+
           
+        <!-- 添加完成 -->
+        
+
+            <!-- 添加代码 -->
+      
+      <span class="archive-article-date">
+          阅读量 <span id="busuanzi_value_page_pv"></span>
+      </span>
+      
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+        <!-- 设置标签云begin -->
+              
+
+          
+            <h1 id="LCD屏的显示原理"><a href="#LCD屏的显示原理" class="headerlink" title="LCD屏的显示原理"></a><strong>LCD屏的显示原理</strong></h1><a id="more"></a>
+
+<p>我们需要给OS足够的数据，OS才能去控制屏幕</p>
+<h2 id="数据的格式"><a href="#数据的格式" class="headerlink" title="数据的格式"></a><strong>数据的格式</strong></h2><p>在OS的一个处理程序中，它是这样设定的：</p>
+<p>一个像素点 ==&gt; 用一个4个字节的空间去表示这个像素点的颜色。</p>
+<p>这四个字节，从低地址到高地址，具体的属性如下：</p>
+<pre><code>B   G   R   A
+
+B：蓝色显示的数值
+G：绿色显示的数值
+R：红色显示的数值
+A：无效数值 =&gt; 透明度，决定你最终显示出来的颜色深浅</code></pre><p>RGB =&gt; 三基色，这三种颜色以不同的比例搭配，它们就可以显示出各种各样的颜色。</p>
+<p>在我们的OS给予的结构中 ==&gt; 允许我们用一个字节的数据范围去表示一个颜色的深浅 ===&gt; 颜色的量化</p>
+<p>例如：如果我们要一个像素点为红色</p>
+<pre><code>0x  ff  00  00
+    R   G   B</code></pre><p>16进制的一位可以代表4位二进制，一个字节8位，所以我们只需要两位16进制的书就可以代表一个字节了。</p>
+<p>现在我们是要控制一块分辨率为800*400的LCD屏</p>
+<p>这个现实屏 =&gt; 一行有800个像素点，总共480行</p>
+<p>具体的操作通过我们的OS去控制LCD屏的显示。</p>
+<h2 id="文件存放目录"><a href="#文件存放目录" class="headerlink" title="文件存放目录"></a><strong>文件存放目录</strong></h2><p>LCD屏 ===&gt; 硬件设备 ===&gt; linux中就是一个文件，我们要通过系统去操作这个设备，那么我们只需要打开文件，然后写入数据即可。</p>
+<p>关于这种设备文件 ===&gt; 存放在我们的/dev/目录下</p>
+<p>如果我们是ARM的板子 ===&gt; /dev/fb0</p>
+<p>如果实在ubuntu上模拟LCD ===&gt; /dev/ubuntu_lcd</p>
+<h2 id="数据的写入方式"><a href="#数据的写入方式" class="headerlink" title="数据的写入方式"></a><strong>数据的写入方式</strong></h2><p>按四个字节一个像素点的格式去输入</p>
+<p>我们打开这个屏幕文件之后</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> color = <span class="number">0xff0000</span>;<span class="comment">//代表像素点为红色</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">write</span>(fd, &amp;color, <span class="number">4</span>);<span class="comment">//这个样子就能改变一个像素点的颜色了，具体是哪个像素点？</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//一直写入，一直改变，写到文件末尾后不会再改变屏幕的显示</span></span><br></pre></td></tr></table></figure>
+
+<p>用这个方式我们就能将整个屏幕全部填满我们的红色像素点</p>
+<h2 id="mmap函数"><a href="#mmap函数" class="headerlink" title="mmap函数"></a><strong>mmap函数</strong></h2><p>write函数的方式有缺陷：</p>
+<p>1、系统函数，自身会有开销</p>
+<p>2、写入的速度比较慢</p>
+<p>mmap函数：文件映射内存 ==&gt; 把文件缓冲区的数据直接映射到用户的进程空间</p>
+<p>mmap一个文件，后续的操作我们不需要去调用write函数，我们可以通过指针去直接把数据写入到对应的文件缓冲区。</p>
+<h3 id="函数原型及参数"><a href="#函数原型及参数" class="headerlink" title="函数原型及参数"></a>函数原型及参数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">mmap</span><span class="params">(<span class="keyword">void</span> *addr, <span class="keyword">size_t</span> length, <span class="keyword">int</span> prot, <span class="keyword">int</span> flags, <span class="keyword">int</span> fd, <span class="keyword">off_t</span> offset)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>1、addr：地址，一般填NULL，表示操作系统自动分配</p>
+<p>2、length：映射缓冲区的大小，单位是字节</p>
+<p>3、prot：映射权限 ===&gt; 映射之后，你能对着那块映射出来的内存段进行什么样的操作</p>
+<pre><code>PROT_EXEC：可执行
+PROT_READ：可读
+PROT_WRITE：可写
+PROT_NONE：无权限</code></pre><p>以上权限可以由位域实现 |</p>
+<p>4、flags：映射方式</p>
+<pre><code>MAP_SHARED：共享的，对映射空间内容的修改，会影响到文件缓冲区的内容
+MAP_PRIVATE：私有的，无法改变文件缓冲区的内容</code></pre><p>5、fd：文件描述符 open函数的一个返回值</p>
+<p>6、offset：偏移量</p>
+<p>7、返回值：偏移量</p>
+<p>如果映射成功了，返回那段映射空间的首地址；如果失败了，MAP_FAILED</p>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a><strong>代码示例</strong></h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/mman.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fd = <span class="built_in">open</span>(<span class="string">"/dev/ubuntu_lcd"</span>, O_RDWR);</span><br><span class="line">    <span class="keyword">if</span>(fd == <span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(<span class="string">"open error"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> *plcd = mmap(<span class="literal">NULL</span>, <span class="number">800</span>*<span class="number">480</span>*<span class="number">4</span>, PROT_WRITE, MAP_SHARED, fd, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(plcd == MAP_FAILED)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(<span class="string">"map error"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> i, j, color = <span class="number">0xff0000</span>;<span class="comment">//红色</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">480</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; <span class="number">800</span>; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            *(plcd+i*<span class="number">800</span>+j) = color;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">close</span>(fd);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+          
+        
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你让我少搬一天砖<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechatpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -224,103 +354,130 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://vvcao.github.io/2020/08/07/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E9%A1%B9%E7%9B%AE%E7%AC%AC%E4%B8%80%E5%A4%A9%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/06/stm32%E7%AC%AC%E5%85%AD%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-08-06T03:48:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-06</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/6666/06/06/top/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Read
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/06/stm32%E7%AC%AC%E5%85%AD%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">stm32第六天上课笔记整理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/06/stm32%E7%AC%AC%E5%85%AD%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/">stm32第六天上课笔记整理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">stm32</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LCD屏的显示原理"><span class="toc-number">1.</span> <span class="toc-text">LCD屏的显示原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据的格式"><span class="toc-number">1.1.</span> <span class="toc-text">数据的格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件存放目录"><span class="toc-number">1.2.</span> <span class="toc-text">文件存放目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据的写入方式"><span class="toc-number">1.3.</span> <span class="toc-text">数据的写入方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mmap函数"><span class="toc-number">1.4.</span> <span class="toc-text">mmap函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#函数原型及参数"><span class="toc-number">1.4.1.</span> <span class="toc-text">函数原型及参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码示例"><span class="toc-number">1.5.</span> <span class="toc-text">代码示例</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/05/stm32%E7%AC%AC%E4%BA%94%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-08-05T02:03:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-05</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/05/stm32%E7%AC%AC%E4%BA%94%E5%A4%A9%E4%B8%8A%E8%AF%BE%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/">stm32第五天上课笔记整理</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">stm32</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
+
+
 
 
           </div>
@@ -370,8 +527,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
