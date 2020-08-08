@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://vvcao.github.io">
-  <title>Archives: 2020 | be yourself</title>
+  <title>智能家居项目第二天笔记整理 | be yourself</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人学习博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="be yourself">
-<meta property="og:url" content="https://vvcao.github.io/archives/2020/page/3/index.html">
+  <meta name="description" content="Bmp图片显示、触摸屏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="智能家居项目第二天笔记整理">
+<meta property="og:url" content="https://vvcao.github.io/2020/08/08/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E9%A1%B9%E7%9B%AE%E7%AC%AC%E4%BA%8C%E5%A4%A9%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="be yourself">
-<meta property="og:description" content="个人学习博客">
+<meta property="og:description" content="Bmp图片显示、触摸屏">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200808144929268.jpg?type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200808150050982.jpg?type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-08-08T03:15:24.000Z">
+<meta property="article:modified_time" content="2020-08-08T07:42:58.209Z">
 <meta property="article:author" content="C_vv">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="嵌入式">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200808144929268.jpg?type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="be yourself" type="application/atom+xml">
   
@@ -180,231 +187,296 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+
+
+
+<article id="post-智能家居项目第二天笔记整理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      智能家居项目第二天笔记整理
+    </h1>
+  
+
+        
+        <a href="/2020/08/08/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E9%A1%B9%E7%9B%AE%E7%AC%AC%E4%BA%8C%E5%A4%A9%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-08-08T03:15:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-08</time>
+</a>
+
+         <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-keyboard-o"></i>
+      <span class="post-meta-item-text">  字数统计: </span>
+      <span class="post-count">1.5k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="fa fa-hourglass-half"></i>
+      <span class="post-meta-item-text">  阅读时长: </span>
+      <span class="post-count">6分</span>
+    </span>
+  </span>
+</div>
+
+
+          
+        <!-- 添加完成 -->
+        
+
+            <!-- 添加代码 -->
+      
+      <span class="archive-article-date">
+          阅读量 <span id="busuanzi_value_page_pv"></span>
+      </span>
+      
+
+
+
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+
+        <!-- 设置标签云begin -->
+              
+
+          
+            <h1 id="Bmp图片显示、触摸屏"><a href="#Bmp图片显示、触摸屏" class="headerlink" title="Bmp图片显示、触摸屏"></a><strong>Bmp图片显示、触摸屏</strong></h1><a id="more"></a>
+
+<h2 id="一、Bmp图片的显示"><a href="#一、Bmp图片的显示" class="headerlink" title="一、Bmp图片的显示"></a>一、Bmp图片的显示</h2><p>png、jpeg(jpg)、bmp都是图片的格式，想要在屏幕上显示一块图片，我们要怎么做呢？？</p>
+<p>只要让我们的像素点按照一定的顺序或者规律，那么我们就能显示一张图片了。</p>
+<h3 id="1、bmp图片的显示"><a href="#1、bmp图片的显示" class="headerlink" title="1、bmp图片的显示"></a>1、bmp图片的显示</h3><p>bmp(bit map picture)：位图</p>
+<p>bmp格式的图片是没有经过任何压缩技术的图片</p>
+<p>png、jpeg(jpg)、…是经过压缩了的，首先要解压</p>
+<p>按照图片文件固定的内容格式把它的数据读取出来，进行一些简单的处理，那么就能完成这个图片的显示。</p>
+<h3 id="2、bmp图片内容的格式"><a href="#2、bmp图片内容的格式" class="headerlink" title="2、bmp图片内容的格式"></a>2、bmp图片内容的格式</h3><p>bmp图片分成4个部分</p>
+<h4 id="a、文件信息部分"><a href="#a、文件信息部分" class="headerlink" title="a、文件信息部分"></a>a、文件信息部分</h4><p>说明了文件的格式，开头的两个字节就存储了这个文件的格式信息，在这里就是BM这两个字符的ASCII值。（0x40、0x4D）</p>
+<h4 id="b、图片信息部分"><a href="#b、图片信息部分" class="headerlink" title="b、图片信息部分"></a>b、图片信息部分</h4><p>保存了图片的信息，</p>
+<h5 id="1、图像的宽度"><a href="#1、图像的宽度" class="headerlink" title="1、图像的宽度"></a>1、图像的宽度</h5><p>一行有多少个像素点</p>
+<h5 id="2、图像的高度"><a href="#2、图像的高度" class="headerlink" title="2、图像的高度"></a>2、图像的高度</h5><p>图片有多少行</p>
+<h5 id="3、图片的色深"><a href="#3、图片的色深" class="headerlink" title="3、图片的色深"></a>3、图片的色深</h5><p>一个像素点占多少个字节；</p>
+<p>如果色深为32位，一个像素点占4个字节（A R G B）</p>
+<p>如果色深为24位，一个像素点占3个字节（R G B）</p>
+<h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><p>高度和宽度都是有符号位的，当高度为正数的时候，图片的像素点信息是从最后一行开始的；当宽度为正数的时候，从第一行最左边那个像素点开始，一般读出来的都是正数。</p>
+<h4 id="c、颜色版"><a href="#c、颜色版" class="headerlink" title="c、颜色版"></a>c、颜色版</h4><p>这里不存在，因为它只在低位的BMP中才存在。</p>
+<h4 id="d、像素点数组"><a href="#d、像素点数组" class="headerlink" title="d、像素点数组"></a>d、像素点数组</h4><p>像素点数组按照刚才描述的顺序（从下往上、从左往右）依次存放像素点的颜色信息</p>
+<p>信息是以一个小端模式存放的</p>
+<h3 id="3、文件中重要内容在文件中的位置"><a href="#3、文件中重要内容在文件中的位置" class="headerlink" title="3、文件中重要内容在文件中的位置"></a>3、文件中重要内容在文件中的位置</h3><p>头两个字节：BM的ASCII值</p>
+<p>图片的宽度：距离文件开头0x12的位置，占4个字节</p>
+<p>图片的高度：距离文件开头0x16的位置，占4个字节</p>
+<p>色深：距离文件开头0x1c的位置，占两个字节</p>
+<p>像素点数组：0x36 ==&gt; 距离文件开头54个字节的位置处，占多少个字节不确定</p>
+<p>对于32位的图片来讲：图片的高度 * 图片的宽度 * 色深 / 8 (字节)</p>
+<p>对于24位的图片来讲：图片的高度 * （图片的宽度 * 色深 / 8）（字节）+ 行字节填充数</p>
+<p>行字节填充数：根据我们的要求一行的像素点占得字节位数必须是4的倍数，少了就要填充。</p>
+<p>填充字节数 = 4 - （图片宽度 * 3 % 4）</p>
+<h3 id="示例（让屏幕显示一张800-480的bmp图片）"><a href="#示例（让屏幕显示一张800-480的bmp图片）" class="headerlink" title="示例（让屏幕显示一张800*480的bmp图片）"></a>示例（让屏幕显示一张800*480的bmp图片）</h3><p>大致流程：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200808144929268.jpg?type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/mman.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    打开屏幕驱动文件</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">int</span> Lcd_fd = <span class="built_in">open</span>(<span class="string">"/dev/ubuntu_lcd"</span>, O_RDWR);</span><br><span class="line">    <span class="keyword">if</span>(Lcd_fd == <span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(<span class="string">"open Lcd file failure"</span>);</span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> *plcd = mmap(<span class="literal">NULL</span>, <span class="number">800</span>*<span class="number">480</span>*<span class="number">4</span>, PROT_WRITE, MAP_SHARED, Lcd_fd, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(plcd == MAP_FAILED)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(<span class="string">"Map failure"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> Bmp_fd = <span class="built_in">open</span>(<span class="string">"2.bmp"</span>, O_RDWR);</span><br><span class="line">    <span class="keyword">if</span>(Bmp_fd == <span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(<span class="string">"open Bmp file failure"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    从BMP图片里读取它的宽度和高度</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">int</span> wid, high;</span><br><span class="line">    lseek(Bmp_fd, <span class="number">0x12</span>, SEEK_SET);<span class="comment">//光标从0x12位置处开始读取</span></span><br><span class="line">    <span class="comment">//读取到BMP图片宽度（大小是4字节），此时光标从0x12移动至0x16处</span></span><br><span class="line">    <span class="built_in">read</span>(Bmp_fd, &amp;wid, <span class="number">4</span>);</span><br><span class="line">    <span class="comment">//继续读取，此时读到的是图片高度（大小是4个字节）</span></span><br><span class="line">    <span class="built_in">read</span>(Bmp_fd, &amp;high, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    从BMP图片里读取它的色深</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="comment">//色深在BMP文件中只占2个字节，所以用short</span></span><br><span class="line">    short dep;</span><br><span class="line">    <span class="comment">//重新调整光标位置到0x1c处</span></span><br><span class="line">    lseek(Bmp_fd, <span class="number">0x1c</span>, SEEK_SET);</span><br><span class="line">    <span class="comment">//读取到图片的色深（大小是2个字节）</span></span><br><span class="line">    <span class="built_in">read</span>(Bmp_fd, &amp;dep, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"wid = %d, high = %d, dep = %d\n"</span>, wid, high, dep);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    判断图片的色深是32位的还是24位的</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">if</span>(dep == <span class="number">32</span>)<span class="comment">//色深为32位</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">    &#125;<span class="keyword">else</span><span class="comment">//色深为24位</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/*算填充数*/</span></span><br><span class="line">        <span class="keyword">int</span> stuff = <span class="number">4</span> - wid*<span class="number">3</span>%<span class="number">4</span>;</span><br><span class="line">        <span class="keyword">if</span>(stuff == <span class="number">4</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            stuff = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*创建像素点数组，确定其大小*/</span></span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">char</span> buf[high * (wid*<span class="number">3</span> + stuff)];</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*将BMP图片中的信息读取到像素点数组中来*/</span></span><br><span class="line">        <span class="built_in">read</span>(Bmp_fd, buf, high * (wid*<span class="number">3</span> + stuff));</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*将像素点数组中的内容读取到LCD显示屏上*/</span></span><br><span class="line">        <span class="keyword">int</span> i, j, k = <span class="number">0</span>, BMP_info = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; high; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; wid; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                BMP_info = buf[k++] | buf[k++]&lt;&lt;<span class="number">8</span> | buf[k++]&lt;&lt;<span class="number">16</span>;<span class="comment">//一一赋值</span></span><br><span class="line">                *(plcd + <span class="number">800</span>*(high-i<span class="number">-1</span>) + j) = BMP_info;<span class="comment">//从下往上、从左往右写</span></span><br><span class="line">            &#125;</span><br><span class="line">            k += stuff;<span class="comment">//如果宽度不是4的倍数，则需要填充</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">close</span>(Bmp_fd);</span><br><span class="line">        <span class="built_in">close</span>(Lcd_fd);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="二、触摸屏的实现"><a href="#二、触摸屏的实现" class="headerlink" title="二、触摸屏的实现"></a>二、<strong>触摸屏的实现</strong></h1><p>在linux系统里面，有一个输入管理的子系统</p>
+<p>这个输入管理的子系统会把所有的外部设备的输入信息进行一个转化 ==&gt; 一定的格式信息</p>
+<p>写入对应的输入设备的接口文件，我们用户直接读取就可以了。</p>
+<p>图示：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200808150050982.jpg?type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzQ2NjExNjAy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>在linux系统中，我们用一个结构体去规范化输入设备的信息</p>
+<p>在</p>
+<pre><code>/usr/include/linux/input.h</code></pre><p>里面查看这个结构体。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">input_event</span>&#123;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">timeval</span> <span class="title">time</span>;</span><span class="comment">//时间触发的时间</span></span><br><span class="line">_u16 type;<span class="comment">//类型</span></span><br><span class="line">          <span class="comment">//#define EV_KEY   0x01;//按键</span></span><br><span class="line">          <span class="comment">//#define EV_REL   0x02;//鼠标</span></span><br><span class="line">          <span class="comment">//#define EV_ABS   0x03;//触摸</span></span><br><span class="line"></span><br><span class="line">_u16 code;<span class="comment">//代表一个事件返回的类型</span></span><br><span class="line">          <span class="comment">//#define ABS_X   0x00;//X坐标</span></span><br><span class="line">          <span class="comment">//#define ABS_Y   0x01;//Y坐标</span></span><br><span class="line"></span><br><span class="line">_s32 value;<span class="comment">//信息的数值</span></span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>代码示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/input.h&gt;//触摸事件头文件</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> touch_fd = <span class="built_in">open</span>(<span class="string">"/dev/ubuntu_event"</span>, O_RDWR);<span class="comment">//打开设备文件</span></span><br><span class="line">    <span class="keyword">if</span>(touch_fd == <span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(<span class="string">"open touch file failure"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">input_event</span> <span class="title">ev</span>;</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">read</span>(touch_fd, &amp;ev, <span class="keyword">sizeof</span>(ev));<span class="comment">//阻塞状态，一次读取只会得到一个信息类型</span></span><br><span class="line">        <span class="keyword">if</span>(ev.type == EV_ABS)<span class="comment">//如果事件的类型是触摸</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(ev.code == ABS_X)<span class="comment">//横坐标</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"x = %d "</span>, ev.value);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(ev.code == ABS_Y)<span class="comment">//纵坐标</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"y = %d\n"</span>, ev.value);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">close</span>(touch_fd);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+
+          
+        
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你让我少搬一天砖<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechatpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-c%E8%AF%AD%E8%A8%80-%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:32:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/%E5%86%92%E6%B3%A1%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-c%E8%AF%AD%E8%A8%80-%E5%AE%9E%E7%8E%B0/">冒泡、选择、插入排序算法(c语言)实现</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C语言</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">嵌入式</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://vvcao.github.io/2020/08/08/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E9%A1%B9%E7%9B%AE%E7%AC%AC%E4%BA%8C%E5%A4%A9%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/linux%E7%BC%96%E7%A8%8B%E5%8A%A8%E6%80%81%E5%BA%93%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%88%B6%E4%BD%9C%E5%8F%8A%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:12:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/6666/06/06/top/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Read
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/07/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E9%A1%B9%E7%9B%AE%E7%AC%AC%E4%B8%80%E5%A4%A9%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">智能家居项目第一天笔记整理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/linux%E7%BC%96%E7%A8%8B%E5%8A%A8%E6%80%81%E5%BA%93%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9A%84%E5%88%B6%E4%BD%9C%E5%8F%8A%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">linux编程动态库和静态库的制作及编译过程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C语言</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Bmp图片显示、触摸屏"><span class="toc-number">1.</span> <span class="toc-text">Bmp图片显示、触摸屏</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Bmp图片的显示"><span class="toc-number">1.1.</span> <span class="toc-text">一、Bmp图片的显示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、bmp图片的显示"><span class="toc-number">1.1.1.</span> <span class="toc-text">1、bmp图片的显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、bmp图片内容的格式"><span class="toc-number">1.1.2.</span> <span class="toc-text">2、bmp图片内容的格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a、文件信息部分"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">a、文件信息部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b、图片信息部分"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">b、图片信息部分</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1、图像的宽度"><span class="toc-number">1.1.2.2.1.</span> <span class="toc-text">1、图像的宽度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2、图像的高度"><span class="toc-number">1.1.2.2.2.</span> <span class="toc-text">2、图像的高度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3、图片的色深"><span class="toc-number">1.1.2.2.3.</span> <span class="toc-text">3、图片的色深</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#注意"><span class="toc-number">1.1.2.2.4.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#c、颜色版"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">c、颜色版</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#d、像素点数组"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">d、像素点数组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、文件中重要内容在文件中的位置"><span class="toc-number">1.1.3.</span> <span class="toc-text">3、文件中重要内容在文件中的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例（让屏幕显示一张800-480的bmp图片）"><span class="toc-number">1.1.4.</span> <span class="toc-text">示例（让屏幕显示一张800*480的bmp图片）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、触摸屏的实现"><span class="toc-number">2.</span> <span class="toc-text">二、触摸屏的实现</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/linux%E7%BC%96%E7%A8%8B-%E6%A0%87%E5%87%86%E9%AB%98%E7%BA%A7I-O%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-  	<time datetime="2020-07-08T14:10:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/linux%E7%BC%96%E7%A8%8B-%E6%A0%87%E5%87%86%E9%AB%98%E7%BA%A7I-O%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">linux编程---标准高级I/O基础知识</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C语言</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/08/linux%E7%BC%96%E7%A8%8B-C%E8%AF%AD%E8%A8%80%E5%BA%95%E5%B1%82%E6%96%87%E4%BB%B6I-O%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2020-07-08T13:21:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/08/linux%E7%BC%96%E7%A8%8B-C%E8%AF%AD%E8%A8%80%E5%BA%95%E5%B1%82%E6%96%87%E4%BB%B6I-O%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0/">linux编程---C语言底层文件I/O常用文件操作函数.md</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C语言</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/01/%E9%9A%8F%E7%AC%94/" class="archive-article-date">
-  	<time datetime="2019-12-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/01/%E9%9A%8F%E7%AC%94/">随笔</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><a class="page-number" href="/archives/2020/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
-  
+
 
 
           </div>
@@ -454,8 +526,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
